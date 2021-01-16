@@ -1,0 +1,76 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.link_box {
+  /* font-size: 14px;
+    font-family: 'Nunito';
+ */
+  margin-right: 2rem;
+  margin-bottom: 0;
+}
+
+.link {
+  display: flex;
+  border: none;
+  text-decoration: none;
+  padding: 0.5rem 0px;
+  font-size: 14px;
+  font-family: 'Proxima Nova', sans-serif;
+  color: black;
+  line-height: 1;
+  text-decoration: underline solid transparent;
+  transition: text-decoration 1s ease;
+}
+
+.link:hover {
+  text-decoration: underline solid;
+}
+
+/* left: ${props => (props.isOpen ? 0 : '-100vw')};
+  opacity: ${props => (props.isOpen ? 1 : 0)};
+  transition: all 250ms ease;
+  color: ${colors.black};
+  
+  
+   ${up('tablet')} {
+    position: relative;
+    width: auto;
+    height: 100%;
+    flex-direction: row;
+    justify-content: flex-start;
+    left: 0;
+    opacity: 1;
+    background-color: transparent;
+    color: currentColor;
+  }
+
+  a,
+  button {
+    border: none;
+    background: transparent;
+
+    ${navLink()};
+
+  }
+  
+  <
+        Flex { ...rest
+        } >
+        <
+        NavItem >
+        <
+        Link to = "/" > Accueil < /Link> <
+        /NavItem> <
+        NavItem >
+        <
+        Link to = "/collections" > Collections < /Link> <
+        /NavItem> <
+        NavItem >
+        <
+        button onClick = {
+            toggleMenu
+        } > E - shop < /button> <
+        /NavItem> <
+        /Flex>*/

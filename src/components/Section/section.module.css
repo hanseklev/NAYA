@@ -1,0 +1,46 @@
+@import "../../theme/fonts/typgraphy.css";
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  padding-left: 4rem;
+  padding-right: 4rem;
+  min-height: 90vh;
+  width: 980px;
+}
+
+.title {
+  text-transform: uppercase;
+  color: #655A46;
+}
+
+.col {
+  flex: 1;
+  flex-basis: 55%;
+  align-items: center;
+}
+
+.textCol {
+  display: flex;
+  flex-basis: 55%;
+  align-items: center;
+}
+
+.imageCol {
+  padding-top: 150px;
+  display: flex;
+  flex-basis: 42%;
+  align-items: center;
+}
+
+.paragraph {
+  font-size: 16px;
+  line-height: 26px;
+  margin: 0 0 10px;
+  text-align: justify;
+  font-weight: 400;
+  font-style: normal;
+}

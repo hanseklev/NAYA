@@ -4,4 +4,15 @@
   position: relative;
   min-height: 400px;
   margin-bottom: 100px;
+  background: #fbfaf7;
+}
+
+
+@media screen and (max-width:700px){
+  .main {
+    display: flex;
+    align-content: center;
+
+  }
+
 }

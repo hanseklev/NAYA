@@ -13,6 +13,11 @@ module.exports = {
       options: {
        url: process.env.WP_URL,
        excludeFieldNames: [`actionMonitorActions`, `actionMonitorAction`, `actionMonitorActionBy`],
+       type: {
+        ActionMonitor:{
+          exclude: true
+        }
+       },
        develop: {
         hardCacheMediaFiles: true,
         hardCacheData: true,

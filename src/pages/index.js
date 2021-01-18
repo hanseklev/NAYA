@@ -11,7 +11,7 @@ const IndexPage = props => {
   return (
     <MainLayout>
       <SEO title="Home" />
-      <Hero title="MAKE FAIR TRADE THE ONLY TRADE" />
+      <Hero hasText={true} title={`MAKE FAIR TRADE THE ONLY TRADE`} />
       <Section text={WHY_NAYA} title="Why Naya" image={data.file.childImageSharp.fixed} />
       <Section text={WHY_NAYA} title="Why Naya" />
     </MainLayout>
@@ -22,7 +22,7 @@ export default IndexPage
 
 export const query = graphql`
 query IndexQuery {
-  file(relativePath: {eq: "why-naya.jpg"}, childImageSharp: {}) {
+  file(relativePath: {eq: "why-naya.jpg"}) {
     childImageSharp {
       fixed(width: 400){
         ...GatsbyImageSharpFixed

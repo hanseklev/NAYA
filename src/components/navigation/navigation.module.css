@@ -9,6 +9,7 @@
  */
   margin-right: 2rem;
   margin-bottom: 0;
+  display: none;
 }
 
 .link {
@@ -17,8 +18,8 @@
   text-decoration: none;
   padding: 0.5rem 0px;
   font-size: 14px;
-  font-family: 'Proxima Nova', sans-serif;
-  color: black;
+  font-family: "Proxima Nova", sans-serif;
+  color: #655a46;
   line-height: 1;
   text-decoration: underline solid transparent;
   transition: text-decoration 1s ease;
@@ -28,49 +29,102 @@
   text-decoration: underline solid;
 }
 
-/* left: ${props => (props.isOpen ? 0 : '-100vw')};
-  opacity: ${props => (props.isOpen ? 1 : 0)};
-  transition: all 250ms ease;
-  color: ${colors.black};
-  
-  
-   ${up('tablet')} {
-    position: relative;
-    width: auto;
-    height: 100%;
-    flex-direction: row;
-    justify-content: flex-start;
-    left: 0;
-    opacity: 1;
-    background-color: transparent;
-    color: currentColor;
+.icon {
+  cursor: pointer;
+  display: block;
+  background: transparent;
+  box-shadow: 0px 0px 0px transparent;
+  border: 0px solid transparent;
+  text-shadow: 0px 0px 0px transparent;
+}
+
+.icon:hover {
+  color: grey;
+  transition: color 0.2s ease-in-out;
+}
+
+.icon_active {
+  position: absolute;
+  left: 0;
+  top: 0;
+  margin-top: 25px;
+  margin-left: 25px;
+  z-index: 3;
+}
+
+@media (min-width: 700px) {
+  .link {
+    display: inline;
   }
 
-  a,
-  button {
-    border: none;
-    background: transparent;
-
-    ${navLink()};
-
+  .icon {
+    display: none;
   }
-  
-  <
-        Flex { ...rest
-        } >
-        <
-        NavItem >
-        <
-        Link to = "/" > Accueil < /Link> <
-        /NavItem> <
-        NavItem >
-        <
-        Link to = "/collections" > Collections < /Link> <
-        /NavItem> <
-        NavItem >
-        <
-        button onClick = {
-            toggleMenu
-        } > E - shop < /button> <
-        /NavItem> <
-        /Flex>*/
+}
+
+/* *** MOBILE NAV *** */
+.toggleMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 120vh;
+  text-align: left;
+  padding: 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  background-color: #fbfaf7;
+}
+
+.toggleMenu_link {
+  font-size: 2rem;
+  text-transform: lowercase;
+  padding: 1rem 0;
+  font-weight: bold;
+  letter-spacing: 0.5rem;
+  color: #655a46;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+@media (orientation: landscape) {
+  .toggleMenu_link {
+    font-size: 1.3rem;
+  }
+}
+
+.toggleMenu_link:hover {
+  cursor: pointer;
+  color: black;
+}
+
+.toggleMenu__transform {
+  transform: translateX(-100%);
+}
+
+.slide {
+  transition: transform 0.7s;
+}
+
+.toggleMenu__show {
+  transform: translateX(0%);
+}
+
+.hidde {
+  animation: slide-out 0.9s backwards;
+  -webkit-animation: slide-out 0.9s backwards;
+}
+
+@media (min-width: 700px) {
+  .toggleMenu {
+    display: none;
+  }
+}
+
+@media (min-width: 699px) {
+  .toggleMenu {
+    display: none;
+  }
+}

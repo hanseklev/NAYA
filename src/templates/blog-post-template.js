@@ -2,6 +2,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import BlogPost from "../components/BlogPost/blogpost"
 import MainLayout from "../components/layouts/main"
+import SEO from "../components/seo"
 
 export const query = graphql`
   query BlogPostQuery($id: String!) {
@@ -10,11 +11,26 @@ export const query = graphql`
       slug
       excerpt
       title
-      date
+      date(formatString: "DD.MM.YY")
       content
       author {
         node {
           name
+          description
+          avatar {
+            url
+          }
+        }
+      }
+      featuredImage {
+        node {
+          localFile {
+            childrenImageSharp {
+              fluid(maxWidth: 1920) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
@@ -24,10 +40,10 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
-  console.log(post)
 
   return (
     <MainLayout>
+      <SEO title={post.title} />
       {errors && <div>{errors}</div>}
       <BlogPost {...post} />
     </MainLayout>

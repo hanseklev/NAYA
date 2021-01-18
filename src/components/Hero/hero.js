@@ -1,18 +1,25 @@
 import { graphql, StaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import React from "react"
-
 import styles from "./hero.module.css"
 
-const Hero = ({ title }) => {
+
+const Hero = ({ title, hasText = false }) => {
   return (
     <StaticQuery
       query={graphql`
         query {
-          file(relativePath: { eq: "hero-crop.jpg" }) {
+          desktop: file(relativePath: { eq: "hero-crop.jpg" }) {
             childImageSharp {
-              fluid(maxWidth: 1200) {
-                ...GatsbyImageSharpFluid
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+          mobile: file(relativePath: { eq: "hero-mobile.jpg" }) {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 2160) {
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }
@@ -20,14 +27,23 @@ const Hero = ({ title }) => {
       `}
       render={data => (
         <div className={styles.container}>
-          <GatsbyImage
-            className={styles.image}
-            fluid={data.file.childImageSharp.fluid}
-          />
-          <div className={styles.foreground}>
-            <h1 className={styles.title}>{title}</h1>
-            <button className={styles.shopButton}>Shop Now</button>
+          <div className={styles.bgImage}>
+            <GatsbyImage
+              fluid={[
+                data.mobile.childImageSharp.fluid,
+                {
+                  ...data.desktop.childImageSharp.fluid,
+                  media: `(min-width: 700px)`,
+                },
+              ]}
+            />
           </div>
+          {hasText && (
+            <div className={styles.foreground}>
+              <h1 className={styles.title}>{title}</h1>
+              <button className={styles.shopButton}>Shop Now</button>
+            </div>
+          )}
         </div>
       )}
     />

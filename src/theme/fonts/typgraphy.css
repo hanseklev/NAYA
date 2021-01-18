@@ -3,16 +3,16 @@
     src: url("./BAHNSCHRIFT.TTF");
   } */
 
-@font-face{
-  font-family: 'Proxima Nova';
-  src: url('./ProximaNova-Regular.woff');
+@font-face {
+  font-family: "Proxima Nova";
+  src: url("./ProximaNova-Regular.woff");
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face{
-  font-family: 'Din1451';
-  src: url('./din1451.ttf');
+@font-face {
+  font-family: "Din1451";
+  src: url("./din1451.ttf");
   font-weight: normal;
   font-style: normal;
 }

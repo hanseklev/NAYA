@@ -12,10 +12,8 @@ export default function (props) {
 
   return (
     <MainLayout>
-      <div className="">
-        <h1>Journal</h1>
+        <h1 style={{textAlign:'center'}}>Journal</h1>
         <BlogPostPreviewGrid nodes={postNodes} />
-      </div>
     </MainLayout>
   )
 }
@@ -32,8 +30,8 @@ export const JournalPageQuery = graphql`
           node {
             localFile {
               childImageSharp {
-                fluid(maxWidth: 400) {
-                  ...GatsbyImageSharpFluid_tracedSVG
+                fixed(width: 350) {
+                  ...GatsbyImageSharpFixed
                 }
               }
             }

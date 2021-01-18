@@ -7,19 +7,24 @@ import styles from "./header.module.css"
 
 const Header = ({ siteTitle, openBasket }) => {
   const [isHidden, setIsHidden] = useState(false)
-  let prevScrollPosition = window.pageYOffset
-  window.onscroll = () => {
-    window.pageYOffset < prevScrollPosition
-      ? setIsHidden(true)
-      : setIsHidden(false)
-    prevScrollPosition = window.pageYOffset
+
+  if (typeof window !== "undefined") {
+    let prevScrollPosition = window.pageYOffset
+    window.onscroll = () => {
+      window.pageYOffset < prevScrollPosition
+        ? setIsHidden(true)
+        : setIsHidden(false)
+      prevScrollPosition = window.pageYOffset
+    }
   }
 
   return (
     <>
       <header
         className={
-          isHidden ? `${styles.header}` : `${styles.header} ${styles.hideHeader}`
+          isHidden
+            ? `${styles.header}`
+            : `${styles.header} ${styles.hideHeader}`
         }
       >
         <div className={`${styles.col} ${styles.col_left}`}>

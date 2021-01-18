@@ -2,7 +2,11 @@ import { Link } from "gatsby"
 import React from "react"
 
 import styles from "./footer.module.css"
-
+const FOOTER_TEXT = [
+  " NAYA AS •. ORG.NR: 924 634 928 • HELLO@NAYA.NO",
+  "ALL RIGHTS RESERVED ",
+  "© 2021 "
+]
 const Footer = () => {
   return (
     <footer className={styles.footer}>
@@ -27,7 +31,13 @@ const Footer = () => {
         </section>
         <div className={styles.col}></div>
       </div>
-      <aside className={styles.bottomFooter}>2021</aside>
+      <aside className={styles.bottomFooter}>
+        <ul>
+          {FOOTER_TEXT.map(item => (
+            <li key={item}>{item}</li>
+          ))}
+        </ul>
+      </aside>
     </footer>
   )
 }

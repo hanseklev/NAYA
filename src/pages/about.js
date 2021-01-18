@@ -12,7 +12,6 @@ const AboutPage = props => {
   const links = ["People", "Production", "Yoyknameit"]
 
   const data = useStaticQuery(query)
-  console.log(data)
 
   const image = data.about.childImageSharp.fluid
   const teamImage = data.teamet.childImageSharp.fluid

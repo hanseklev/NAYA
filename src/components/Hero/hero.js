@@ -33,7 +33,7 @@ const Hero = ({ title, hasText = false }) => {
                 data.mobile.childImageSharp.fluid,
                 {
                   ...data.desktop.childImageSharp.fluid,
-                  media: `(min-width: 700px)`,
+                  media: `(min-width: 769px)`,
                 },
               ]}
             />

@@ -10,9 +10,7 @@ const AboutSection = ({ title, image, text }) => (
         <h2 className={styles.title}>{title}</h2>
         <p className={styles.paragraph}>{text}</p>
       </div>
-      <div className={styles.col}>
-        <GatsbyImage fixed={image} />
-      </div>
+      <div className={styles.col}>{image && <GatsbyImage fixed={image} />}</div>
     </>
   </section>
 )

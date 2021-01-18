@@ -52,16 +52,6 @@
   z-index: 3;
 }
 
-@media (min-width: 700px) {
-  .link {
-    display: inline;
-  }
-
-  .icon {
-    display: none;
-  }
-}
-
 /* *** MOBILE NAV *** */
 .toggleMenu {
   display: flex;
@@ -117,12 +107,19 @@
   -webkit-animation: slide-out 0.9s backwards;
 }
 
-@media (min-width: 700px) {
+@media (min-width: 769px) {
+  .link {
+    display: inline;
+  }
+
+  .icon {
+    display: none;
+  }
   .toggleMenu {
     display: none;
   }
 
-  .link_box{
+  .link_box {
     display: block;
   }
 }

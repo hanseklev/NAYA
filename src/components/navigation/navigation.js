@@ -51,6 +51,13 @@ export const NavigationDesktop = ({ hide, location }) => {
             <Burger isOpen={true} />
           </button>
           <Link
+            to="/"
+            onClick={toggleMenu}
+            className={styles.toggleMenu_link}
+          >
+            home
+          </Link>
+          <Link
             to="/about"
             onClick={toggleMenu}
             className={styles.toggleMenu_link}

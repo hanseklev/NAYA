@@ -71,11 +71,15 @@ p {
   font-family: 'Proxima Nova';
   font-weight: lighter;
   font-size: 14px;
-  color: #655A46;
   max-width: 650px;
   line-height: 1.6rem;
   margin: 0 0 24px;
   text-align: justify;
+}
+
+p, li, hr {
+  color: #655A46;
+
 }
 
 

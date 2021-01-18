@@ -1,7 +1,7 @@
 import GatsbyImage from "gatsby-image"
 import parse from "html-react-parser"
 import React from "react"
-import Author from "./Author"
+import Author from "./author"
 import styles from "./blogpost.module.css"
 
 export default function BlogPost(props) {

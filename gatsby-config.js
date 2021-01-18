@@ -32,13 +32,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `index_images`,
-        path: `${__dirname}/.wordpress-cache/naya.no/wp-content/uploads/2020/10`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `NAYA`,

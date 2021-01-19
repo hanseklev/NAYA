@@ -6,9 +6,9 @@ import styles from "./blogpost-preview.module.css"
 import parse from 'html-react-parser'
 
 const BlogPostPreview = props => {
-  const thumbImg =
-    props.featuredImage.node.localFile.childImageSharp &&
-    props.featuredImage.node.localFile.childImageSharp.fixed
+   const thumbImg = {}
+   /* props.featuredImage.node.localFile.childImageSharp &&
+    props.featuredImage.node.localFile.childImageSharp.fixed */
 
   return (
     <Link to={getBlogUrl(props.slug)} className={styles.container}>

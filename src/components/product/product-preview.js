@@ -38,8 +38,8 @@ const thumb = {
 }
 
 const ProductPreview = props => {
-  const { title, slug } = props
-  const { price, images } = props.defaultProductVariant
+  const { name, slug, price } = props.node
+  const imageUrl = props.node.featuredImage.node.sourceUrl
 
   const [isHover, setHover] = useState(false)
 
@@ -63,10 +63,11 @@ const ProductPreview = props => {
             }}
           >
             {/* <Image className={styles.product_image} /> */}
-            <GatsbyImage
+            {/*  <GatsbyImage
               fluid={images[0].asset.fluid}
               style={{ width: "100%" }}
-            />
+            /> */}
+            <img src={imageUrl} style={{ width: "100%" }} />
           </motion.div>
 
           <motion.div
@@ -77,12 +78,12 @@ const ProductPreview = props => {
             <LogoImg />
           </motion.div>
           <Link
-            to={`/product/${slug.current}`}
+            to={`/product/${slug}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           ></Link>
         </figure>
-        <h3 className={styles.product_title}>{title}</h3>
+        <h3 className={styles.product_title}>{name}</h3>
         <Price price={price} />
       </motion.article>
     </>

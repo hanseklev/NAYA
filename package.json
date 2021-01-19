@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Hans Erling Klevstad",
   "dependencies": {
+    "@pasdo501/gatsby-source-woocommerce": "^0.14.2",
     "date-fns": "^2.16.1",
     "framer-motion": "^2.9.4",
     "gatsby": "^2.30.3",

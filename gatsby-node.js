@@ -10,13 +10,25 @@ async function createBlogPages(graphql, actions) {
           slug
         }
       }
+      allWpProduct {
+        edges {
+          node {
+            id
+            slug
+            productCategories {
+              nodes {
+                name
+              }
+            }
+          }
+        }
+      }
     }
   `)
 
-  if (result.errors) throw new Error(errors)
+  if (result.errors) throw new Error(result.errors)
 
   await result.data.allWpPost.nodes.forEach(node => {
-
     createPage({
       path: `post/${node.slug}`,
       component: path.resolve("./src/templates/blog-post-template.js"),
@@ -27,6 +39,19 @@ async function createBlogPages(graphql, actions) {
     })
   })
 
+  await result.data.allWpProduct.edges.forEach(node => {
+    console.log(node);
+    //let category = node.productCategories.nodes[0].name.toLowerCase()
+    let slug = `shop/${node.slug}`
+    createPage({
+      path: slug,
+      component: path.resolve("./src/templates/product-template.js"),
+      context: {
+        id: node.id,
+        slug: slug,
+      },
+    })
+  })
 }
 
 exports.createPages = async ({ graphql, actions }) => {

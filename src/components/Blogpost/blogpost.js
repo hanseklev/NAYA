@@ -6,7 +6,6 @@ import styles from "./blogpost.module.css"
 
 export default function BlogPost(props) {
   const { title, date, content, author, featuredImage } = props
-  console.log(props)
   const headerImage = featuredImage && featuredImage.node.localFile.childrenImageSharp[0].fluid
     /* featuredImage.node.localFile.childrenImageSharp &&
     featuredImage.node.localFile.childrenImageSharp[0].fluid

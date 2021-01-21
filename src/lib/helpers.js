@@ -4,6 +4,10 @@ export function cn (...args) {
   return args.filter(Boolean).join(' ')
 }
 
+export function parsePrice(price){
+  return price.substring(1)
+}
+
 export function mapEdgesToNodes (data) {
   if (!data.edges) return []
   return data.edges.map(edge => edge.node)

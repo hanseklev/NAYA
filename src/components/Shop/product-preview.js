@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
 import { graphql, Link, useStaticQuery } from "gatsby"
-import { default as GatsbyImage, default as Img } from "gatsby-image"
+import { default as Img } from "gatsby-image"
 import React, { useState } from "react"
-import Price from "./Price"
+import Price from "../product/Price"
 import styles from "./product-preview.module.css"
 
 const bg = {
@@ -38,7 +38,7 @@ const thumb = {
 }
 
 const ProductPreview = props => {
-  const { name, slug, price } = props.node
+  const { name, id, price } = props.node
   const imageUrl = props.node.featuredImage.node.sourceUrl
 
   const [isHover, setHover] = useState(false)
@@ -67,7 +67,7 @@ const ProductPreview = props => {
               fluid={images[0].asset.fluid}
               style={{ width: "100%" }}
             /> */}
-            <img src={imageUrl} style={{ width: "100%" }} />
+            <img src={imageUrl} alt="produktbilde" style={{ width: "100%" }} />
           </motion.div>
 
           <motion.div
@@ -78,7 +78,7 @@ const ProductPreview = props => {
             <LogoImg />
           </motion.div>
           <Link
-            to={`/product/${slug}`}
+            to={`/product/${id}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
           ></Link>

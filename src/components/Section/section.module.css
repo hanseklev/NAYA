@@ -1,15 +1,15 @@
 @import "../../theme/fonts/typgraphy.css";
 
 .container {
-  display: flex row;
-  justify-content: space-between;
+  display: flex;
+  justify-content: center;
   align-items: center;
   margin: 2rem 0 auto;
   padding-left: 2.2rem;
   padding-right: 2.2rem;
   /*   min-height: 90vh;
  */
-  max-width: 980px;
+ width: 100%;
 }
 
 .title {

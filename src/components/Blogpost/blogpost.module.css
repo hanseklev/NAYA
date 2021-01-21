@@ -16,7 +16,6 @@
   margin: 2rem 0 auto;
   padding-left: 2.2rem;
   padding-right: 2.2rem;
- 
 }
 
 .header {
@@ -31,6 +30,10 @@
 
 .header ul {
   list-style: none;
+}
+
+.article img {
+  width: 100%;
 }
 
 .mainImageContainer {

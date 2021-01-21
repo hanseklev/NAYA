@@ -1,4 +1,4 @@
-import { graphql, StaticQuery } from "gatsby"
+import { graphql, navigate, StaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import React from "react"
 import styles from "./hero.module.css"
@@ -41,7 +41,7 @@ const Hero = ({ title, hasText = false }) => {
           {hasText && (
             <div className={styles.foreground}>
               <h1 className={styles.title}>{title}</h1>
-              <button className={styles.shopButton}>Shop Now</button>
+              <button onClick={(()=>{navigate('/shop')})} className={styles.shopButton}>Shop Now</button>
             </div>
           )}
         </div>

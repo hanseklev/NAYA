@@ -1,4 +1,3 @@
-import GatsbyImage from "gatsby-image"
 import React, { useContext } from "react"
 import { ProductContext } from "../../context/productContext"
 import styles from "./cart.module.css"
@@ -8,11 +7,12 @@ export const CartItem = ({ item }) => {
 
   return (
     <div>
-      <li key={item._id}>
+      <li key={item.id}>
         <figure>
-          <GatsbyImage
+          <img
             className={styles.image}
-            fluid={item.defaultProductVariant.images[0].asset.fluid}
+            src={item.featuredImage.node.sourceUrl}
+            alt="produktbilde"
             style={{ width: "100px" }}
           />
         </figure>
@@ -32,14 +32,14 @@ export const CartItem = ({ item }) => {
               <p className={styles.description}>Beskrivelse goes here</p>
             </div>
             <div className={styles.variants}>
-              <label className={styles.quantity}>Antall</label>
+              <span className={styles.quantity}>Antall</span>
               <div className={styles.priceContainer}>
                 <div className={styles.quantityContainer}>
                 <button onClick={()=> decrease(item)}>-</button>
                   <span>{item.quantity}</span>
                   <button onClick={()=> increase(item)}>+</button>
                 </div>
-                <div> {item.defaultProductVariant.price}</div>
+                <div> {item.price}</div>
               </div>
             </div>
           </div>

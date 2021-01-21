@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 
 import MainLayout from "../components/layouts/main"
-import ShopList from "../components/Shop/list"
+import ShopList from "../components/Shop/product-list"
 
 const ShopPage = () => {
   const data = useStaticQuery(query)

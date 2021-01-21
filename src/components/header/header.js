@@ -1,5 +1,6 @@
 import PropTypes from "prop-types"
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { ProductContext } from "../../context/productContext"
 import Logo from "../logo"
 import { NavigationDesktop } from "../navigation/navigation"
 import Basket from "./basket"
@@ -7,6 +8,8 @@ import styles from "./header.module.css"
 
 const Header = ({ siteTitle, openBasket }) => {
   const [isHidden, setIsHidden] = useState(false)
+  const context = useContext(ProductContext)
+
 
   if (typeof window !== "undefined") {
     let prevScrollPosition = window.pageYOffset
@@ -35,7 +38,8 @@ const Header = ({ siteTitle, openBasket }) => {
         </div>
         <div className={styles.col}>
           <Basket openBasket={openBasket} />
-        </div>
+{/*           <span>{context.}</span>
+ */}        </div>
       </header>
     </>
   )

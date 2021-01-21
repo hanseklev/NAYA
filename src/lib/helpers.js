@@ -5,7 +5,7 @@ export function cn (...args) {
 }
 
 export function parsePrice(price){
-  return price.substring(1)
+  return Number(price.replace(/[^0-9.-]+/g,""))
 }
 
 export function mapEdgesToNodes (data) {

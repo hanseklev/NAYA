@@ -1,8 +1,6 @@
 import React, { createContext, useReducer } from "react"
-
-const storage = localStorage.getItem("cart")
-  ? JSON.parse(localStorage.getItem("cart"))
-  : []
+import Cookie from "js-cookie"
+const storage = Cookie.get("cartItems") ? Cookie.getJSON("cartItems") : []
 
 const initialState = {
   cartItems: storage,
@@ -11,7 +9,7 @@ const initialState = {
 
 const ProductContext = createContext({})
 
-function sumItems(cart) {
+/* function sumItems(cart) {
   let itemCount = cart.reduce((total, product) => total + product.quantity, 0)
   let total = cart
     .reduce(
@@ -20,7 +18,7 @@ function sumItems(cart) {
     )
     .toFixed(2)
   return { itemCount, total }
-}
+} */
 
 function ProductReducer(state, action) {
   const idx = state.cartItems.indexOf(action.payload)
@@ -57,12 +55,14 @@ function ProductReducer(state, action) {
       return {
         ...state,
       }
-   /*  case "GET_COUNT":
+    /*  case "GET_COUNT":
       return sumItems(state.cartItems) */
     case "CLEAR":
       break
-    case "CHECKOUT":
+    case "CREATE_ORDER":
       break
+    case "SET_SHIPPING_ADRESS":
+      console.log(action.payload)
     default:
       return state
   }
@@ -73,10 +73,12 @@ const ProductProvider = ({ children }) => {
 
   const addItem = payload => {
     dispatch({ type: "ADD_ITEM", payload })
+    Cookie.set("cartItems", JSON.stringify(state.cartItems))
   }
 
   const deleteItem = payload => {
     dispatch({ type: "DELETE_ITEM", payload })
+    Cookie.set("cartItems", JSON.stringify(state.artItems))
   }
 
   const increase = payload => {
@@ -90,12 +92,25 @@ const ProductProvider = ({ children }) => {
     dispatch({ type: "CHECKOUT", payload })
   }
 
+  const setShippingAddress = payload => {
+    dispatch({ type: "SET_SHIPPING_ADRESS", payload })
+  }
+
+  const createOrder = order => {
+    dispatch({ type: "CREATE_ORDER", payload: order })
+    console.log("Oppretter ordre..", order)
+    //useMutation
+ 
+  }
+
   const values = {
     addItem,
     deleteItem,
     increase,
     decrease,
     checkout,
+    setShippingAddress,
+    createOrder,
     ...state,
   }
 

@@ -1,12 +1,16 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-
 import MainLayout from "../components/layouts/main"
 import ShopList from "../components/Shop/product-list"
 
 const ShopPage = () => {
+  // const [priceFormatted, setPriceFormatted] = useState(false)
+
   const data = useStaticQuery(query)
   const products = data.allWpProduct.edges
+
+
+
   return (
     <MainLayout>
       <h1>Shop</h1>

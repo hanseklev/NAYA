@@ -7,6 +7,42 @@
   background: #fbfaf7;
 }
 
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.header h1 {
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 1.5rem;
+  width: 100%;
+
+}
+
+.header button {
+  border: none;
+  background-color: transparent;
+}
+
+.basket {
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+
+.backButton {
+  display: flex;
+  justify-content: flex-start;
+}
+
+
 /* 
 @media screen and (max-width:700px){
   .main {

@@ -2,7 +2,7 @@ import PropTypes from "prop-types"
 import React, { useContext, useState } from "react"
 import { ProductContext } from "../../context/productContext"
 import Logo from "../logo"
-import { NavigationDesktop } from "../navigation/navigation"
+import { NavigationDesktop } from "../navigation"
 import Basket from "./basket"
 import styles from "./header.module.css"
 

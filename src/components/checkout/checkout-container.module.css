@@ -1,0 +1,69 @@
+.wrapper{
+    margin: 12px;
+ 
+
+}
+
+.form  {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.field {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom-width: 0px;
+  margin-bottom: 20px;
+  transition: color 300ms ease 0s, padding-bottom 300ms ease 0s;
+  overflow: hidden;
+}
+
+.half {
+  display: inline-block;
+  vertical-align: top;
+  width: calc(50% - 8px);
+}
+
+.field input {
+  height: 60px;
+  border-radius: 2px;
+  border: 2px solid transparent;
+  padding: 0 15px;
+  width: 100%;
+}
+
+.field span {
+  /* position: absolute;
+  z-index: 2;
+  left: 16px;
+  top: 16px;
+  color: rgb(200, 200, 200);
+  font-weight: 300;
+  font-style: normal;
+  font-size: 14px;
+  line-height: 146%;
+  letter-spacing: -0.15px; */
+}
+
+.form fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+.paymentButton {
+    margin-top: 24px;
+    background-color: #655a46;
+    border: solid 1px #655a46;
+  
+    color: white;
+    width: 100%;
+    padding: 0px 20px;
+    height: 48px;
+    font-weight: 500;
+    font-size: 15px;
+    transition: all 300ms ease 0s;
+  }

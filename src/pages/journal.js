@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
-import BlogPostPreviewGrid from "../../components/Blogpost/blogpost-preview-grid"
-import MainLayout from "../../components/layouts/main"
+import BlogPostPreviewGrid from "../components/blogpost/blogpost-preview-grid"
+import MainLayout from "../components/layouts/main"
 
 export default function (props) {
   const { data, errors } = props

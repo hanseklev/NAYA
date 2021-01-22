@@ -1,8 +1,7 @@
 import { navigate } from "gatsby"
 import React, { useContext } from "react"
-import { ProductContext } from "../../context/productContext"
+import { ProductContext } from "../../../context/productContext"
 import styles from "./cart-container.module.css"
-import { LeftArrow } from "./LeftArrow"
 
 export const CartContainer = ({ children }) => {
   const { cartItems } = useContext(ProductContext)

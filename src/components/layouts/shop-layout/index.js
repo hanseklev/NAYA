@@ -1,8 +1,8 @@
 import { navigate } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import { LeftArrow } from "../Cart/LeftArrow"
-import styles from "./main.module.css"
+import { LeftArrow } from "../../left-arrow"
+import styles from "../layout.module.css"
 
 const ShopLayout = ({ children, title }) => {
   return (

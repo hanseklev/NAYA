@@ -15,9 +15,7 @@ function Product({ product }) {
         <img src={featuredImage.node.sourceUrl} alt="produktbilde" style={{ width: "100%" }} />
         <p>{price}</p>
         <p className={styles.p}>{description}</p>
-        <button disabled={!isInStock} onClick={() => addItem(product)}>
-          Legg i handlekurv
-        </button>
+        
       </div>
     </article>
   )

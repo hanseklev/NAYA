@@ -1,5 +1,5 @@
 /*! sanitize.css v7.0.3 | CC0 License | github.com/csstools/sanitize.css */
-@import './fonts/typgraphy.css';
+@import '../fonts/typgraphy.css';
 /* Document
 * ========================================================================== */
 /**
@@ -54,13 +54,13 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
-  background: #fbfaf7;
+  background: var(--bg-primary);
   font-family: Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
   font-family: 'Din1451';
-  color: #655A46;
+  color: var(--color-text);
 }
 
 h1 {
@@ -79,13 +79,21 @@ p {
 }
 
 p, li, hr {
-  color: #655A46;
+  color: var(--color-text);
 
 }
 
 
 a {
   color: black
+}
+
+/*  COLORS  */
+:root {
+  --bg-primary: #FBFAF7;
+  --bg-secondary: #E4DED1;
+  --color-text: #655A46;
+  --color-accent: #6D735D;
 }
 
 

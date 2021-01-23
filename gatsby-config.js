@@ -16,22 +16,10 @@ module.exports = {
    
        develop: {
         hardCacheMediaFiles: true,
-        hardCacheData: true,
+        hardCacheData: false,
       },
       },
     },
-  /*   {
-      resolve: '@pasdo501/gatsby-source-woocommerce',
-      options: {
-        api: 'naya.no',
-        https: true,
-        api_keys: {
-          consumer_key: process.env.WOO_KEY,
-          consumer_secret: process.env.WOO_SECRET,
-        },
-        fields: ['products', 'products/categories', 'products/attributes']
-      }
-    }, */
     {
       resolve: `gatsby-source-filesystem`,
       options: {

@@ -1,15 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import MainLayout from "../components/layouts/main"
-import ShopList from "../components/Shop/product-list"
+import MainLayout from "../components/layouts/main-layout"
+import ShopList from "../components/shop/product-grid"
 
 const ShopPage = () => {
-  // const [priceFormatted, setPriceFormatted] = useState(false)
-
   const data = useStaticQuery(query)
   const products = data.allWpProduct.edges
-
-
 
   return (
     <MainLayout>
@@ -22,7 +18,7 @@ const ShopPage = () => {
 export default ShopPage
 
 const query = graphql`
-  query ShopQuery {
+  query ProductPreviewQuery {
     allWpProduct {
       edges {
         node {
@@ -37,6 +33,11 @@ const query = graphql`
             slug
             featuredImage {
               node {
+                sourceUrl
+              }
+            }
+            secondaryImage {
+              previewBilde2 {
                 sourceUrl
               }
             }

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import React from "react"
-import ProductPreview from "./product-preview"
-import styles from "./product-list.module.css"
+import ProductPreview from "../product-preview"
+import styles from "./index.module.css"
 
 const ShopList = ({ products }) => {
   return (

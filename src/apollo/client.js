@@ -1,10 +1,15 @@
-import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from "@apollo/client"
+import {
+  ApolloClient,
+  HttpLink,
+  ApolloLink,
+  InMemoryCache,
+} from "@apollo/client"
+
 
 const httpLink = new HttpLink({
-  uri: 'http://nayatest.local/graphql',
+  uri: "http://nayatest.local/graphql",
 })
 
-console.log(httpLink);
 const middleware = new ApolloLink((operation, forward) => {
   const session = localStorage.getItem("woo-session")
   if (session) {

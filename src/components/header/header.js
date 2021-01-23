@@ -1,6 +1,5 @@
 import PropTypes from "prop-types"
-import React, { useContext, useState } from "react"
-import { ProductContext } from "../../context/productContext"
+import React, { useState } from "react"
 import Logo from "../logo"
 import { NavigationDesktop } from "../navigation"
 import Basket from "./basket"
@@ -8,7 +7,6 @@ import styles from "./header.module.css"
 
 const Header = ({ siteTitle, openBasket }) => {
   const [isHidden, setIsHidden] = useState(false)
-  const context = useContext(ProductContext)
 
 
   if (typeof window !== "undefined") {

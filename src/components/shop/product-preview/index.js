@@ -1,9 +1,8 @@
 import { motion } from "framer-motion"
-import { graphql, Link, useStaticQuery } from "gatsby"
-import { default as Img } from "gatsby-image"
+import { Link } from "gatsby"
 import React, { useState } from "react"
-import Price from "../product/Price"
-import styles from "./product-preview.module.css"
+import Price from "../product/price"
+import styles from "./index.module.css"
 
 const bg = {
   on: {
@@ -15,16 +14,6 @@ const bg = {
     scale: 1.4,
   },
 }
-/* const subtitle = {
-  on: {
-    opacity: 1,
-    x: 0,
-  },
-  off: {
-    opacity: 0,
-    x: -20,
-  },
-} */
 
 const thumb = {
   on: {
@@ -40,6 +29,9 @@ const thumb = {
 const ProductPreview = props => {
   const { name, id, price } = props.node
   const imageUrl = props.node.featuredImage.node.sourceUrl
+  const secondaryUrl =
+    props.node.secondaryImage.previewBilde2 &&
+    props.node.secondaryImage.previewBilde2.sourceUrl
 
   const [isHover, setHover] = useState(false)
 
@@ -75,7 +67,7 @@ const ProductPreview = props => {
             className={styles.product_thumbnail}
             transition={{ type: "spring", mass: 0.5 }}
           >
-            <LogoImg />
+            <LogoImg url={secondaryUrl} />
           </motion.div>
           <Link
             to={`/product/${id}`}
@@ -90,30 +82,19 @@ const ProductPreview = props => {
   )
 }
 
-const LogoImg = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-icon.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 500) {
-            ...GatsbyImageSharpFluid
-          }
-        }
-      }
-    }
-  `)
-
-  if (!data?.placeholderImage?.childImageSharp?.fluid) {
+const LogoImg = ({ url }) => {
+  if (url === undefined) {
     return <div>Picture not found</div>
   }
 
   return (
-    <Img
+    <img
       style={{
-        width: "80%",
+        width: "100%",
         height: "80%",
       }}
-      fluid={data.placeholderImage.childImageSharp.fluid}
+      src={url}
+      alt="produktbilde"
     />
   )
 }

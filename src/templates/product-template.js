@@ -1,8 +1,8 @@
 import { graphql } from "gatsby"
 import React, { useState } from "react"
 
-import MainLayout from "../components/layouts/main"
-import Product from "../components/product/Product"
+import MainLayout from "../components/layouts/main-layout/index"
+import Product from "../components/shop/product/product"
 import { parsePrice } from "../lib/helpers"
 
 export default function ProductTemplate(props) {
@@ -25,12 +25,13 @@ export default function ProductTemplate(props) {
 }
 
 export const ProductQuery = graphql`
-  query ProductQuery($id: String!) {
+  query ProductPageQuery($id: String!) {
     product: wpProduct(id: { eq: $id }) {
       name
       description
       ... on WpSimpleProduct {
         id
+        databaseId
         name
         content
         price

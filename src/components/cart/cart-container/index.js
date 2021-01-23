@@ -1,40 +1,40 @@
 import { navigate } from "gatsby"
 import React, { useContext } from "react"
-import { ProductContext } from "../../../context/productContext"
+import { ShopContext } from "../../../context/shop-context"
+import { CartItem } from "../cart-item"
+import Cookie from "js-cookie"
 import styles from "./cart-container.module.css"
 
-export const CartContainer = ({ children }) => {
-  const { cartItems } = useContext(ProductContext)
+export const CartContainer = () => {
+  const [cart, setCart] = useContext(ShopContext)
+  console.log(cart)
 
+  const cartItems = cart && cart.products
   const SHIPPING = 49.0
 
-  function goToShopPage() {
-    navigate("/shop")
-  }
-
-  function subTotal(cartItems) {
-    console.log(cartItems)
-  /*   if (cartItems.length === 1)
-      return cartItems[0].price * cartItems[0].quantity
- */
-    let sum = 0
-
-    return cartItems.reduce((a, c) => a + c.price * c.quantity, 0)
-  }
-
-  function total(cartItems) {
-    return subTotal(cartItems) + SHIPPING
+  function clearCart() {
+    Cookie.remove("naya_cart")
+    setCart([])
   }
 
   return (
     <div className={styles.outerWrapper}>
       <section className={styles.wrapper}>
-        <ul className={styles.cartList}>{children}</ul>
+        {cartItems && (
+          <ul className={styles.cartList}>
+            {cartItems.length > 0 ? (
+              cartItems.map((item, i) => <CartItem item={item} key={i} />)
+            ) : (
+              <li>Du har ingenting i kurven :) </li>
+            )}
+          </ul>
+        )}
+
         <div className={styles.checkoutFixed}>
           <section className={styles.section}>
             Subtotal
             <section className={styles.lefty}>
-              <span>{subTotal(cartItems)} kr</span>
+              <span>{cart.totalProductsPrice}</span>
             </section>
           </section>
           <section className={styles.section}>
@@ -46,10 +46,14 @@ export const CartContainer = ({ children }) => {
           <section className={styles.section}>
             Total
             <section className={styles.lefty}>
-              <span>{total(cartItems)} kr</span>
+              <span>{cart.totalProductsPrice}</span>
             </section>
           </section>
         </div>
+        <button className={styles.checkoutButton} onClick={() => clearCart()}>
+          Tøm handlekurv
+        </button>
+
         <button
           onClick={() => navigate("/checkout")}
           className={styles.checkoutButton}

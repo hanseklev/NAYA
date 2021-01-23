@@ -18,6 +18,7 @@
 
 .checkoutFixed {
   position: sticky;
+  bottom:0;
   border-top: 1px solid rgb(224, 224, 224);
 }
 
@@ -31,8 +32,8 @@
 }
 
 .checkoutButton {
-  background-color: #655a46;
-  border: solid 1px #655a46;
+  background-color: var(--bg-secondary);
+  border: solid 1px var(--bg-secondary);
 
   color: white;
   width: 100%;

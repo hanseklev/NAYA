@@ -9,20 +9,11 @@ const initialState = {
 
 const ProductContext = createContext({})
 
-/* function sumItems(cart) {
-  let itemCount = cart.reduce((total, product) => total + product.quantity, 0)
-  let total = cart
-    .reduce(
-      (total, product) => total + product.price * product * product.quantity,
-      0
-    )
-    .toFixed(2)
-  return { itemCount, total }
-} */
 
 function ProductReducer(state, action) {
   const idx = state.cartItems.indexOf(action.payload)
   switch (action.type) {
+      
     case "ADD_ITEM":
       if (!state.cartItems.find(item => item.id === action.payload.id)) {
         state.cartItems.push({
@@ -57,12 +48,10 @@ function ProductReducer(state, action) {
       }
     /*  case "GET_COUNT":
       return sumItems(state.cartItems) */
-    case "CLEAR":
-      break
-    case "CREATE_ORDER":
-      break
-    case "SET_SHIPPING_ADRESS":
-      console.log(action.payload)
+    case "CLEAR_CART":
+      Cookie.remove("cartItems")
+      state.cartItems.splice(0, state.cartItems.length)
+      return {...state}
     default:
       return state
   }
@@ -98,9 +87,11 @@ const ProductProvider = ({ children }) => {
 
   const createOrder = order => {
     dispatch({ type: "CREATE_ORDER", payload: order })
-    console.log("Oppretter ordre..", order)
-    //useMutation
  
+  }
+
+  const clearCart = (payload) => {
+    dispatch({ type: "CLEAR_CART", payload })
   }
 
   const values = {
@@ -111,6 +102,7 @@ const ProductProvider = ({ children }) => {
     checkout,
     setShippingAddress,
     createOrder,
+    clearCart,
     ...state,
   }
 

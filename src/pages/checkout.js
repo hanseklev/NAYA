@@ -1,6 +1,6 @@
 import React from 'react'
 import CheckoutContainer from '../components/Checkout/checkout-container'
-import ShopLayout from '../components/layouts/shopLayout'
+import ShopLayout from '../components/layouts/shop-layout'
 
 const CheckoutPage = () => {
 

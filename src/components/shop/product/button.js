@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import React from 'react'
-import { BasketIcon } from '../header/basket'
+import { BasketIcon } from '../../header/basket'
 
 import styles from './product.module.css'
 

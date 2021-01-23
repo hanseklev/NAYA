@@ -1,7 +1,7 @@
 import { graphql, navigate, StaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import React from "react"
-import styles from "./hero.module.css"
+import styles from "./index.module.css"
 
 
 const Hero = ({ title, hasText = false }) => {

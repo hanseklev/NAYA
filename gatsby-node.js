@@ -42,7 +42,6 @@ async function createBlogPages(graphql, actions) {
   await result.data.allWpProduct.edges.forEach(node => {
     //let category = node.productCategories.nodes[0].name.toLowerCase()
     let slug = `product/${node.node.id}`
-    console.log(node.node.slug);
 
     createPage({
       path: slug,

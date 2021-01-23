@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import React from "react"
-import MainLayout from "../components/layouts/main"
-import AboutSection from "../components/Section/aboutSection"
-import Section from "../components/Section/section"
+import MainLayout from "../components/layouts/main-layout"
+import AboutSection from "../components/section/about-section"
+import Section from "../components/section"
 import SEO from "../components/seo"
-import Sidebar from "../components/Sidebar/sidebar"
+import Sidebar from "../components/sidebar"
 import { ABOUT, OUR_STORY, TEAMET, WHY_NAYA } from "../content/content"
 
 const AboutPage = props => {

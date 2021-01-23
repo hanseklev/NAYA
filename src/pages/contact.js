@@ -1,5 +1,5 @@
 import React from "react"
-import MainLayout from "../components/layouts/main"
+import MainLayout from "../components/layouts/main-layout"
 import SEO from "../components/seo"
 
 const ContactPage = props => {

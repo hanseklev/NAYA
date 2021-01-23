@@ -1,6 +1,6 @@
 import { Link } from "gatsby"
 import React from "react"
-import styles from "./sidebar.module.css"
+import styles from "./index.module.css"
 
 const Sidebar = ({ elements }) => {
   return (

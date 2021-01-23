@@ -1,18 +1,17 @@
 import { Link } from "gatsby"
-import React, { useContext } from "react"
-import { ProductContext } from "../../context/productContext"
+import React from "react"
 import styles from "./cart-item.module.css"
 
 export const CartItem = ({ item }) => {
-  const { deleteItem, increase, decrease } = useContext(ProductContext)
+  function placeHolder(){}
 
   return (
     <li key={item.id} className={styles.container}>
       <div className={styles.flexCol}>
         <figure>
-          <img
-            src={item.featuredImage.node.sourceUrl}
-            alt="produktbilde"
+        <img
+            src={item.image.sourceUrl}
+            alt={item.image.altText}
             style={{ width: "100%" }}
           />
         </figure>
@@ -24,7 +23,7 @@ export const CartItem = ({ item }) => {
         <div>
           <button
             className={styles.removeButton}
-            onClick={() => deleteItem(item)}
+            onClick={() => placeHolder(item)}
           >
             Fjern
           </button>
@@ -32,9 +31,9 @@ export const CartItem = ({ item }) => {
       </div>
 
       <div className={styles.flexCol}>
-      <button onClick={() => increase(item)}>+</button>
+      <button onClick={() => placeHolder(item)}>+</button>
       <span>{item.quantity}</span>
-      <button onClick={() => decrease(item)}>-</button>
+      <button onClick={() => placeHolder(item)}>-</button>
       </div>
     </li>
   )

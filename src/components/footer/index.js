@@ -1,11 +1,11 @@
 import { Link } from "gatsby"
 import React from "react"
 
-import styles from "./footer.module.css"
+import styles from "./index.module.css"
 const FOOTER_TEXT = [
   " NAYA AS •. ORG.NR: 924 634 928 • HELLO@NAYA.NO",
   "ALL RIGHTS RESERVED ",
-  "© 2021 "
+  "© 2021 ",
 ]
 const Footer = () => {
   return (

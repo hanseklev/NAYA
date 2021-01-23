@@ -1,9 +1,7 @@
-import React, { useContext, useState } from "react"
-import { useQuery, gql } from "@apollo/client"
-import { ProductContext } from "../../context/productContext"
-
+import React, { useState } from "react"
 import styles from "./checkout-container.module.css"
 import PaymentOptions from "./payment"
+
 
 const CheckoutContainer = () => {
   const [fullName, setFullName] = useState("")
@@ -12,11 +10,8 @@ const CheckoutContainer = () => {
   const [city, setCity] = useState("")
   const [postalCode, setPostalCode] = useState("")
 
-  const { setShippingAddress, createOrder, cartItems } = useContext(
-    ProductContext
-  )
-
-  const { data } = useQuery(gql`
+  
+  /* const { data } = useQuery(gql`
     query MyQuery {
       products {
         nodes {
@@ -28,7 +23,11 @@ const CheckoutContainer = () => {
       }
     }
   `)
-  console.log(data)
+  */
+
+  function setShippingAddress(data){
+
+  }
 
   function submitHandler(event) {
     event.preventDefault()

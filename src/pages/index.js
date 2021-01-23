@@ -1,8 +1,8 @@
 import { graphql } from "gatsby"
 import React from "react"
-import Hero from "../components/Hero/hero"
-import MainLayout from "../components/layouts/main"
-import Section from "../components/Section/section"
+import Hero from "../components/hero"
+import MainLayout from "../components/layouts/main-layout"
+import Section from "../components/section"
 import SEO from "../components/seo"
 import { WHY_NAYA } from "../content/content"
 

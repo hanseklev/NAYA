@@ -12,7 +12,7 @@ module.exports = {
       resolve: "gatsby-source-wordpress-experimental",
       options: {
        url: process.env.WP_URL,
-       excludeFieldNames: [`schemaMd5`],
+       excludeFieldNames: [`schemaMd5`, 'paStorrelse', 'paStorrelses'],
    
        develop: {
         hardCacheMediaFiles: true,

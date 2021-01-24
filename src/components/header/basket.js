@@ -11,8 +11,9 @@ export const BasketIcon = () => (
   </svg>
 )
 
-export default ({ openBasket }, props) => (
+export default ({ openBasket, quantity }) => (
   <Link to="/cart" className={styles.basket}>
+  <span>{quantity}</span>
     <BasketIcon />
   </Link>
 )

@@ -4,7 +4,7 @@ export function cn (...args) {
   return args.filter(Boolean).join(' ')
 }
 
-export function parsePrice(price){
+export function parsePrice(price = 0){
   return Number(price.replace(/[^0-9.-]+/g,""))
 }
 

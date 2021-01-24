@@ -1,9 +1,8 @@
 import { motion } from "framer-motion"
 import { Link } from "gatsby"
 import React, { useState } from "react"
-import Price from "../product/price"
+import { parsePrice } from "../../../lib/helpers"
 import styles from "./index.module.css"
-
 const bg = {
   on: {
     opacity: 1,
@@ -76,7 +75,7 @@ const ProductPreview = props => {
           ></Link>
         </figure>
         <h3 className={styles.product_title}>{name}</h3>
-        <Price price={price} />
+        <span className={styles.product_price}>{parsePrice(price)} kr</span>
       </motion.article>
     </>
   )

@@ -5,34 +5,41 @@ import {
   InMemoryCache,
 } from "@apollo/client"
 
+import fetch from "isomorphic-fetch"
 
 const httpLink = new HttpLink({
   uri: "http://nayatest.local/graphql",
+  fetch: fetch,
 })
 
 const middleware = new ApolloLink((operation, forward) => {
   const session = localStorage.getItem("woo-session")
+
   if (session) {
     operation.setContext(({ headers = {} }) => ({
       headers: {
-        "naya-woo-session": `Session ${session}`,
+        ...headers,
+        "woocommerce-session": `Session ${session}`,
       },
     }))
   }
-
   return forward(operation)
 })
 
 const afterware = new ApolloLink((operation, forward) => {
   return forward(operation).map(response => {
     const context = operation.getContext()
-    const {
-      response: { headers },
-    } = context
-    const session = headers.get("naya-woo-session")
+    const session = context.response.headers.get('woocommerce-session')
+
     if (session) {
-      if (localStorage.getItem("woo-session") !== session) {
-        localStorage.setItem("woo-session", headers.get("naya-woo-session"))
+      // Remove session data if session destroyed.
+      if ("false" === session) {
+        localStorage.removeItem("woo-session")
+
+        // Update session new data if changed.
+      } else if (localStorage.getItem("woo-session") !== session) {
+
+        localStorage.setItem("woo-session", session)
       }
     }
 
@@ -43,5 +50,5 @@ const afterware = new ApolloLink((operation, forward) => {
 export const client = new ApolloClient({
   link: middleware.concat(afterware.concat(httpLink)),
   cache: new InMemoryCache(),
-  clientState: {},
+  connectToDevTools: true
 })

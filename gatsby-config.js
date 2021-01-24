@@ -1,5 +1,4 @@
 require("dotenv").config()
-const { sanity } = require("./client-config")
 
 module.exports = {
   siteMetadata: {
@@ -12,11 +11,26 @@ module.exports = {
       resolve: "gatsby-source-wordpress-experimental",
       options: {
        url: process.env.WP_URL,
+       html: {
+         useGatsbyImage: true
+       },
        excludeFieldNames: [`schemaMd5`, 'paStorrelse', 'paStorrelses', 'PaColor'],
+       type: {
+        PaColor:{
+          exclude: true
+        },
+        ContentType: {
+          exclude: true
+        },
+        Products: {
+          exclude: true
+
+        }
+       },
    
        develop: {
         hardCacheMediaFiles: true,
-        hardCacheData: false,
+        hardCacheData: true,
       },
       },
     },

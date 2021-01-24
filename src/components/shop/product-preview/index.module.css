@@ -37,7 +37,12 @@
 .product_title {
   margin-top: 0.25rem;
   color: grey;
-  font-size: 12px;
+  font-size: 14px;
+  margin-bottom: 0.25rem;
+}
+
+.product_price {
+  font-size: 14px;
 }
 
 /* .product_image {

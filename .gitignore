@@ -72,3 +72,5 @@ yarn-error.log
 #Wordpress
 .cache
 .wordpress-cache
+
+.vercel

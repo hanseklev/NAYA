@@ -5,6 +5,7 @@
   top: 0px;
   right: 0px;*/
   z-index: 5000;
+  max-width: 600px;
 }
 
 .wrapper {

@@ -1,15 +1,41 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { useState } from "react"
+import { v4 } from "uuid"
+import { getUpdatedCartItems } from "../../../lib/utils"
 import styles from "./cart-item.module.css"
 
-export const CartItem = ({ item }) => {
-  function placeHolder(){}
+export const CartItem = ({ item, products, updateCart }) => {
+  const [itemCount, setItemCount] = useState(item.quantity)
+  const clientMutationId = v4()
+
+  function handleQtyChange(event, type) {
+    let newCount
+    event.stopPropagation()
+
+    if (type === "DECREMENT" && itemCount === 1) return
+
+    newCount = type === "INCREMENT" ? itemCount + 1 : itemCount - 1
+
+    setItemCount(newCount)
+
+    const updatedItems = getUpdatedCartItems(products, newCount, item.cartKey)
+    updateCart({
+      variables: {
+        input: {
+          clientMutationId: clientMutationId,
+          items: updatedItems,
+        },
+      },
+    })
+  }
+
+  function placeHolder() {}
 
   return (
     <li key={item.id} className={styles.container}>
       <div className={styles.flexCol}>
         <figure>
-        <img
+          <img
             src={item.image.sourceUrl}
             alt={item.image.altText}
             style={{ width: "100%" }}
@@ -17,7 +43,9 @@ export const CartItem = ({ item }) => {
         </figure>
       </div>
       <div className={styles.flexCol}>
-        <Link to={`/product/${item.id}`} className={styles.itemTitle}>{item.name}</Link>
+        <Link to={`/product/${item.id}`} className={styles.itemTitle}>
+          {item.name}
+        </Link>
         <div> {item.price} kr</div>
 
         <div>
@@ -31,9 +59,13 @@ export const CartItem = ({ item }) => {
       </div>
 
       <div className={styles.flexCol}>
-      <button onClick={() => placeHolder(item)}>+</button>
-      <span>{item.quantity}</span>
-      <button onClick={() => placeHolder(item)}>-</button>
+        <button onClick={event => handleQtyChange(event, "INCREMENT")}>
+          +
+        </button>
+        <span>{item.quantity}</span>
+        <button onClick={event => handleQtyChange(event, "DECREMENT")}>
+          -
+        </button>
       </div>
     </li>
   )

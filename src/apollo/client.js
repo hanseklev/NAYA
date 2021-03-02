@@ -7,8 +7,11 @@ import {
 
 import fetch from "isomorphic-fetch"
 
-const httpLink = new HttpLink({
-  uri: "http://nayatest.local/graphql",
+const uri = 'https://naya.me/graphql'
+//http://localhost:10003/graphql
+
+const cmsLink = new HttpLink({
+  uri: uri,
   fetch: fetch,
 })
 
@@ -48,7 +51,7 @@ const afterware = new ApolloLink((operation, forward) => {
 })
 
 export const client = new ApolloClient({
-  link: middleware.concat(afterware.concat(httpLink)),
+  link: middleware.concat(afterware.concat(cmsLink)),
   cache: new InMemoryCache(),
   connectToDevTools: true
 })

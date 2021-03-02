@@ -1,7 +1,18 @@
 .product {
-  max-width: 500px;
+  max-width: 980px;
   margin: 0 auto;
+  margin-top: 2rem;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.imageContainer {
+  flex: 1;
+}
+
+.infoContainer {
+  flex: 1;
 }
 
 .product h1 {
@@ -13,9 +24,8 @@
 }
 
 .addProductWrapper {
-    display: flex;
+  display: flex;
 }
-
 
 /* Chrome, Safari, Edge, Opera */
 input::-webkit-outer-spin-button,
@@ -25,7 +35,7 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -43,7 +53,7 @@ input[type=number] {
   cursor: pointer;
 }
 
-.addToCartButton:hover{
+.addToCartButton:hover {
   background-color: var(--color-text);
   color: var(--bg-secondary);
 
@@ -51,5 +61,15 @@ input[type=number] {
 }
 
 .product section {
-    margin-top: 40px;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 400px) {
+  .product {
+    flex-direction: row;
+  }
+
+  .infoContainer {
+    margin-left: 1rem;
+  }
 }

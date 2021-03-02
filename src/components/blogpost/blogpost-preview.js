@@ -1,25 +1,81 @@
 import { Link } from "gatsby"
 import GatsbyImage from "gatsby-image"
+import parse from "html-react-parser"
 import React from "react"
+import styled from "styled-components"
 import { getBlogUrl } from "../../lib/helpers"
-import styles from "./blogpost-preview.module.css"
-import parse from 'html-react-parser'
 
 const BlogPostPreview = props => {
-   const thumbImg = {}
-   /* props.featuredImage.node.localFile.childImageSharp &&
-    props.featuredImage.node.localFile.childImageSharp.fixed */
+  const thumbImg =
+    props.featuredImage &&
+    props.featuredImage.node.localFile.childImageSharp.fixed
 
   return (
-    <Link to={getBlogUrl(props.slug)} className={styles.container}>
-        {thumbImg && <GatsbyImage fixed={thumbImg} style={{ width: "100%", heigth: '240px'}} />}
-      <div className={styles.block}>
-        <h3>{props.title}</h3>
-        {props.excerpt && parse(props.excerpt)}
+    <Article>
+      <Link style={{ textDecoration: "none" }} to={getBlogUrl(props.slug)}>
+        <header style={{ width: "100%" }}>
+          <ImageContainer>
+            {thumbImg && (
+              <GatsbyImage
+                fixed={thumbImg}
+                objectFit="cover"
+                style={{ height: "100%", width: "100%" }}
+              />
+            )}
+          </ImageContainer>
+          <Title>{props.title}</Title>
+        </header>
+      </Link>
+
+      <div style={{ fontSize: "14px", width: "100%" }}>
+        {parse(props.excerpt)}
       </div>
-    </Link>
+      <Link to={getBlogUrl(props.slug)} style={bottomLinkStyle}>
+        Les mer
+      </Link>
+    </Article>
   )
 }
 
+const Article = styled.article`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  margin: 1rem auto;
+  min-width: 250px;
 
+  .gatsby-image-wrapper {
+    transition: all 250ms ease-in-out;
+  }
+
+  &:hover {
+    .gatsby-image-wrapper {
+      transform: scale(1.1);
+    }
+  }
+`
+
+const Title = styled.h3`
+  text-align: left;
+  font-size: 1.25rem;
+
+  &a {
+    text-decoration: none;
+  }
+`
+
+const ImageContainer = styled.div`
+  width: 100%;
+  height: 350px;
+  overflow: hidden;
+`
+
+const bottomLinkStyle = {
+  color: "var(--text-accent)",
+  textTransform: "uppercase",
+  textAlign: "left",
+  width: " 100%",
+}
 export default BlogPostPreview

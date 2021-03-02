@@ -1,49 +1,34 @@
-import { graphql, useStaticQuery } from "gatsby"
-import GatsbyImage from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
+import parse from 'html-react-parser'
 import React from "react"
-import MainLayout from "../components/layouts/main-layout"
-import AboutSection from "../components/section/about-section"
-import Section from "../components/section"
+import Hero from "../components/hero"
+import MainLayout from "../components/layout/"
 import SEO from "../components/seo"
-import Sidebar from "../components/sidebar"
-import { ABOUT, OUR_STORY, TEAMET, WHY_NAYA } from "../content/content"
+import { ContentContainer } from "../components/_shared/container"
 
 const AboutPage = props => {
-  const links = ["People", "Production", "Yoyknameit"]
+  //const links = ["People", "Production", "Yoyknameit"]
 
-  const data = useStaticQuery(query)
+  const {
+    wpPage: { title, content, hero },
+  } = useStaticQuery(query)
 
-  const image = data.about.childImageSharp.fluid
-  const teamImage = data.teamet.childImageSharp.fluid
+  console.log(title);
+  console.log(content);
+  console.log(hero);
+
+
+  const heroImage = hero.heroimagedesktop &&
+  hero.heroimagedesktop.localFile
+
+  //const teamImage = data.teamet.childImageSharp.fluid
+  // <Sidebar elements={links} />
 
   return (
     <MainLayout>
-      <SEO title="About" />
-      <Section>
-        <h1>About</h1>
-      </Section>
-      <Sidebar elements={links} />
-      <AboutSection text={OUR_STORY} title="our story" textOnRight={true} />
-      <Section>
-        <GatsbyImage
-          style={{ width: "100%", padding: "0 1rem" }}
-          fluid={image}
-        />
-      </Section>
-      <AboutSection
-        text={WHY_NAYA}
-        title="NAYA = नया = NY"
-        textOnRight={true}
-      />
-      <AboutSection text={ABOUT} title="About us" textOnRight={true} />
-
-      <Section>
-        <GatsbyImage
-          style={{ width: "100%", padding: "0 1rem" }}
-          fluid={teamImage}
-        />
-      </Section>
-      <AboutSection text={TEAMET} title="NAYA-teamet" />
+      <SEO title={title} />
+      <Hero desktopImage={heroImage} hasText title={title}/>
+      <ContentContainer>{content && parse(content)}</ContentContainer>
     </MainLayout>
   )
 }
@@ -52,17 +37,18 @@ export default AboutPage
 
 const query = graphql`
   {
-    about: file(relativePath: { eq: "about.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid
-        }
-      }
-    }
-    teamet: file(relativePath: { eq: "naya-teamet.jpg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1920) {
-          ...GatsbyImageSharpFluid
+    wpPage(title: { eq: "About" }) {
+      title
+      content
+      hero {
+        heroimagedesktop {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 1920) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }

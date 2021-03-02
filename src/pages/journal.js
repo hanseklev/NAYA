@@ -1,43 +1,71 @@
 import { graphql } from "gatsby"
 import React from "react"
 import BlogPostPreviewGrid from "../components/blogpost/blogpost-preview-grid"
-import MainLayout from "../components/layouts/main-layout"
+import Categories from "../components/categories"
+import Hero from "../components/hero"
+import MainLayout from "../components/layout"
+import SEO from "../components/seo"
 
-export default function (props) {
+export default function Journal(props) {
   const { data, errors } = props
 
   if (errors) return <MainLayout>{errors}</MainLayout>
 
-  const postNodes = data && data.posts && data.posts.nodes
+  const postEdges = data && data.postsPreview && data.postsPreview.edges
+  const { nodes: categoryNodes } = data.categories
+  const { title, featuredImage } = data.journalPage
 
   return (
     <MainLayout>
-        <h1 style={{textAlign:'center'}}>Journal</h1>
-        <BlogPostPreviewGrid nodes={postNodes} />
+      <SEO title={title} />
+      <Hero desktopImage={featuredImage.node.localFile} title={title} hasText />
+      <Categories categories={categoryNodes} />
+      <BlogPostPreviewGrid edges={postEdges} />
     </MainLayout>
   )
 }
 
 export const JournalPageQuery = graphql`
   query MyQuery {
-    posts: allWpPost {
-      nodes {
-        id
-        title
-        excerpt
-        slug
-        featuredImage {
-          node {
-            localFile {
-              childImageSharp {
-                fixed(width: 350) {
-                  ...GatsbyImageSharpFixed
+    postsPreview: allWpPost(sort: { fields: date, order: DESC }) {
+      edges {
+        node {
+          id
+          title
+          excerpt
+          slug
+          date(formatString: "DD.MM.YY")
+          featuredImage {
+            node {
+              localFile {
+                childImageSharp {
+                  fixed(width: 300) {
+                    ...GatsbyImageSharpFixed_withWebp
+                  }
                 }
               }
             }
           }
         }
-        date(formatString: "MMMM, DD, YYYY")
+      }
+    }
+    journalPage: wpPage(title: { eq: "Journal" }) {
+      title
+      featuredImage {
+        node {
+          localFile {
+            childImageSharp {
+              fluid(quality: 90, maxWidth: 1920) {
+                ...GatsbyImageSharpFluid_withWebp
+              }
+            }
+          }
+        }
+      }
+    }
+    categories: allWpCategory(filter: { id: { ne: "dGVybTox" } }) {
+      nodes {
+        name
       }
     }
   }

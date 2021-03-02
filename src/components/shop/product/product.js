@@ -6,26 +6,33 @@ import styles from "./product.module.css"
 import StockStatus from "./stock-status"
 
 function Product({ product }) {
-  const { description, name, featuredImage, price, stockStatus, shortDescription } = product
-  
+  const {
+    description,
+    name,
+    featuredImage,
+    price,
+    stockStatus,
+    shortDescription,
+  } = product
+
   return (
     <article className={styles.product}>
-      <div>
-        <img
-          src={featuredImage.node.sourceUrl}
-          alt="produktbilde"
-          style={{ width: "100%" }}
-        />
+        <div className={styles.imageContainer}>
+          <img
+            src={featuredImage.node.sourceUrl}
+            style={{ width: "100%" }}
+            alt="produktbilde"
+          />
+        </div>
+        <div className={styles.infoContainer}>
         <h1>{name}</h1>
         <p className={styles.price}>{parsePrice(price)} kr</p>
         {description && parse(description)}
         <StockStatus stockStatus={stockStatus} />
         <div className={styles.addProductWrapper}>
-          <AddToCartButton product={product}/>
+          <AddToCartButton product={product} />
         </div>
-        <section>
-        {parse(shortDescription)}
-        </section>
+        <section>{parse(shortDescription)}</section>
       </div>
     </article>
   )

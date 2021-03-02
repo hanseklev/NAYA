@@ -7,9 +7,10 @@ export const ShopContext = createContext({})
 
 export const ShopProvider = ({ children }) => {
   const [cart, setCart] = useState(cartData)
+  const [openCart, setOpenCart] = useState(false)
 
   return (
-    <ShopContext.Provider value={[cart, setCart]}>
+    <ShopContext.Provider value={{cart, setCart, openCart, setOpenCart}}>
       {children}
     </ShopContext.Provider>
   )

@@ -1,9 +1,11 @@
 .product_figure {
-  background-color: var(--bg-secondary);
+  background-color: inherit; /*var(--bg-secondary)*/
   position: relative;
   padding: 0;
   margin: 0;
   overflow: hidden;
+  width: 300px;
+  min-height: 388px;
 }
 
 .product_bg {

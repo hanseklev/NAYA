@@ -1,12 +1,13 @@
 import { gql } from "@apollo/client"
 
-const CHECKOUT_MUTATION = gql`
+export const CHECKOUT_MUTATION = gql`
   mutation CHECKOUT_MUTATION($input: CheckoutInput!) {
     checkout(input: $input) {
       clientMutationId
       order {
         id
         orderKey
+        orderNumber
         refunds {
           nodes {
             amount
@@ -19,5 +20,3 @@ const CHECKOUT_MUTATION = gql`
     }
   }
 `
-
-export default CHECKOUT_MUTATION

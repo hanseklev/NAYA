@@ -31,6 +31,7 @@ export const UPDATE_CART_QTY_MUTATION = gql`
           }
         }
         total
+        shippingTotal
       }
     }
   }

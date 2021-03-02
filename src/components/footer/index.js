@@ -1,45 +1,96 @@
 import { Link } from "gatsby"
 import React from "react"
+import styled from "styled-components"
+import SocialIcons from "../social-icons"
 
-import styles from "./index.module.css"
-const FOOTER_TEXT = [
-  " NAYA AS •. ORG.NR: 924 634 928 • HELLO@NAYA.NO",
-  "ALL RIGHTS RESERVED ",
-  "© 2021 ",
-]
-const Footer = () => {
+const Footer = ({isHidden}) => {
+  if (isHidden) return null
   return (
-    <footer className={styles.footer}>
-      <div className={styles.container}>
-        <section className={styles.col}>
-          <h2>Privacy</h2>
-          <ul>
-            <li>hei </li>
-            <li>hade </li>
-            <li>hmm </li>
-          </ul>
-        </section>
-        <section className={styles.col}>
-          <h2>Information</h2>
-          <ul>
-            <li>hei </li>
-            <li>hade </li>
-            <li>
-              <Link to="/contact">Contact</Link>
-            </li>
-          </ul>
-        </section>
-        <div className={styles.col}></div>
-      </div>
-      <aside className={styles.bottomFooter}>
-        <ul>
-          {FOOTER_TEXT.map(item => (
-            <li key={item}>{item}</li>
-          ))}
-        </ul>
-      </aside>
-    </footer>
+    <FooterContainer>
+    <h2 style={{textAlign:'left'}}>NAYA</h2>
+      <FooterSection>
+        <FooterTitle>Privacy</FooterTitle>
+        <Link to="/privacy-policy">Privacy Policy</Link>
+        <Link to="/general-terms">General Terms</Link>
+      </FooterSection>
+      <FooterSection>
+        <FooterTitle>Information</FooterTitle>
+        <Link to="/about">About</Link>
+        <Link to="/contact">Contact</Link>
+      </FooterSection>
+      <FooterSection>
+        <SocialIcons size="30" />
+      </FooterSection>
+      <hr />
+      <FooterBottom>
+        NAYA AS •. ORG.NR: 924 634 928 <br/>
+      </FooterBottom>
+    </FooterContainer>
   )
 }
+//       <a href="mailto:HELLO@NAYA.NO">HELLO@NAYA.NO</a>
+//    ALL RIGHTS RESERVED <br />© 2021
+const FooterContainer = styled.footer`
+  background-color: rgb(228, 222, 209);
+  z-index: 100;
+  padding: 0.5rem 1rem;
+`
+
+const FooterTitle = styled.h3`
+  font-size: 18px;
+  text-align: left;
+  margin: 0.5rem 0;
+`
+
+const FooterSection = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+
+  > a {
+    text-decoration: none;
+    color: inherit;
+    font-size: 1rem;
+
+  }
+`
+
+const FooterBottom = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
+  text-align: center;
+  line-height: 1.5;
+
+  > a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+`
 
 export default Footer
+
+/*   display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+
+  .bottomFooter ul {
+  display: flex column;
+  align-items: center;
+  padding: 0;
+  list-style-type: none;
+  font-size: 12px;
+}
+
+.bottomFooter ul li {
+  width: 100%;
+  padding: 2px 0;
+  text-align: center;
+}
+
+  
+  
+  */

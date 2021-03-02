@@ -1,49 +1,87 @@
 import PropTypes from "prop-types"
 import React, { useContext, useState } from "react"
+import styled from "styled-components"
 import { ShopContext } from "../../context/shop-context"
+import CartContainer from "../cart/cart-container"
 import Logo from "../logo"
 import { NavigationDesktop } from "../navigation"
-import Basket from "./basket"
-import styles from "./header.module.css"
+import Button from "../_shared/button"
+import ModalContainer from "../_shared/modal-container"
 
 const Header = ({ siteTitle, openBasket }) => {
   const [isHidden, setIsHidden] = useState(false)
+  const { openCart, setOpenCart, cart } = useContext(ShopContext)
+  //const [isCartOpen, setOpenCart] = useState(false)
 
-  const [cart] = useContext(ShopContext)
   const quantity = cart.totalProductsCount
 
   if (typeof window !== "undefined") {
     let prevScrollPosition = window.pageYOffset
     window.onscroll = () => {
+      /* if (isCartOpen) {
+        return
+      } */
       window.pageYOffset < prevScrollPosition
-        ? setIsHidden(true)
-        : setIsHidden(false)
+        ? setIsHidden(false)
+        : setIsHidden(true)
       prevScrollPosition = window.pageYOffset
     }
   }
 
   return (
     <>
-      <header
-        className={
-          isHidden
-            ? `${styles.header}`
-            : `${styles.header} ${styles.hideHeader}`
-        }
-      >
-        <div className={`${styles.col} ${styles.col_left}`}>
+      <Container hideHeader={isHidden}>
+        <Column>
           <NavigationDesktop />
-        </div>
-        <div className={styles.col}>
+        </Column>
+        <Column>
           <Logo styles={{ border: "solid" }} />
-        </div>
-        <div className={styles.col}>
-          <Basket openBasket={openBasket} quantity={quantity} />
-        </div>
-      </header>
+        </Column>
+        <Column>
+          <Button
+            basket
+            quantity={quantity}
+            onClick={() => setOpenCart(!openCart)}
+          />
+        </Column>
+      </Container>
+      <ModalContainer isOpen={openCart} slideLeft={false}>
+        <CartContainer closeCart={() => setOpenCart(false)} />
+      </ModalContainer>
     </>
   )
 }
+
+const Container = styled.header`
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  height: 60px;
+  position: sticky;
+  position: -webkit-sticky;
+  z-index: 99;
+  background-color: #fbfaf8;
+
+  top: ${props => (props.hideHeader ? "-60px" : "0")};
+  transition: top 0.5s;
+`
+
+const Column = styled.div`
+  display: flex;
+  flex: 1;
+  justify-content: center;
+
+  &:first-child {
+    justify-content: flex-start;
+  }
+
+  &:last-child {
+    justify-content: flex-end;
+  }
+`
 
 Header.propTypes = {
   siteTitle: PropTypes.string,

@@ -8,30 +8,23 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: "gatsby-source-wordpress-experimental",
+      resolve: "gatsby-source-wordpress",
       options: {
-       url: process.env.WP_URL,
-       html: {
-         useGatsbyImage: true
-       },
-       excludeFieldNames: [`schemaMd5`, 'paStorrelse', 'paStorrelses', 'PaColor'],
-       type: {
-        PaColor:{
-          exclude: true
+        url: process.env.WP_URL,
+        html: {
+          useGatsbyImage: true,
         },
-        ContentType: {
-          exclude: true
-        },
-        Products: {
-          exclude: true
+        excludeFieldNames: [
+          `schemaMd5`,
+          "paStorrelse",
+          "paStorrelses",
+          "PaColor",
+        ],
 
-        }
-       },
-   
-       develop: {
-        hardCacheMediaFiles: true,
-        hardCacheData: true,
-      },
+        develop: {
+          hardCacheMediaFiles: true,
+          hardCacheData: false,
+        },
       },
     },
     {
@@ -57,5 +50,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     `gatsby-plugin-sass`,
+    `gatsby-plugin-styled-components`,
   ],
 }

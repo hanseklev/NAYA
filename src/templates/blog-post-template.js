@@ -1,7 +1,7 @@
 import { graphql } from "gatsby"
 import React from "react"
 import BlogPost from "../components/Blogpost/blogpost"
-import MainLayout from "../components/layouts/main-layout"
+import MainLayout from "../components/layout"
 import SEO from "../components/seo"
 
 export const query = graphql`
@@ -25,9 +25,9 @@ export const query = graphql`
       featuredImage {
         node {
           localFile {
-            childrenImageSharp {
+            childImageSharp {
               fluid(maxWidth: 1920) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp
               }
             }
           }

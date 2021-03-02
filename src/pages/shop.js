@@ -1,15 +1,19 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import MainLayout from "../components/layouts/main-layout"
+import MainLayout from "../components/layout"
+import SEO from "../components/seo"
 import ShopList from "../components/shop/product-grid"
 
 const ShopPage = () => {
   const data = useStaticQuery(query)
   const products = data.allWpProduct.edges
 
+  const title = "Shop"
+
   return (
     <MainLayout>
-      <h1>Shop</h1>
+      <SEO title={title} />
+      <h1>{title}</h1>
       <ShopList products={products} />
     </MainLayout>
   )
@@ -36,8 +40,27 @@ const query = graphql`
                 sourceUrl
               }
             }
-            secondaryImage {
-              previewBilde2 {
+            customProduct {
+              secondaryimage {
+                sourceUrl
+              }
+            }
+            stockQuantity
+            stockStatus
+          }
+          ... on WpVariableProduct {
+            id
+            name
+            content
+            price
+            slug
+            featuredImage {
+              node {
+                sourceUrl
+              }
+            }
+            customProduct {
+              secondaryimage {
                 sourceUrl
               }
             }

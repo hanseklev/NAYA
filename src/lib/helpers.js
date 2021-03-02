@@ -1,33 +1,34 @@
-import { isFuture } from 'date-fns'
+import { isFuture } from "date-fns"
 
-export function cn (...args) {
-  return args.filter(Boolean).join(' ')
+export function cn(...args) {
+  return args.filter(Boolean).join(" ")
 }
 
-export function parsePrice(price = 0){
-  return Number(price.replace(/[^0-9.-]+/g,""))
+export function parsePrice(price) {
+  if (typeof price === "undefined" ) return 0
+  return Number(price.replace(/[^0-9.-]+/g, ""))
 }
 
-export function mapEdgesToNodes (data) {
+export function mapEdgesToNodes(data) {
   if (!data.edges) return []
   return data.edges.map(edge => edge.node)
 }
 
-export function filterOutDocsWithoutSlugs ({slug}) {
+export function filterOutDocsWithoutSlugs({ slug }) {
   return (slug || {}).current
 }
 
-export function filterOutDocsPublishedInTheFuture ({publishedAt}) {
+export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
   return !isFuture(publishedAt)
 }
 
-export function getBlogUrl (slug) {
+export function getBlogUrl(slug) {
   return `/post/${slug}/`
 }
 
-export function buildImageObj (source = {asset: {}}) {
+export function buildImageObj(source = { asset: {} }) {
   const imageObj = {
-    asset: {_ref: source.asset._ref || source.asset._id}
+    asset: { _ref: source.asset._ref || source.asset._id },
   }
 
   if (source.crop) imageObj.crop = source.crop
@@ -36,16 +37,16 @@ export function buildImageObj (source = {asset: {}}) {
   return imageObj
 }
 
-export function toPlainText (blocks) {
+export function toPlainText(blocks) {
   if (!blocks) {
-    return ''
+    return ""
   }
   return blocks
     .map(block => {
-      if (block._type !== 'block' || !block.children) {
-        return ''
+      if (block._type !== "block" || !block.children) {
+        return ""
       }
-      return block.children.map(child => child.text).join('')
+      return block.children.map(child => child.text).join("")
     })
-    .join('\n\n')
+    .join("\n\n")
 }

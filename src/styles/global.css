@@ -1,21 +1,12 @@
-/*! sanitize.css v7.0.3 | CC0 License | github.com/csstools/sanitize.css */
-@import '../fonts/typgraphy.css';
-/* Document
-* ========================================================================== */
-/**
-* 1. Remove repeating backgrounds in all browsers (opinionated).
-* 2. Add border box sizing in all browsers (opinionated).
-*/
+@import "../fonts/typgraphy.css";
+
 *,
 ::before,
 ::after {
   background-repeat: no-repeat; /* 1 */
   box-sizing: border-box; /* 2 */
 }
-/**
-* 1. Add text decoration inheritance in all browsers (opinionated).
-* 2. Add vertical alignment inheritance in all browsers (opinionated).
-*/
+
 ::before,
 ::after {
   text-decoration: inherit; /* 1 */
@@ -40,11 +31,7 @@ html {
   /*   font-size: 62.5%;
  */
 }
-/* Sections
-* ========================================================================== */
-/**
-* Remove the margin in all browsers (opinionated).
-*/
+
 body {
   margin: 0;
   /* Avoid horizontal scroll */
@@ -54,55 +41,94 @@ body {
   overflow-y: scroll;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  -webkit-font-smoothing: antialiased;
   background: var(--bg-primary);
-  font-family: Helvetica, Arial, sans-serif;
-}
-
-h1, h2, h3, h4, h5 {
-  font-family: 'Din1451';
-  color: var(--color-text);
-}
-
-h1 {
-  text-transform: uppercase;
-  text-align: center;
-}
-
-p {
-  font-family: 'Proxima Nova';
-  font-weight: lighter;
-  font-size: 14px;
-  max-width: 650px;
-  line-height: 1.6rem;
-  margin: 0 0 24px;
-  text-align: justify;
-}
-
-p, li, hr {
-  color: var(--color-text);
-
-}
-
-
-a {
-  color: black
+  font-family: "Proxima Nova", sans-serif;
 }
 
 /*  COLORS  */
 :root {
-  --bg-primary: #FBFAF7;
-  --bg-secondary: #E4DED1;
-  --color-text: #655A46;
-  --color-accent: #6D735D;
+  --bg-primary: #fbfaf7;
+  --bg-secondary: #e4ded1;
+  --color-text: #655a46;
+  --color-accent: #6d735d;
+  --color-muted: rgb(120, 120, 120);
+
+  --color-primary-dark: #655a46;
+  --color-primary-light: #ba885e;
+  --color-primary-green: #6d735d;
+  --color-primary-blue: -#788e9c;
+  --font-heading: "Din1451";
+  --font-primary: "Din1451";
+  --font-text: "Proxima Nova";
 }
 
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: "Din1451";
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-align: center;
+}
 
+a {
+  color: var(--color-text);
+}
+a:hover {
+  color: var(--color-accent);
+}
 
-/* --e-global-color-primary: #E4DED1;
-    --e-global-color-secondary: #FBFAF7;
-    --e-global-color-text: #655A46;
-    --e-global-color-accent: #6D735D; */
-/**
-* Correct the font size and margin on h1 elements within section and
-* article contexts in Chrome, Firefox, and Safari.
-*/
+p,
+li,
+span {
+  font-family: "Proxima Nova";
+  font-weight: lighter;
+  font-size: 14px;
+}
+
+ul {
+  margin-block-start: 0;
+  padding-inline-start: 10px;
+}
+
+p {
+  line-height: 1.5rem;
+  letter-spacing: 0.04rem;
+}
+
+/* p,
+ol,
+li {
+  max-width: 650px;
+  line-height: 1.6rem;
+  margin: 0 0 24px;
+  text-align: justify;
+  font-family: "Proxima Nova";
+  color: var(--color-text);
+} */
+
+hr {
+  border: var(--color-muted) 1px solid;
+}
+
+button,
+fieldset {
+  border: none;
+  background-color: inherit;
+  padding: 0;
+  margin: 0;
+}
+
+/* WP FORMAT OVERRIDE */
+
+figure {
+  /*   margin: 0 auto;
+ */
+}
+
+figure > a > img {
+  width: 100%;
+}

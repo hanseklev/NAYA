@@ -26,9 +26,10 @@ const thumb = {
 }
 
 const ProductPreview = props => {
-  const { name, id, price } = props.node
-  const imageUrl = props.node.featuredImage.node.sourceUrl
-  const secondaryUrl =
+  const { name, price, slug } = props.node
+  const mainImgUrl = props.node.featuredImage && props.node.featuredImage.node.sourceUrl
+  const secondaryImgUrl =
+    props.node.secondaryImage &&
     props.node.secondaryImage.previewBilde2 &&
     props.node.secondaryImage.previewBilde2.sourceUrl
 
@@ -43,36 +44,19 @@ const ProductPreview = props => {
 
   return (
     <>
-      <motion.article animate={isHover ? "on" : "off"} initial="off">
+      <motion.article
+        animate={isHover ? "on" : "off"}
+        initial="off"
+        className={styles.product}
+      >
         <figure className={styles.product_figure}>
-          <motion.div
-            variants={bg}
-            className={styles.product_bg}
-            transition={{
-              type: "spring",
-              mass: 0.2,
-            }}
-          >
-            {/* <Image className={styles.product_image} /> */}
-            {/*  <GatsbyImage
-              fluid={images[0].asset.fluid}
-              style={{ width: "100%" }}
-            /> */}
-            <img src={imageUrl} alt="produktbilde" style={{ width: "100%" }} />
-          </motion.div>
-
-          <motion.div
-            variants={thumb}
-            className={styles.product_thumbnail}
-            transition={{ type: "spring", mass: 0.5 }}
-          >
-            <LogoImg url={secondaryUrl} />
-          </motion.div>
+          <MainImg url={mainImgUrl} />
+          {secondaryImgUrl && <SecondaryImg url={secondaryImgUrl} />}
           <Link
-            to={`/product/${id}`}
+            to={`/product/${slug}`}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-          ></Link>
+          />
         </figure>
         <h3 className={styles.product_title}>{name}</h3>
         <span className={styles.product_price}>{parsePrice(price)} kr</span>
@@ -81,20 +65,40 @@ const ProductPreview = props => {
   )
 }
 
-const LogoImg = ({ url }) => {
+const SecondaryImg = ({ url }) => {
   if (url === undefined) {
     return <div>Picture not found</div>
   }
 
   return (
-    <img
-      style={{
-        width: "100%",
-        height: "80%",
+    <motion.div
+      variants={bg}
+      className={styles.product_bg}
+      transition={{
+        type: "spring",
+        mass: 0.2,
       }}
-      src={url}
-      alt="produktbilde"
-    />
+    >
+      <img
+        style={{
+          width: "100%",
+        }}
+        src={url}
+        alt="produktbilde"
+      />
+    </motion.div>
+  )
+}
+
+const MainImg = ({ url }) => {
+  return (
+    <motion.div
+      variants={thumb}
+      className={styles.product_thumbnail}
+      transition={{ type: "spring", mass: 0.5 }}
+    >
+      <img src={url} alt="produktbilde" style={{ width: "100%" }} />
+    </motion.div>
   )
 }
 

@@ -1,6 +1,7 @@
 .wrapper {
   display: flex;
   justify-content: flex-start;
+  padding-left: 15px;
 }
 
 .link_box {
@@ -18,7 +19,7 @@
   text-decoration: none;
   padding: 0.5rem 0px;
   font-size: 14px;
-  font-family: "Proxima Nova", sans-serif;
+  font-family: var(--font-primary), sans-serif;
   color: #655a46;
   line-height: 1;
   text-decoration: underline solid transparent;
@@ -57,7 +58,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: 120vh;
+  height: 100vh;
   text-align: left;
   padding: 2rem;
   position: fixed;
@@ -70,7 +71,7 @@
 
 .toggleMenu_link {
   font-size: 2rem;
-  text-transform: lowercase;
+  text-transform: uppercase;
   padding: 1rem 0;
   font-weight: bold;
   letter-spacing: 0.5rem;
@@ -107,6 +108,7 @@
   -webkit-animation: slide-out 0.9s backwards;
 }
 
+/*  TABLET */
 @media (min-width: 769px) {
   .link {
     display: inline;

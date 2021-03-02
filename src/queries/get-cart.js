@@ -28,3 +28,11 @@ export const GET_CART = gql`
     }
   }
 `
+
+export const GET_CART_TOTAL = gql`
+  query CartTotalQuery {
+    cart {
+      total
+    }
+  }
+`

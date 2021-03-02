@@ -5,34 +5,23 @@ import { v4 } from "uuid"
 import { ShopContext } from "../../../context/shop-context"
 import { formatCart } from "../../../lib/utils"
 import { ADD_TO_CART_MUTATION } from "../../../mutations/add-to-cart"
-import styles from "../../shop/product/product.module.css"
+import Button from "../../_shared/button"
 
 const AddToCartButton = ({ product }) => {
   const isInStock = product.stockStatus === "IN_STOCK"
 
-  const [cart, setCart] = useContext(ShopContext)
+  console.log(isInStock);
+  const {setCart} = useContext(ShopContext)
   const clientMutationId = v4()
 
-  /*  const { data, refetch } = useQuery(GET_CART, {
-    notifyOnNetworkStatusChange: true,
-    onCompleted: () => {
-      console.log(data);
-      setCart(formatCart(data))
-      Cookie.set("naya_cart", JSON.stringify(cart))
-    },
-    onError(err) {
-      console.log(err)
-    },
-  })
- */
-  const [addToCart] = useMutation(ADD_TO_CART_MUTATION, {
+  const [addToCart, {loading}] = useMutation(ADD_TO_CART_MUTATION, {
     variables: { input: product.databaseId, clientMutationId },
     notifyOnNetworkStatusChange: true,
     onCompleted: ({addToCart:{ cart}}) => {
       alert("lagt til i handlevogn")
       //console.log(data);
       setCart(formatCart(cart))
-      Cookie.set("naya_cart", JSON.stringify(cart))
+      Cookie.set("naya_cart", JSON.stringify(formatCart(cart)))
       //navigate('/cart')
     },
     onError: error => {
@@ -40,14 +29,13 @@ const AddToCartButton = ({ product }) => {
     },
   })
 
+  //disabled styles
   return (
-    <button
-      className={styles.addToCartButton}
-      disabled={!isInStock}
+    <Button primary bold
+      label={loading ? 'Legger til...':  'Legg i handlekurven'}
+      disabled={!isInStock || loading}
       onClick={() => addToCart(product)}
-    >
-      Legg i handlekurven
-    </button>
+    />
   )
 }
 

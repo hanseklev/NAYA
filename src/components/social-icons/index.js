@@ -7,23 +7,31 @@ const SocialIcons = () => {
   const igLink = "http://instagram.com"
 
   const style = {
-    marginRight: '5px',
-    width: '36px',
-    height: '36px'
+    marginRight: "5px",
   }
 
   return (
-    <div>
-      <a href={fbLink} title="Facebook" aria-label="Facebook link" style={style}>
+    <nav>
+      <a
+        href={fbLink}
+        title="Facebook"
+        aria-label="Facebook link"
+        style={style}
+      >
         <FbIcon />
       </a>
-      <a href={linkedLink} title="LinkedIn" aria-label="LinkedIn link" style={style}>
+      <a
+        href={linkedLink}
+        title="LinkedIn"
+        aria-label="LinkedIn link"
+        style={style}
+      >
         <LinkedInIcon />
       </a>
-      <a href={igLink} title="Instagram" aria-label="Instagram link" >
+      <a href={igLink} title="Instagram" aria-label="Instagram link">
         <IgIcon />
       </a>
-    </div>
+    </nav>
   )
 }
 
@@ -31,8 +39,8 @@ export default SocialIcons
 
 export const FbIcon = () => (
   <svg
-    width="48"
-    height="48"
+    width="36"
+    height="36"
     viewBox="0 0 48 48"
     fill={primaryColor}
     xmlns="http://www.w3.org/2000/svg"
@@ -50,9 +58,9 @@ export const FbIcon = () => (
 export const LinkedInIcon = () => (
   <svg
     fill="none"
-    height="48"
+    height="36"
     viewBox="0 0 48 48"
-    width="48"
+    width="36"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -67,9 +75,9 @@ export const LinkedInIcon = () => (
 export const IgIcon = () => (
   <svg
     fill="none"
-    height="48"
+    height="36"
     viewBox="0 0 48 48"
-    width="48"
+    width="36"
     xmlns="http://www.w3.org/2000/svg"
   >
     <g fill={primaryColor}>

@@ -37,6 +37,7 @@ const FooterContainer = styled.footer`
 `
 
 const FooterTitle = styled.h3`
+  color: var(--color-text);
   font-size: 18px;
   text-align: left;
   margin: 0.5rem 0;

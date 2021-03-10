@@ -56,15 +56,15 @@ async function createBlogPages(graphql, actions) {
 
   await allWpProduct.edges.forEach(node => {
     //let category = node.productCategories.nodes[0].name.toLowerCase()
-    let slug = `product/${node.node.slug}`
-    console.log('slug', slug);
+    //let productPath = `product/${node.node.slug}`
+    console.log('slug', node.node.slug);
 
     createPage({
-      path: slug,
+      path: `product/${node.node.id}`,
       component: path.resolve("./src/templates/product-template.js"),
       context: {
         id: node.node.id,
-        slug: slug,
+        slug: node.node.slug,
       },
     })
   })

@@ -27,7 +27,7 @@ const Author = ({ author }) => {
 }
 
 const Container = styled.aside`
-  margin-top: 1rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

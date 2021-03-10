@@ -4,7 +4,7 @@ import styled from "styled-components"
 import Hero from "../hero"
 import Author from "./author"
 import Button from "../_shared/button"
-import { ContentContainer } from "../_shared/container"
+import { ContentContainer } from "../_shared/styles"
 
 export default function BlogPost(props) {
   const { title, date, content, author, featuredImage } = props
@@ -13,21 +13,24 @@ export default function BlogPost(props) {
   return (
     <Article>
       <Button
+        style={{ paddingLeft: "2rem" }}
         goBack
         label="Til journal"
         onClick={() => window.history.back()}
       />
-      <Hero desktopImage={headerImage} hasText title={title} />
-      <Container>
+      {headerImage && <Hero desktopImage={headerImage} hasText title={title} />}
+      <ContentContainer>
+        {!headerImage && <AltTitle>{title}</AltTitle>}
+
         <AuthorHeader>
           <li>Publisert {date}</li>
           <li>~</li>
           <li>{author.node.name}</li>
         </AuthorHeader>
-        <ContentContainer>{parse(content)}</ContentContainer>
+        {parse(content)}
         <hr />
         <Author author={author} />
-      </Container>
+      </ContentContainer>
     </Article>
   )
 }
@@ -37,48 +40,22 @@ const Article = styled.article`
   justify-content: space-between;
   align-items: center;
   margin: 2rem 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+
+  @media (min-width: 769px) {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
 `
 
 const AuthorHeader = styled.ul`
   display: flex;
   list-style: none;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
   padding: 0;
   justify-content: space-between;
 `
 
-const Container = styled.div`
-  max-width: 660px;
+const AltTitle = styled.h1`
   margin: 0 auto;
-  overflow: hidden;
 `
-/* const Content = styled.div`
-  & > p {
-    line-height: 1.5rem;
-    margin-bottom: 2rem;
-  }
-
-  & > img {
-    width: 100%;
-  }
-
-  & > ul {
-    margin: 0;
-    padding: 0;
-  }
-
-  & li {
-    margin: 5px 0;
-    line-height: 1.5rem;
-  }
-
-  & > ol {
-    padding: 0;
-    padding-inline-start: 1rem;
-    margin: 0;
-  }
-`
- */

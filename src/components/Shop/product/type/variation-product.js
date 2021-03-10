@@ -2,8 +2,8 @@ import parse from "html-react-parser"
 import React from "react"
 import { parsePrice } from "../../../../lib/helpers"
 import AddToCartButton from "../../../cart/add-to-cart-button"
+import { ProductContainer } from "../../../_shared/styles"
 import ColorPicker from "../color-picker"
-import styles from "../product.module.css"
 import StockStatus from "../stock-status"
 
 function VariableProduct({attributes, product, currentProduct, handleVariationChange }) {
@@ -27,26 +27,24 @@ function VariableProduct({attributes, product, currentProduct, handleVariationCh
   console.log(variationImgUrls); */
 
   return (
-    <article className={styles.product}>
-      <div className={styles.imageContainer}>
+    <ProductContainer>
+      <figure>
         <img
           src={featuredImage.node.sourceUrl}
           style={{ width: "100%" }}
           alt="produktbilde"
         />
-      </div>
-      <div className={styles.infoContainer}>
+      </figure>
+      <div className="info">
         <h1>{name}</h1>
-        <p className={styles.price}>{parsePrice(price)} kr</p>
+        <p>{parsePrice(price)} kr</p>
         {description && parse(description)}
         <StockStatus stockStatus={stockStatus} />
         <ColorPicker colors={attributes} updateCurrentVariation={handleColorChange} />
-        <div className={styles.addProductWrapper}>
           <AddToCartButton product={currentProduct} />
-        </div>
         <section>{shortDescription && parse(shortDescription)}</section>
       </div>
-    </article>
+    </ProductContainer>
   )
 }
 

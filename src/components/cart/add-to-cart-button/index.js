@@ -11,18 +11,18 @@ const AddToCartButton = ({ product }) => {
   const isInStock = product.stockStatus === "IN_STOCK"
 
   console.log(isInStock);
-  const {setCart} = useContext(ShopContext)
+  const {setCart, setOpenCart} = useContext(ShopContext)
   const clientMutationId = v4()
 
   const [addToCart, {loading}] = useMutation(ADD_TO_CART_MUTATION, {
     variables: { input: product.databaseId, clientMutationId },
     notifyOnNetworkStatusChange: true,
     onCompleted: ({addToCart:{ cart}}) => {
-      alert("lagt til i handlevogn")
+      //alert("lagt til i handlevogn")
       //console.log(data);
       setCart(formatCart(cart))
       Cookie.set("naya_cart", JSON.stringify(formatCart(cart)))
-      //navigate('/cart')
+      setOpenCart(true)
     },
     onError: error => {
       if (error) console.error(error.message)

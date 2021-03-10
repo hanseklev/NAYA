@@ -9,6 +9,7 @@ export const LeftArrow = () => (
       viewBox="0 0 21 14"
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
+      style={{marginLeft:'-20px'}}
     >
       <g
         id="StarterKit"

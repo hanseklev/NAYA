@@ -43,7 +43,7 @@ const BlogPostTemplate = props => {
 
   return (
     <MainLayout>
-      <SEO title={post.title} />
+      <SEO title={post.title} description={post.excerpt} author={post.author.node.name} />
       {errors && <div>{errors}</div>}
       <BlogPost {...post} />
     </MainLayout>

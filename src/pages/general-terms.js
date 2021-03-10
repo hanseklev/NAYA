@@ -3,10 +3,10 @@ import React from "react"
 import MainLayout from "../components/layout"
 import SEO from "../components/seo"
 import parse from "html-react-parser"
-import { ContentContainer } from "../components/_shared/container"
+import { ContentContainer } from "../components/_shared/styles"
 
 const GeneralTermsPage = () => {
-  const data = useStaticQuery(PrivacyPolicyQuery)
+  const data = useStaticQuery(GeneralTerms)
   const { title, content } = data.wpPage
 
   return (
@@ -20,9 +20,9 @@ const GeneralTermsPage = () => {
   )
 }
 
-export const PrivacyPolicyQuery = graphql`
+export const GeneralTerms = graphql`
   query GeneralTermsPage {
-    wpPage(id: { eq: "cG9zdDoxNTc4" }) {
+    wpPage(id: { eq: "cG9zdDozMzAy" }) {
       title
       content
     }

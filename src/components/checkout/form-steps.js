@@ -6,22 +6,18 @@ import Input from "../_shared/input"
 export const PersonDetails = ({ form, onChange, submit, error, title }) => (
   <>
     <Fields>
-      {/*       <h1 style={{ textAlign: "center" }}>Navn</h1>
-       */}{" "}
       <FieldsetTitle>{title}</FieldsetTitle>
       <Input
         label="E-post"
         type="email"
         name="email"
-        required
         value={form.email}
         onChange={onChange("email")}
       />
       <Input
         label="Fornavn"
-        type="firstName"
+        type="text"
         name="firstName"
-        required
         value={form.firstName}
         onChange={onChange("firstName")}
       />
@@ -29,7 +25,6 @@ export const PersonDetails = ({ form, onChange, submit, error, title }) => (
         label="Etternavn"
         type="text"
         name="lastName"
-        required
         value={form.lastName}
         onChange={onChange("lastName")}
       />
@@ -43,13 +38,10 @@ export const ShippingDetails = ({ form, onChange, submit, error, title }) => (
   <>
     <Fields>
       <FieldsetTitle>{title}</FieldsetTitle>
-      {/*       <h1 style={{textAlign:'center'}}>Leveringsadresse</h1>
-       */}{" "}
       <Input
         name="address"
         label="Adresse"
         type="text"
-        required
         value={form.address}
         onChange={onChange("address")}
       />
@@ -57,7 +49,6 @@ export const ShippingDetails = ({ form, onChange, submit, error, title }) => (
         label="Telefon"
         name="phone"
         type="tel"
-        required
         value={form.phone}
         onChange={onChange("phone")}
       />
@@ -66,15 +57,12 @@ export const ShippingDetails = ({ form, onChange, submit, error, title }) => (
         label="Postnummer"
         type="text"
         value={form.postcode}
-        required
-        pattern="[0-9]*"
         onChange={onChange("postcode")}
       />
       <Input
         name="city"
         label="Poststed"
         type="text"
-        required
         value={form.city}
         onChange={onChange("city")}
       />
@@ -92,10 +80,10 @@ const FieldsetTitle = styled.legend`
 `
 
 const Fields = styled.fieldset`
-  margin-bottom: auto;
+  ${'' /* margin-bottom: auto; */}
 `
 const ErrorMessage = ({ value }) => {
   if (!value) return null
 
-  return <p style={{ color: "red" }}>{value}</p>
+  return <span style={{ color: "black" }}>{value}</span>
 }

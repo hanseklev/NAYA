@@ -49,6 +49,10 @@ const Label = styled.label`
   font-size: 1.35rem;
   line-height: 1.3;
   margin-bottom: 0.5rem;
+
+  &:focus{
+
+  }
 `
 
 const Input = styled.input`
@@ -63,6 +67,12 @@ const Input = styled.input`
   border: 2px solid var(--color-highlighted);
   background-color: transparent;
   transition: border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+
+  &:focus {
+    border-color: red;
+
+  }
 `
 
 const LabelText = styled.span`

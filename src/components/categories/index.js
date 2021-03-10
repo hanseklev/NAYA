@@ -1,7 +1,7 @@
 import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
-import { StyledLink } from "../_shared/link"
+import { StyledLink } from "../_shared/styles"
 
 
 const Categories = ({ categories, active, title='Kategorier' }) => {

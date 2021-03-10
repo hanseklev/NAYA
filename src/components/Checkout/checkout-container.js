@@ -1,17 +1,10 @@
 import { useMutation } from "@apollo/client"
-import React, { useState } from "react"
+import React from "react"
 import { CHECKOUT_MUTATION } from "../../mutations/checkout"
 import CheckoutForm from "./checkout-form"
 
 const CheckoutContainer = () => {
   //const [, setCart] = useContext(ShopContext)
-  const [completed, setCompleted] = useState({
-    isCompleted: false,
-    orderId: null,
-  })
-
-  //setCompleted({ isCompleted: true, orderId: orderNumber })
-
   const [checkout] = useMutation(CHECKOUT_MUTATION)
 
   async function handlePayment(customerData) {
@@ -40,9 +33,7 @@ const CheckoutContainer = () => {
     }
   }
 
-  return (
-    <CheckoutForm onSubmit={data => handlePayment(data)} order={completed} />
-  )
+  return <CheckoutForm onSubmit={data => handlePayment(data)} />
 }
 
 export default CheckoutContainer

@@ -8,34 +8,35 @@ export function validateStep(step, data) {
   switch (step) {
     case "personal":
       if (!validator.isEmail(data.email)) {
-        errorMessage = `E-posten er ikke gyldig`
+        errorMessage = `Du må oppgi en gyldig e-post`
         errorType = "email"
-      }
-      else if (data.firstName.length < 3) {
-        errorMessage = "Navnet er for kort"
+      } else if (data.firstName.length === 0) {
+        errorMessage = "Du må oppgi fornavn"
         errorType = "firstName"
-        
+      } else if (data.lastName.length === 0) {
+        errorMessage = "Du må oppgi etternavn"
+        errorType = "lastName"
       } else isValid = true
       break
 
     case "shipping":
-      if (!validator.isMobilePhone(data.phone)) {
-        errorMessage = `Ikke et gyldig telefonnr`
+      if (data.address.length === 0) {
+        errorMessage = `Du må oppgi en addresse`
+        errorType = "address"
+      } else if (!validator.isMobilePhone(data.phone)) {
+        errorMessage = `Du må oppgi et gyldig telefonnr`
         errorType = "phone"
-      }
-
-      if (
+      } else if (
         !validator.isInt(data.postcode) &&
         data.postcode.toString().length !== 4
       ) {
-        errorMessage = `Ikke et postnummer`
+        errorMessage = `Du må oppgi et gyldig postnummer`
+        errorType = "postcode"
+      } else if (data.city.length === 0) {
+        errorMessage = `Du må oppgi et poststed`
         errorType = "postcode"
       } else isValid = true
       break
-
-    case "payment":
-      break
-
     default:
       break
   }

@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import React from "react"
 import MainLayout from "../components/layout"
 import PDPContainer from "../components/shop/product/pdp_container"
-import Product from "../components/shop/product/product"
+import Product from "../components/shop/product/type/single-product"
 
 export default function ProductTemplate(props) {
   const { data, errors } = props

@@ -2,7 +2,7 @@ import { graphql, Link, StaticQuery } from "gatsby"
 import GatsbyImage from "gatsby-image"
 import React from "react"
 
-export const Logo = () => {
+const Logo = () => {
   return(
   <StaticQuery
     query={graphql`
@@ -22,7 +22,7 @@ export const Logo = () => {
   />)
 }
 
-export default props => (
+export default () => (
   <div style={{ width: "78px" }}>
     <Link to="/">
       <Logo />

@@ -13,7 +13,7 @@ export default function Button({
   color,
   ...props
 }) {
-  if (primary) return <Primary {...props }>{label}</Primary>
+  if (primary) return <Primary {...props}>{label}</Primary>
 
   if (goBack)
     return (
@@ -53,7 +53,10 @@ export default function Button({
 
   if (basket)
     return (
-      <button {...props} style={{ display: "flex", alignItems: "center" }}>
+      <button
+        {...props}
+        style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
+      >
         <svg viewBox="0 0 16 16" width="24px" fill={primaryColor}>
           <title> {"Basket"} </title>{" "}
           <path d="M16 16H0V5h3v1H1v9h14V6h-2V5h3v11z" />
@@ -92,36 +95,33 @@ const Primary = styled.button`
 
   ${props => props.bold && "font-weight: bold;"}
 
-  $:hover {
+  &:hover {
     background-color: var(--color-text);
     color: var(--bg-secondary);
   }
 
-  ${props => props.dark && "background-color: var(--color-text); color: var(--bg-secondary);"}
+  &:disabled {
+    background-color: lightgrey;
+    color: var(--color-text);
+  }
 
+  ${props =>
+    props.dark &&
+    "background-color: var(--color-text); color: var(--bg-secondary);"}
 `
 
 const GoBackButton = styled.button`
   display: flex;
-  justify-content: flex-start;
-  align-items: "center";
-`
-
-const CartButton = styled.button`
-  background-color: var(--bg-secondary);
-  border: solid 1px var(--bg-secondary);
-
-  color: var(--color-text);
-  width: 100%;
-  padding: 0px 20px;
-  height: 48px;
-  font-weight: bold;
-  font-size: 15px;
-  transition: all 300ms ease-in-out 0s;
+  justify-content: start;
+  align-items: center;
   cursor: pointer;
+  transition: all 0.4 ease;
 
   &:hover {
-    background-color: var(--color-text);
-    color: var(--bg-secondary);
+    font-weight: 800;
+  }
+
+  &:focus  {
+    outline: dashed 0.5px;
   }
 `

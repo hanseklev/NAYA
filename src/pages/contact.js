@@ -4,7 +4,7 @@ import Hero from "../components/hero"
 import MainLayout from "../components/layout"
 import SEO from "../components/seo"
 import parse from "html-react-parser"
-import { Container } from "../components/_shared/container"
+import { ContentContainer } from "../components/_shared/styles"
 
 const ContactPage = props => {
   const {
@@ -21,7 +21,7 @@ const ContactPage = props => {
           hasText
         />
       )}
-      <Container center>{content && parse(content)}</Container>
+      <ContentContainer center>{content && parse(content)}</ContentContainer>
     </MainLayout>
   )
 }

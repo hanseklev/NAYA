@@ -2,7 +2,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
 import MainLayout from "../components/layout/"
 import parse from "html-react-parser"
-import { ContentContainer } from "../components/_shared/container"
+import { ContentContainer } from "../components/_shared/styles"
 
 const PrivacyPolicyPage = () => {
   const data = useStaticQuery(PrivacyPolicyQuery)
@@ -21,7 +21,7 @@ const PrivacyPolicyPage = () => {
 
 export const PrivacyPolicyQuery = graphql`
   query PrivacyPolicy {
-    wpPage(id: { eq: "cG9zdDo1Mzg=" }) {
+    wpPage(id: { eq: "cG9zdDoz" }) {
       title
       content
     }

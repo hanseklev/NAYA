@@ -1,12 +1,10 @@
-import { navigate } from "gatsby"
+import { Link, navigate } from "gatsby"
 import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { ShopContext } from "../../context/shop-context"
 import { formatCheckoutData } from "../../lib/utils"
 import Button from "../_shared/button"
-import { ContentContainer } from "../_shared/container"
 import { useFormFields, useStep } from "../_shared/hooks"
-import { Loader } from "../_shared/loader"
 import { validateStep } from "../_shared/validate-form"
 import { PersonDetails, ShippingDetails } from "./form-steps"
 
@@ -19,8 +17,8 @@ const steps = [
 ]
 
 const CheckoutForm = ({ onSubmit, order }) => {
-  const {setOpenCart} = useContext(ShopContext)
-  const { step, navigation, setStepById } = useStep({
+  const { setOpenCart } = useContext(ShopContext)
+  const { step, navigation } = useStep({
     initialStep: 0,
     steps,
   })
@@ -41,24 +39,18 @@ const CheckoutForm = ({ onSubmit, order }) => {
       const formatData = formatCheckoutData(formFields)
       onSubmit(formatData)
     }
-    //navigation.next()
   }
 
   function handleSubmit(e) {
     e && e.preventDefault()
     if (step.id === "payment") return
     setError("")
-    if (step.id === "personal" || step.id === "shipping") {
-      const { errorType, errorMessage, isValid } = validateStep(
-        step.id,
-        formFields
-      )
-      if (!isValid) {
-        console.log(errorType)
-        console.log(errorMessage)
-        document.querySelector(`input[name=${errorType}`).focus()
-        setError(errorMessage)
-      } else navigation.next(e)
+    /* else (step.id === "personal" || step.id === "shipping") { */
+    const { errorType, errorMessage, isValid } = validateStep(step.id, formFields)
+
+    if (!isValid) {
+      document.querySelector(`input[name=${errorType}`).focus()
+      setError(errorMessage)
     } else navigation.next(e)
   }
 
@@ -66,8 +58,7 @@ const CheckoutForm = ({ onSubmit, order }) => {
     e.preventDefault()
     if (step.id === "personal") {
       setOpenCart(true)
-      navigate('/shop')
-      
+      navigate("/shop")
     } else navigation.prev(e)
   }
 
@@ -102,24 +93,30 @@ const CheckoutForm = ({ onSubmit, order }) => {
               vipps={true}
               onClick={() => handlePayment()}
             />
-            <p>Dette er en disclaimer</p>
+            <p>
+              Ved å fortsette betal godtar du våre
+              <Link to="/general-terms" target="_blank">
+                kjøpsvilkår
+              </Link>
+              og bekrefter at du har lest
+              <Link to="/privacy-policy" target="_blank">
+                privacy policy
+              </Link>
+            </p>
           </div>
         )
       case "redirect":
         console.log(order)
-        function hei() {
+        /*  function hei() {
           if (!order.isCompleted)
             return (
               <div>
                 <p>Fake innlasting...</p>
                 <Loader />
               </div>
-            )
-          else return setStepById("confirmation")
-        } /* setTimeout(() => {
-          
-        }, 3500) */
-        hei()
+            ) 
+          //else return setStepById("confirmation")
+        }*/
         break
 
       case "confirmation":
@@ -129,15 +126,15 @@ const CheckoutForm = ({ onSubmit, order }) => {
           </div>
         )
       default:
-        return <p>ops</p>
+        return null
     }
   }
 
   return (
-    <ContentContainer>
+    <Container>
       <FormNavigation step={step} onClick={e => handleGoBack(e)} />
       <Form onSubmit={handleSubmit}>{renderStep(step)}</Form>
-    </ContentContainer>
+    </Container>
   )
 }
 
@@ -148,7 +145,7 @@ const FormNavigation = ({ step, ...props }) => {
 
   return (
     <nav style={{ marginBottom: "2rem", height: "2rem" }}>
-      <Button goBack {...props} />
+      <Button label="Tilbake" goBack {...props} />
     </nav>
   )
 }
@@ -156,11 +153,17 @@ const FormNavigation = ({ step, ...props }) => {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
-  
+  height: 100%;
+`
+
+const Container = styled.div`
+
 `
 /*
+  align-content: space-around;
+
 width: 100%;
   height: 100%;
   padding-left: 1.45rem;

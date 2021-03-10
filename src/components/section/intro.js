@@ -1,15 +1,14 @@
 import Image from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
-import { StyledLink } from "../_shared/link"
-import { TextBox } from "../_shared/styles"
-import Paragraph from "../_shared/text"
+import { TextBox, Paragraph, StyledLink } from "../_shared/styles"
 
 const IntroContainer = styled.section`
-  padding-bottom: 1rem;
-
+  padding-top: 0;
+${'' /*   padding-bottom: 1rem;
+ */}
   .image {
-    display:block;
+    display: block;
     margin: 0;
     padding: 0;
     position: static;
@@ -24,7 +23,7 @@ const IntroContainer = styled.section`
     padding-bottom: 0px;
 
     .image {
-      width: 100%;
+      width: 80%;
       grid-column: 4 / span 6;
       grid-row: 2 / span 2;
       position: relative;
@@ -33,7 +32,7 @@ const IntroContainer = styled.section`
   }
 `
 
-const IntroSection = ({ title, image, description, ...props }) => {
+const IntroSection = ({ title, image, description, haslink, ...props }) => {
   return (
     <IntroContainer>
       <TextBox>
@@ -42,22 +41,24 @@ const IntroSection = ({ title, image, description, ...props }) => {
             style={{
               fontSize: "2.5rem",
               paddingTop: "1rem",
-              marginBottom: "1rem",
               lineHeight: "1.2",
+              margin: "0",
             }}
           >
             {title}
           </h1>
         )}
 
-          <Paragraph primary>
+        <Paragraph primary>
           {description}
-          <StyledLink
-            to="/about"
-            style={{ marginBottom: "2rem", display: "block" }}
-          >
-            Finn ut mer
-          </StyledLink>
+          {haslink && (
+            <StyledLink
+              to="/about"
+              style={{ margin: "1rem 0", display: "block", fontWeight: "bold" }}
+            >
+              Finn ut mer her
+            </StyledLink>
+          )}
         </Paragraph>
       </TextBox>
       {image && <Image fluid={image.childImageSharp.fluid} className="image" />}

@@ -2,8 +2,6 @@ import validator from "validator"
 import { isEmpty } from "lodash"
 
 const validateCheckoutForm = data => {
-  let errors = {}
-
   data.name = !isEmpty(data.name) ? data.name : ""
   data.country = !isEmpty(data.country) ? data.country : ""
   data.address1 = !isEmpty(data.address1) ? data.address1 : ""
@@ -14,8 +12,6 @@ const validateCheckoutForm = data => {
   data.email = !isEmpty(data.email) ? data.email : ""
   data.customerNote = !isEmpty(data.customerNote) ? data.customerNote : ""
   data.paymentMethod = !isEmpty(data.paymentMethod) ? data.paymentMethod : ""
-
-  const 
 }
 
 export default validateCheckoutForm

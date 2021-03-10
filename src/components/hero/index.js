@@ -11,6 +11,8 @@ const Hero = ({
   mobileImage,
   fullHeight,
 }) => {
+
+  if (!desktopImage) return null
   return (
     <Container fullHeight={fullHeight}>
       <BackgroundImage>

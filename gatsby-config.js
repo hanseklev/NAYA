@@ -14,13 +14,6 @@ module.exports = {
         html: {
           useGatsbyImage: true,
         },
-        excludeFieldNames: [
-          `schemaMd5`,
-          "paStorrelse",
-          "paStorrelses",
-          "PaColor",
-        ],
-
         develop: {
           hardCacheMediaFiles: true,
           hardCacheData: false,

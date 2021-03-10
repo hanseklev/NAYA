@@ -4,7 +4,7 @@ import  ModalContainer  from "../_shared/modal-container"
 import Burger from "./burgerIcon"
 import styles from "./navigation.module.css"
 
-export const NavigationDesktop = ({ hide, location }) => {
+export const NavigationDesktop = ({ hide, location}) => {
   const [show, setShow] = useState(false)
 
   const toggleMenu = () => {
@@ -13,6 +13,7 @@ export const NavigationDesktop = ({ hide, location }) => {
 
   return (
     <nav className={styles.wrapper}>
+
       <div className={styles.link_box}>
         <Link className={styles.link} to="/shop">
           Shop

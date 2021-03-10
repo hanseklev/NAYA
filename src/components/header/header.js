@@ -12,6 +12,7 @@ const Header = ({ siteTitle, openBasket }) => {
   const [isHidden, setIsHidden] = useState(false)
   const { openCart, setOpenCart, cart } = useContext(ShopContext)
   //const [isCartOpen, setOpenCart] = useState(false)
+  const LinkNames = ['Home', 'About', 'Journal', 'About']
 
   const quantity = cart.totalProductsCount
 
@@ -32,7 +33,7 @@ const Header = ({ siteTitle, openBasket }) => {
     <>
       <Container hideHeader={isHidden}>
         <Column>
-          <NavigationDesktop />
+          <NavigationDesktop linkNames={LinkNames} />
         </Column>
         <Column>
           <Logo styles={{ border: "solid" }} />

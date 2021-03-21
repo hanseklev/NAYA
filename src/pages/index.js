@@ -24,11 +24,7 @@ const IndexPage = () => {
               title={hero.herotitle}
               fullHeight
             />
-<<<<<<< HEAD
              <IntroSection
-=======
-            {/*   <IntroSection
->>>>>>> init commit
               title={introsection.introtitle}
               description={introsection.introdescription}
               image={introsection.introimage.localFile}
@@ -39,12 +35,7 @@ const IndexPage = () => {
               description={showcase.pdescription}
               items={showcase.products}
             />
-<<<<<<< HEAD
             <RecentPosts dark />
-=======
-           <ProductCarousel title={showcase.ptitle} description={showcase.pdescription} items={showcase.products}/>
-            <RecentPosts /> */}
->>>>>>> init commit
           </MainLayout>
         )
       }}

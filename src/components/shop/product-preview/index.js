@@ -33,9 +33,9 @@ const ProductPreview = props => {
   const mainImg =
     props.node.featuredImage && props.node.featuredImage.node.localFile
   const secondaryImg =
-    props.node.secondaryImage &&
-    props.node.secondaryImage.previewBilde2 &&
-    props.node.secondaryImage.previewBilde2.localFile
+    props.node.customProduct &&
+    props.node.customProduct.secondaryimage &&
+    props.node.customProduct.secondaryimage.localFile
 
   console.log(mainImg)
   console.log(secondaryImg)

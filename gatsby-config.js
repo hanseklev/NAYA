@@ -14,11 +14,7 @@ module.exports = {
         url: process.env.WP_URL,
         html: {
           useGatsbyImage: true,
-        },
-        develop: {
-          hardCacheMediaFiles: true,
-          hardCacheData: false,
-        },
+        }
       },
     },
     {

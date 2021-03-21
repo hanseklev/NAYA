@@ -37,12 +37,24 @@ const query = graphql`
             slug
             featuredImage {
               node {
-                sourceUrl
+                localFile{
+                  childImageSharp{
+                    fluid(maxWidth:400){
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
             customProduct {
               secondaryimage {
-                sourceUrl
+                localFile{
+                  childImageSharp{
+                    fluid(maxWidth:400){
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
             stockQuantity

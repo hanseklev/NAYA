@@ -8,19 +8,12 @@ import { ContentContainer } from "../components/_shared/styles"
 
 const ContactPage = props => {
   const {
-    wpPage: { title, content, hero },
+    wpPage: {  content },
   } = useStaticQuery(query)
 
   return (
     <MainLayout>
-      <SEO title={title} />
-      {hero && (
-        <Hero
-          desktopImage={hero.heroimagedesktop.localFile}
-          title={title}
-          hasText
-        />
-      )}
+      <SEO title="Kontakt" />
       <ContentContainer center>{content && parse(content)}</ContentContainer>
     </MainLayout>
   )
@@ -33,17 +26,6 @@ const query = graphql`
     wpPage(id: { eq: "cG9zdDo1Mjc=" }) {
       title
       content
-      hero {
-        heroimagedesktop {
-          localFile {
-            childImageSharp {
-              fluid(maxWidth: 1920) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-        }
-      }
     }
   }
 `

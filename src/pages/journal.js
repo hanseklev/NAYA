@@ -13,14 +13,14 @@ export default function Journal(props) {
 
   const postEdges = data && data.postsPreview && data.postsPreview.edges
   const { nodes: categoryNodes } = data.categories
-  const { title, featuredImage } = data.journalPage
+  const { title, hero } = data.journalPage
 
   console.log(categoryNodes);
 
   return (
     <MainLayout>
       <SEO title={title} />
-      {featuredImage && <Hero desktopImage={featuredImage.node.localFile} title={title} hasText /> }
+      {hero && <Hero desktopImage={hero.heroimagedesktop.localFile} title={title} hasText /> }
       <Categories categories={categoryNodes} />
       <BlogPostPreviewGrid edges={postEdges} />
     </MainLayout>

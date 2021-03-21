@@ -1,5 +1,5 @@
 import React from "react"
-import CheckoutContainer from "../../components/Checkout/checkout-container"
+import CheckoutContainer from "../../components/checkout/checkout-container"
 import MainLayout from "../../components/layout"
 import SEO from "../../components/seo"
 

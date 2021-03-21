@@ -36,7 +36,7 @@ const afterware = new ApolloLink((operation, forward) => {
 
     if (session && typeof window !== "undefined") {
       // Remove session data if session destroyed.
-      if ("false" === session && window) {
+      if ("false" === session) {
         localStorage.removeItem("woo-session")
 
         // Update session new data if changed.

@@ -13,7 +13,7 @@ const CategoryTemplate = props => {
   } = props
 
   const postEdges = data && data.allWpPost && data.allWpPost.edges
-  const featuredImage = data.journalPage.featuredImage.node.localFile
+  const featuredImage = data.journalPage.hero.heroimagedesktop.localFile
 
   return (
     <MainLayout>
@@ -79,12 +79,13 @@ export const pageQuery = graphql`
       }
     }
     journalPage: wpPage(title: { eq: "Journal" }) {
-      featuredImage {
-        node {
+      hero {
+        herotitle
+        heroimagedesktop {
           localFile {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
+            childImageSharp{
+              fluid(maxWidth: 1920){
+                ...GatsbyImageSharpFluid
               }
             }
           }

@@ -15,10 +15,12 @@ export default function Journal(props) {
   const { nodes: categoryNodes } = data.categories
   const { title, featuredImage } = data.journalPage
 
+  console.log(categoryNodes);
+
   return (
     <MainLayout>
       <SEO title={title} />
-      <Hero desktopImage={featuredImage.node.localFile} title={title} hasText />
+      {featuredImage && <Hero desktopImage={featuredImage.node.localFile} title={title} hasText /> }
       <Categories categories={categoryNodes} />
       <BlogPostPreviewGrid edges={postEdges} />
     </MainLayout>
@@ -49,14 +51,15 @@ export const JournalPageQuery = graphql`
         }
       }
     }
-    journalPage: wpPage(title: { eq: "Journal" }) {
+    journalPage: wpPage(id: { eq: "cG9zdDozMzA0" }) {
       title
-      featuredImage {
-        node {
+      hero {
+        herotitle
+        heroimagedesktop {
           localFile {
-            childImageSharp {
-              fluid(quality: 90, maxWidth: 1920) {
-                ...GatsbyImageSharpFluid_withWebp
+            childImageSharp{
+              fluid(maxWidth: 1920){
+                ...GatsbyImageSharpFluid
               }
             }
           }

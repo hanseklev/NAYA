@@ -8,19 +8,17 @@ const Author = ({ author }) => {
       <Section>
         {avatar.url && (
           <img
-            style={{ borderRadius: "50%" }}
+            style={{ borderRadius: "50%", margin: '0 auto' }}
             src={avatar.url}
-            width="80px"
+            width="100px"
             alt="Bilde av forfatteren"
           />
         )}
       </Section>
 
-      <Section>
+      <Section size="2">
         <h3 style={{ textAlign: "center" }}>{name}</h3>
-
         {description && <p>{description}</p>}
-        <p>lblblbalbalablabalbablba</p>
       </Section>
     </Container>
   )
@@ -33,7 +31,7 @@ const Container = styled.aside`
   flex-wrap: wrap;
 `
 const Section = styled.div`
-  flex: 1;
+  flex: ${props => props.size || 1};
   display: inline-block;
 `
 

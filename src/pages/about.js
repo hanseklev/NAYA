@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import parse from "html-react-parser"
 import React from "react"
+import Hero from "../components/hero"
 import MainLayout from "../components/layout/"
 import IntroSection from "../components/section/intro"
 import SEO from "../components/seo"
@@ -8,20 +9,20 @@ import { ContentContainer } from "../components/_shared/styles"
 
 const AboutPage = props => {
   const {
-    wpPage: { title, content, introsection }
+    wpPage: { title, content, introsection, hero }
   } = useStaticQuery(query)
-
-  //const heroImage = hero.heroimagedesktop && hero.heroimagedesktop.localFile
+  console.log(introsection, title, content);
+  const heroImage = hero.heroimagedesktop && hero.heroimagedesktop.localFile
   // <Sidebar elements={links} />
 
   return (
     <MainLayout>
       <SEO title={title} />
-      {/*   <Hero desktopImage={heroImage} hasText title={title} /> */}
+        <Hero desktopImage={heroImage} hasText title={title} />
       <IntroSection
         title={introsection.introtitle}
         description={introsection.introdescription}
-        image={introsection.introImage.localFile}
+        image={introsection.introimage.localFile}
       />
       <ContentContainer>{content && parse(content)}</ContentContainer>
     </MainLayout>
@@ -32,7 +33,7 @@ export default AboutPage
 
 const query = graphql`
   {
-    wpPage(title: { eq: "About" }) {
+    wpPage(id: { eq: "cG9zdDo1MTI=" }) {
       title
       content
       hero {
@@ -49,7 +50,7 @@ const query = graphql`
       introsection {
         introtitle
         introdescription
-        introImage {
+        introimage {
           localFile {
             childImageSharp {
               fluid {

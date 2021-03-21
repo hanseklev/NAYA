@@ -23,7 +23,7 @@ const Container = styled.div`
   justify-content: center;
   height: 100vh;
   text-align: left;
-  padding: 2rem;
+  padding: 1rem 2rem;
   position: fixed;
   top: 0;
   left: 0;

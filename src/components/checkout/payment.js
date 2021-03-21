@@ -1,16 +1,13 @@
-import { CardElement } from '@stripe/react-stripe-js';
 import React from "react";
 
 
 const PaymentOptions = ({handleChange}) => {
-  const elements = useElements();
 
   
 
   if (loading) return<p>Laster inn..</p>
 
   console.log(data) 
-  const nodes = data.paymentGateways.nodes
 
   return (
   <CardElement/>

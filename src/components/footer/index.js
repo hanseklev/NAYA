@@ -23,7 +23,7 @@ const Footer = ({isHidden}) => {
       </FooterSection>
       <hr />
       <FooterBottom>
-        NAYA AS •. ORG.NR: 924 634 928 <br/>
+        NAYA AS • ORG.NR: 924 634 928 <br/>
       </FooterBottom>
     </FooterContainer>
   )
@@ -34,6 +34,7 @@ const FooterContainer = styled.footer`
   background-color: rgb(228, 222, 209);
   z-index: 100;
   padding: 0.5rem 1rem;
+  
 `
 
 const FooterTitle = styled.h3`
@@ -46,6 +47,7 @@ const FooterTitle = styled.h3`
 const FooterSection = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   margin-bottom: 1rem;
 
   > a {
@@ -59,7 +61,6 @@ const FooterSection = styled.div`
 const FooterBottom = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin: 0 auto;
   text-align: center;
   line-height: 1.5;

@@ -22,7 +22,7 @@ const GeneralTermsPage = () => {
 
 export const GeneralTerms = graphql`
   query GeneralTermsPage {
-    wpPage(id: { eq: "cG9zdDozMzAy" }) {
+    wpPage(id: { eq: "cG9zdDoxNTc4" }) {
       title
       content
     }

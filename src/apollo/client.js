@@ -7,8 +7,8 @@ import {
 
 import fetch from "isomorphic-fetch"
 
-const uri = 'https://naya.me/graphql'
-//http://localhost:10003/graphql
+const uri = 'https://admin.naya.no/graphql'
+//http://naya.me/graphql
 
 const cmsLink = new HttpLink({
   uri: uri,

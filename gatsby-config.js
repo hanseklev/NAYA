@@ -3,13 +3,14 @@ require("dotenv").config()
 module.exports = {
   siteMetadata: {
     title: `NAYA`,
-    description: `Naya is good`,
-    author: `Hans Erling Klevstad`,
+    description: `Make fair trade the only trade`,
+    author: `NAYA AS`,
   },
   plugins: [
     {
       resolve: "gatsby-source-wordpress",
       options: {
+        verbose: true,
         url: process.env.WP_URL,
         html: {
           useGatsbyImage: true,

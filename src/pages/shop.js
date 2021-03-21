@@ -13,7 +13,7 @@ const ShopPage = () => {
   return (
     <MainLayout>
       <SEO title={title} />
-      <h1>{title}</h1>
+      <h1 style={{marginBottom:'80px'}}>{title}</h1>
       <ShopList products={products} />
     </MainLayout>
   )
@@ -56,12 +56,24 @@ const query = graphql`
             slug
             featuredImage {
               node {
-                sourceUrl
+                localFile{
+                  childImageSharp{
+                    fluid(maxWidth:400){
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
             customProduct {
               secondaryimage {
-                sourceUrl
+                localFile{
+                  childImageSharp{
+                    fluid(maxWidth:400){
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
               }
             }
             stockQuantity

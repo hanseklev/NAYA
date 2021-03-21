@@ -30,7 +30,7 @@ export default ContactPage
 
 const query = graphql`
   {
-    wpPage(title: { eq: "Kontakt" }) {
+    wpPage(id: { eq: "cG9zdDo1Mjc=" }) {
       title
       content
       hero {

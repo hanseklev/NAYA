@@ -1,12 +1,11 @@
 import React from "react"
-import styled from "styled-components"
 import Button from "../_shared/button"
 import Input from "../_shared/input"
 
 export const PersonDetails = ({ form, onChange, submit, error, title }) => (
   <>
-    <Fields>
-      <FieldsetTitle>{title}</FieldsetTitle>
+    <fieldset>
+      <legend className="formtitle">{title}</legend>
       <Input
         label="E-post"
         type="email"
@@ -28,7 +27,7 @@ export const PersonDetails = ({ form, onChange, submit, error, title }) => (
         value={form.lastName}
         onChange={onChange("lastName")}
       />
-    </Fields>
+    </fieldset>
     <ErrorMessage value={error} />
     {submit && <Button primary type="submit" label={submit} />}
   </>
@@ -36,8 +35,8 @@ export const PersonDetails = ({ form, onChange, submit, error, title }) => (
 
 export const ShippingDetails = ({ form, onChange, submit, error, title }) => (
   <>
-    <Fields>
-      <FieldsetTitle>{title}</FieldsetTitle>
+    <fieldset>
+      <legend className="formtitle">{title}</legend>
       <Input
         name="address"
         label="Adresse"
@@ -66,24 +65,14 @@ export const ShippingDetails = ({ form, onChange, submit, error, title }) => (
         value={form.city}
         onChange={onChange("city")}
       />
-      <ErrorMessage value={error} />
-    </Fields>
+    </fieldset>
+    <ErrorMessage value={error} />
     {submit && <Button primary type="submit" label={submit} />}
   </>
 )
 
-const FieldsetTitle = styled.legend`
-  font-size: 20px;
-  margin-bottom: 1rem;
-  font-family: var(--font-primary);
-  text-transform: uppercase;
-`
-
-const Fields = styled.fieldset`
-  ${'' /* margin-bottom: auto; */}
-`
 const ErrorMessage = ({ value }) => {
   if (!value) return null
 
-  return <span style={{ color: "black" }}>{value}</span>
+  return <span style={{ color: "black", margin:'1rem 0' }}>{value}</span>
 }

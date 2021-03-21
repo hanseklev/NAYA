@@ -34,7 +34,7 @@ export function validateStep(step, data) {
         errorType = "postcode"
       } else if (data.city.length === 0) {
         errorMessage = `Du må oppgi et poststed`
-        errorType = "postcode"
+        errorType = "city"
       } else isValid = true
       break
     default:

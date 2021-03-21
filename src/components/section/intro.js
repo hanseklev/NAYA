@@ -40,7 +40,7 @@ const IntroSection = ({ title, image, description, haslink, ...props }) => {
           <h1
             style={{
               fontSize: "2.5rem",
-              paddingTop: "1rem",
+              padding: "1rem 0",
               lineHeight: "1.2",
               margin: "0",
             }}

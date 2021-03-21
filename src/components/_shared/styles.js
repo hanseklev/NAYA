@@ -16,7 +16,7 @@ export const TextBox = styled.div`
   color: var(--color-text);
   z-index: 2;
   position: relative;
-  padding: 0;
+  padding: 2rem 0;
   margin: 0;
   top: 0;
 
@@ -24,7 +24,7 @@ export const TextBox = styled.div`
     ${"" /* top: -2rem; */}
     grid-column: 2 / span 3;
     grid-row: 3 / span 2;
-    padding: 0 3rem;
+    padding: 1.5rem 3rem;
     margin-right: 2rem;
   }
 `
@@ -44,20 +44,16 @@ export const ContentContainer = styled.div`
 
   ${props => props.center && "text-align: center;"}
 
-  .wp-block-image {
-    padding-top: 1rem;
+  .wp-block-image, .wp-image {
+    padding: 1rem 0;
     width: 100%;
+    text-align: center;
   }
 
   figure {
-    margin: 0 auto;
     padding: 0;
   }
 
-  figure img {
-    margin: 0 auto;
-    width: 50%;
-  }
 
   p,
   ul  {

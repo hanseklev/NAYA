@@ -35,36 +35,3 @@
   left: 0;
   line-height: 1;
 }
-
-
-.product_price {
-  font-size: 14px;
-}
-
-/* .product_image {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  height: 100%;
-} */
-
-.addButton {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-radius: 50%;
-  color: white;
-  background-color: red;
-  outline: 0;
-  border: none;
-  cursor: pointer;
-  font-weight: 600;
-  font-size: 14px;
-  transition: all 0.3s ease-in-out;
-}
-
-.addButton:hover {
-  background-color: shade(0.1, red);
-}

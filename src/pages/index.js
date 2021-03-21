@@ -13,20 +13,21 @@ const IndexPage = () => {
       query={query}
       render={data => {
         const { hero, introsection, productShowcase: showcase } = data.wpPage
+        console.log(hero)
         return (
           <MainLayout>
             <SEO title="NAYA" />
-            <Hero
+             <Hero
               hasText={true}
               desktopImage={hero.heroimagedesktop.localFile}
               mobileImage={hero.heroimagemobile.localFile}
               title={hero.herotitle}
               fullHeight
             />
-            <IntroSection
+             <IntroSection
               title={introsection.introtitle}
               description={introsection.introdescription}
-              image={introsection.introImage.localFile}
+              image={introsection.introimage.localFile}
               haslink
             />
             <ProductCarousel
@@ -46,7 +47,7 @@ export default IndexPage
 
 const query = graphql`
   query IndexQuery {
-    wpPage(title: { eq: "Home" }) {
+    wpPage(id: { eq: "cG9zdDozMzM5" }) {
       title
       hero {
         herotitle
@@ -72,7 +73,7 @@ const query = graphql`
       introsection {
         introtitle
         introdescription
-        introImage {
+        introimage {
           localFile {
             childImageSharp {
               fluid {

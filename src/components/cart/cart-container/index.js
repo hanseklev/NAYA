@@ -16,6 +16,7 @@ const CartContainer = ({ closeCart }) => {
   const { cart, setCart, setOpenCart } = useContext(ShopContext)
   const cartItems = cart && cart.products
   const SHIPPING = 49.0
+  let cartIsEmpty = !(cartItems && cartItems.length > 0)
 
   const [clearCart, { loading: cartClearLoading }] = useMutation(
     CLEAR_CART_MUTATION,
@@ -35,6 +36,8 @@ const CartContainer = ({ closeCart }) => {
     },
     onError: err => console.log(err),
   })
+
+
 
   function handleClearCart(event) {
     event.stopPropagation()
@@ -65,24 +68,24 @@ const CartContainer = ({ closeCart }) => {
       <nav style={{ marginBottom: "0.1rem", height: "1rem" }}>
         <Button goBack label="Lukk" onClick={() => closeCart()} />
       </nav>
-      <h1>Handlekurv</h1>
-      <CartList>
-        {cartItems && cartItems.length > 0 ? (
-          cartItems.map((item, i) => (
+      <div className="cart-header">
+        <h1 style={{marginBottom:'0.5rem'}}>Handlekurven din</h1>
+        {cartIsEmpty ?  <div> er tom </div> : null }
+      </div>
+      { cartItems && cartItems.length > 0 ? (
+      <>
+        <CartList>
+          {cartItems.map((item, i) => (
             <CartItem
               item={item}
               products={cartItems}
               key={i}
               updateCart={updateCartItems}
             />
-          ))
-        ) : (
-          <li style={{ listStyleType: "none" }}>
-            Du har ingenting i kurven :){" "}
-          </li>
-        )}
-      </CartList>
-      <div
+          ))}
+     
+       </CartList> 
+       <div
         style={{
           borderTop: "1px solid rgb(224, 224, 224)",
         }}
@@ -96,21 +99,27 @@ const CartContainer = ({ closeCart }) => {
           label="Total"
           price={cart.totalProductsPrice && parsePrice(cart.totalProductsPrice)}
         />
-      </div>
-      <div>
+      </div>      
         <Button
-          primary
+          primary dark
           onClick={event => handleClearCart(event)}
           label={cartClearLoading ? "Tømmer handlekurven.." : "Tøm handlekurv"}
-          dark
         />
         <Button
-          dark
-          primary
+          primary dark
           label="Til kassen"
           onClick={() => goToCheckout()}
         />
-      </div>
+      </>
+      ) : 
+      <>
+       <div style={{marginBottom:'1rem', textAlign:'center'}}>Det ser ut som handlekurven din er tom<br/>Det kan vi få orden på:)</div>
+       <Button primary dark label="Gå til shop"  onClick={()=> {
+        navigate("/shop") 
+        setOpenCart(false)
+        } }/>
+       </>
+      }   
     </Wrapper>
   )
 }
@@ -129,10 +138,20 @@ export const PriceSection = ({ label, price }) => (
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   width: 100%;
-  height: 100%;
-  padding: 12px 12px 28px;
+  height: 100vh;
+  padding: 12px 12px 12px;
+
+  .cart-header {
+    margin-bottom: 100px;
+    text-align: center;
+  }
+
+`
+
+const EmptyBasketNotifier = styled.div`
+  margin-bottom: 1rem;
+  text-align: center;
 `
 
 const CartList = styled.ul`

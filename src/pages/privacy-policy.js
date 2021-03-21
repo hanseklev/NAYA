@@ -21,7 +21,7 @@ const PrivacyPolicyPage = () => {
 
 export const PrivacyPolicyQuery = graphql`
   query PrivacyPolicy {
-    wpPage(id: { eq: "cG9zdDoz" }) {
+    wpPage(id: { eq: "cG9zdDo1Mzg=" }) {
       title
       content
     }

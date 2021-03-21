@@ -44,14 +44,15 @@ const Label = styled.label`
   display: ${props => (props.double ? 'inline-block' :'block')};
   width: ${props => (props.double ? "50%" : "100%")};
   position: relative;
-  border: solid 0.5px var(--color-text);
+	border: 2px solid #f0f0f0;
   border-radius: 1px;
   font-size: 1.35rem;
   line-height: 1.3;
   margin-bottom: 0.5rem;
 
-  &:focus{
-
+  &:focus {
+    outline: 0;
+    border-color: #777;
   }
 `
 
@@ -68,11 +69,12 @@ const Input = styled.input`
   background-color: transparent;
   transition: border-color 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-
   &:focus {
-    border-color: red;
-
+    outline-color: var(--color-text);
   }
+
+
+ 
 `
 
 const LabelText = styled.span`

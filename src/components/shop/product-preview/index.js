@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import { parsePrice } from "../../../lib/helpers"
 import styles from "./index.module.css"
+import Image from "gatsby-image"
 
 const bg = {
   on: {
@@ -29,13 +30,16 @@ const thumb = {
 
 const ProductPreview = props => {
   const { name, price, id } = props.node
-  const mainImgUrl =
-    props.node.featuredImage && props.node.featuredImage.node.sourceUrl
-  const secondaryImgUrl =
+  const mainImg =
+    props.node.featuredImage && props.node.featuredImage.node.localFile
+  const secondaryImg =
     props.node.secondaryImage &&
     props.node.secondaryImage.previewBilde2 &&
-    props.node.secondaryImage.previewBilde2.sourceUrl
-  
+    props.node.secondaryImage.previewBilde2.localFile
+
+  console.log(mainImg)
+  console.log(secondaryImg)
+
   const [isHover, setHover] = useState(false)
 
   function handleMouseEnter() {
@@ -53,8 +57,8 @@ const ProductPreview = props => {
         className={styles.product}
       >
         <figure className={styles.product_figure}>
-          <MainImg url={mainImgUrl} />
-          {secondaryImgUrl && <SecondaryImg url={secondaryImgUrl} />}
+          {mainImg && <MainImg img={mainImg} />}
+          {secondaryImg && <SecondaryImg img={secondaryImg} />}
           <Link
             to={`/product/${id}`}
             onMouseEnter={handleMouseEnter}
@@ -70,8 +74,8 @@ const ProductPreview = props => {
   )
 }
 
-const SecondaryImg = ({ url }) => {
-  if (url === undefined) {
+const SecondaryImg = ({ img }) => {
+  if (img === undefined) {
     return <div></div>
   }
 
@@ -84,25 +88,29 @@ const SecondaryImg = ({ url }) => {
         mass: 0.2,
       }}
     >
-      <img
+      <Image
         style={{
           width: "100%",
         }}
-        src={url}
+        fluid={img.childImageSharp.fluid}
         alt="produktbilde"
       />
     </motion.div>
   )
 }
 
-const MainImg = ({ url }) => {
+const MainImg = ({ img }) => {
   return (
     <motion.div
       variants={thumb}
       className={styles.product_thumbnail}
       transition={{ type: "spring", mass: 0.5 }}
     >
-      <img src={url} alt="produktbilde" style={{ width: "100%" }} />
+      <Image
+        fluid={img.childImageSharp.fluid}
+        alt="produktbilde"
+        style={{ width: "100%" }}
+      />
     </motion.div>
   )
 }
@@ -118,7 +126,6 @@ const ProductInfo = styled.section`
     font-size: 14px;
     margin-bottom: 0.25rem;
   }
-
 `
 
 /* const QuickAddButton = ({ item }) => {

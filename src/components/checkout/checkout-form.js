@@ -45,8 +45,10 @@ const CheckoutForm = ({ onSubmit, order }) => {
     e && e.preventDefault()
     if (step.id === "payment") return
     setError("")
-    /* else (step.id === "personal" || step.id === "shipping") { */
-    const { errorType, errorMessage, isValid } = validateStep(step.id, formFields)
+    const { errorType, errorMessage, isValid } = validateStep(
+      step.id,
+      formFields
+    )
 
     if (!isValid) {
       document.querySelector(`input[name=${errorType}`).focus()
@@ -94,11 +96,11 @@ const CheckoutForm = ({ onSubmit, order }) => {
               onClick={() => handlePayment()}
             />
             <p>
-              Ved å fortsette betal godtar du våre
+              Ved å fortsette godtar du våre
               <Link to="/general-terms" target="_blank">
                 kjøpsvilkår
               </Link>
-              og bekrefter at du har lest
+              og bekrefter at du har lest vår
               <Link to="/privacy-policy" target="_blank">
                 privacy policy
               </Link>
@@ -133,7 +135,9 @@ const CheckoutForm = ({ onSubmit, order }) => {
   return (
     <Container>
       <FormNavigation step={step} onClick={e => handleGoBack(e)} />
-      <Form onSubmit={handleSubmit}>{renderStep(step)}</Form>
+      <div className="innerflex">
+        <Form onSubmit={handleSubmit}>{renderStep(step)}</Form>
+      </div>
     </Container>
   )
 }
@@ -151,15 +155,32 @@ const FormNavigation = ({ step, ...props }) => {
 }
 
 const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
+  width: 250px;
+
+  & fieldset {
+    margin: 0 auto;
+    padding-bottom: 2rem;
+  }
+
+  .formtitle {
+    font-size: 20px;
+    margin-bottom: 2rem;
+    font-family: var(--color-text);
+    text-transform: uppercase;
+    text-align: center;
+  }
 `
 
 const Container = styled.div`
+  min-height: calc(100vh - 60px);
+  padding: 1rem 2rem;
 
+  .innerflex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+  }
 `
 /*
   align-content: space-around;

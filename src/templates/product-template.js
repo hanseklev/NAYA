@@ -37,7 +37,13 @@ export const ProductQuery = graphql`
         slug
         featuredImage {
           node {
-            sourceUrl
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
         stockQuantity
@@ -54,7 +60,13 @@ export const ProductQuery = graphql`
         slug
         featuredImage {
           node {
-            sourceUrl
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
         stockQuantity
@@ -96,7 +108,7 @@ export const ProductQuery = graphql`
           id
         }
       }
-    __typename
+      __typename
     }
   }
 `

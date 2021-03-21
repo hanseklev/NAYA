@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { parsePrice } from "../../../../lib/helpers"
 import AddToCartButton from "../../../cart/add-to-cart-button"
 import StockStatus from "../stock-status"
+import Image from 'gatsby-image'
 
 function Product({ product }) {
   const {
@@ -19,8 +20,8 @@ function Product({ product }) {
     <ProductContainer>
       <figure style={{ flex: 1 }}>
         {featuredImage && (
-          <img
-            src={featuredImage.node.sourceUrl}
+          <Image
+            fluid={featuredImage.node.localFile.childImageSharp.fluid}
             style={{ width: "100%" }}
             alt="produktbilde"
           />

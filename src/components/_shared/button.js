@@ -98,6 +98,9 @@ const Primary = styled.button`
   &:hover {
     background-color: var(--color-text);
     color: var(--bg-secondary);
+    ${props =>
+    props.dark &&
+    "background-color: var(--bg-secondary); color: var(--color-text);"}
   }
 
   &:disabled {
@@ -107,7 +110,7 @@ const Primary = styled.button`
 
   ${props =>
     props.dark &&
-    "background-color: var(--color-text); color: var(--bg-secondary);"}
+    "background-color: var(--color-text); color: var(--bg-secondary); border: solid var(--color-text);"}
 `
 
 const GoBackButton = styled.button`

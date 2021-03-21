@@ -16,7 +16,7 @@ const cmsLink = new HttpLink({
 })
 
 const middleware = new ApolloLink((operation, forward) => {
-  const session = localStorage.getItem("woo-session")
+  const session = typeof window !== "undefined" ? localStorage.getItem("woo-session") :  null
 
   if (session) {
     operation.setContext(({ headers = {} }) => ({
@@ -34,9 +34,9 @@ const afterware = new ApolloLink((operation, forward) => {
     const context = operation.getContext()
     const session = context.response.headers.get('woocommerce-session')
 
-    if (session) {
+    if (session && typeof window !== "undefined") {
       // Remove session data if session destroyed.
-      if ("false" === session) {
+      if ("false" === session && window) {
         localStorage.removeItem("woo-session")
 
         // Update session new data if changed.

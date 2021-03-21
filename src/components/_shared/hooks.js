@@ -4,8 +4,9 @@ export const useStep = ({ initialStep = 0, steps }) => {
   const [index, setStepIndex] = useState(initialStep)
   const step = steps[index]
 
-  if (typeof window !== "undefined")
+  if (typeof window !== "undefined") {
     window.location.hash = step.id
+  }
 
   function handleNextStep(e) {
     e && e.preventDefault()

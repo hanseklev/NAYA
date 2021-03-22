@@ -1,31 +1,16 @@
-import { graphql, Link, StaticQuery } from "gatsby"
-import GatsbyImage from "gatsby-image"
+import { Link } from "gatsby"
 import React from "react"
 
-const Logo = () => {
-  return(
-  <StaticQuery
-    query={graphql`
-      query {
-        file(relativePath: { eq: "NAYA_logo.png" }) {
-          childImageSharp {
-            fluid(maxWidth: 300) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `}
-    render={data => (
-      <GatsbyImage fluid={data.file.childImageSharp.fluid}/>
-    )}
-  />)
-}
+const SvgLogo = () => (
+  <img
+    src={require("../images/naya_logo_positiv.svg")}
+    width="78px"
+    alt="NAYA homepage"
+  />
+)
 
 export default () => (
-  <div style={{ width: "78px" }}>
-    <Link to="/">
-      <Logo />
-    </Link>
-  </div>
+  <Link to="/">
+    <SvgLogo />
+  </Link>
 )

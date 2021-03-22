@@ -2,29 +2,44 @@ import { Link } from "gatsby"
 import React from "react"
 import styled from "styled-components"
 import SocialIcons from "../social-icons"
+import Logo from "../logo"
 
-const Footer = ({isHidden}) => {
+const Footer = ({ isHidden }) => {
   if (isHidden) return null
   return (
     <FooterContainer>
-    <h2 style={{textAlign:'left'}}>NAYA</h2>
       <FooterSection>
-        <FooterTitle>Privacy</FooterTitle>
-        <Link to="/privacy-policy">Privacy Policy</Link>
-        <Link to="/general-terms">General Terms</Link>
+        <div style={{ marginLeft: "-5px", marginBottom:'1rem' }}>
+          <Logo />
+        </div>
+
+        <div>
+          <FooterTitle>Privacy</FooterTitle>
+          <Link className="menu_link" to="/privacy-policy">
+            Privacy Policy
+          </Link>
+          <Link className="menu_link" to="/general-terms">
+            General Terms
+          </Link>
+        </div>
+        <div>
+          <FooterTitle>Information</FooterTitle>
+          <Link className="menu_link" to="/about">
+            About
+          </Link>
+          <Link className="menu_link" to="/contact">
+            Contact
+          </Link>
+        </div>
+        <div style={{ marginRight: "2rem" }}>
+          <p>Follow us on social media!</p>
+          <SocialIcons size="30" />
+        </div>
       </FooterSection>
-      <FooterSection>
-        <FooterTitle>Information</FooterTitle>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
-      </FooterSection>
-      <FooterSection>
-        <SocialIcons size="30" />
-      </FooterSection>
-      <hr />
-      <FooterBottom>
-        NAYA AS • ORG.NR: 924 634 928 <br/>
-      </FooterBottom>
+
+      {/*   <FooterBottom>
+        NAYA AS • ORG.NR: 924 634 928 <br />
+      </FooterBottom> */}
     </FooterContainer>
   )
 }
@@ -33,12 +48,15 @@ const Footer = ({isHidden}) => {
 const FooterContainer = styled.footer`
   background-color: rgb(228, 222, 209);
   z-index: 100;
-  padding: 0.5rem 1rem;
-  
+  padding: 1rem 1rem;
+  color: var(--color-text);
+
+  @media (min-width: 768px) {
+    padding: 54px 24px 24px 36px;
+  }
 `
 
 const FooterTitle = styled.h3`
-  color: var(--color-text);
   font-size: 18px;
   text-align: left;
   margin: 0.5rem 0;
@@ -50,49 +68,22 @@ const FooterSection = styled.div`
   align-items: flex-start;
   margin-bottom: 1rem;
 
-  > a {
+  .menu_link {
+    display: block;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  a {
     text-decoration: none;
     color: inherit;
     font-size: 1rem;
-
   }
 `
 
-const FooterBottom = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 auto;
-  text-align: center;
-  line-height: 1.5;
-
-  > a {
-    text-decoration: none;
-    color: inherit;
-  }
-
-`
 
 export default Footer
-
-/*   display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: space-around;
-
-  .bottomFooter ul {
-  display: flex column;
-  align-items: center;
-  padding: 0;
-  list-style-type: none;
-  font-size: 12px;
-}
-
-.bottomFooter ul li {
-  width: 100%;
-  padding: 2px 0;
-  text-align: center;
-}
-
-  
-  
-  */

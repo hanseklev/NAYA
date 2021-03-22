@@ -1,9 +1,8 @@
 import { graphql, useStaticQuery } from "gatsby"
+import parse from "html-react-parser"
 import React from "react"
-import Hero from "../components/hero"
 import MainLayout from "../components/layout"
 import SEO from "../components/seo"
-import parse from "html-react-parser"
 import { ContentContainer } from "../components/_shared/styles"
 
 const ContactPage = props => {

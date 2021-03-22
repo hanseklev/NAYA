@@ -56,7 +56,6 @@ export const getUpdatedCartItems = (items, newQty, key) => {
 }
 
 export const formatCheckoutData = (order) => {
-  console.log(order);
   //setcountry
   const checkoutData = {
     clientMutationId: v4(),

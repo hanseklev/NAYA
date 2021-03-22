@@ -10,7 +10,6 @@ import Button from "../../_shared/button"
 const AddToCartButton = ({ product }) => {
   const isInStock = product.stockStatus === "IN_STOCK"
 
-  console.log(isInStock);
   const {setCart, setOpenCart} = useContext(ShopContext)
   const clientMutationId = v4()
 

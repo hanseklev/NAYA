@@ -13,7 +13,6 @@ const IndexPage = () => {
       query={query}
       render={data => {
         const { hero, introsection, productShowcase: showcase } = data.wpPage
-        console.log(hero)
         return (
           <MainLayout>
             <SEO title="NAYA" />
@@ -24,7 +23,7 @@ const IndexPage = () => {
               title={hero.herotitle}
               fullHeight
             />
-             <IntroSection
+            <IntroSection
               title={introsection.introtitle}
               description={introsection.introdescription}
               image={introsection.introimage.localFile}

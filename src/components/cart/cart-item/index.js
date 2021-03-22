@@ -7,7 +7,6 @@ import { getUpdatedCartItems } from "../../../lib/utils"
 export const CartItem = ({ item, products, updateCart }) => {
   const [itemCount, setItemCount] = useState(item.quantity)
   const clientMutationId = v4()
-  console.log(item)
 
   function handleQtyChange(event, type, removeItem = false) {
     let newCount

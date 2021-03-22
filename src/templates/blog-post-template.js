@@ -19,11 +19,13 @@ export const query = graphql`
           description
           avatar {
             url
+            width
           }
         }
       }
       featuredImage {
         node {
+          sourceUrl
           localFile {
             childImageSharp {
               fluid(maxWidth: 1920) {
@@ -40,10 +42,17 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
+  const formattedExerpt = post.excerpt.replace(/<[^>]*>?/gm, "")
+  const SEOImageURL = post.featuredImage && post.featuredImage.node.sourceUrl
 
   return (
     <MainLayout>
-      <SEO title={post.title} description={post.excerpt} author={post.author.node.name} />
+      <SEO
+        title={post.title}
+        description={formattedExerpt}
+        author={post.author.node.name}
+        image={SEOImageURL}
+      />
       {errors && <div>{errors}</div>}
       <BlogPost {...post} />
     </MainLayout>

@@ -15,7 +15,6 @@ export default function Journal(props) {
   const { nodes: categoryNodes } = data.categories
   const { title, hero } = data.journalPage
 
-  console.log(categoryNodes);
 
   return (
     <MainLayout>

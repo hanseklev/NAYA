@@ -15,6 +15,9 @@ module.exports = {
         html: {
           useGatsbyImage: true,
         },
+        develop: {
+          hardCacheMediaFiles: true,
+        },
       },
     },
     {
@@ -33,7 +36,15 @@ module.exports = {
         background_color: `#fbfaf7`,
         theme_color: `#655A46`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-gtag`,
+      options: {
+        trackingIds: [
+          "UA-179541154-1", // Google Analytics 
+        ],
       },
     },
     `gatsby-plugin-react-helmet`,

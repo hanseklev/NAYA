@@ -37,9 +37,6 @@ const ProductPreview = props => {
     props.node.customProduct.secondaryimage &&
     props.node.customProduct.secondaryimage.localFile
 
-  console.log(mainImg)
-  console.log(secondaryImg)
-
   const [isHover, setHover] = useState(false)
 
   function handleMouseEnter() {

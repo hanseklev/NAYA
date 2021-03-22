@@ -9,7 +9,7 @@ const RecentPosts = ({ dark }) => {
   const postEdges = data && data.postsPreview && data.postsPreview.edges
 
   return (
-    <article>
+    <div>
       <Section dark={dark}>
         <h2 style={{ fontSize: "2.5rem"}}>Journal</h2>
         <Paragraph style={{ textAlign: "center" }}>
@@ -18,7 +18,7 @@ const RecentPosts = ({ dark }) => {
         </Paragraph>
       </Section>
       <BlogPostPreviewGrid edges={postEdges} />
-    </article>
+    </div>
   )
 }
 

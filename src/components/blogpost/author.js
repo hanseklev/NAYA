@@ -6,18 +6,20 @@ const Author = ({ author }) => {
   return (
     <Container>
       <Section>
-        {avatar.url && (
-          <img
-            style={{ borderRadius: "50%", margin: '0 auto' }}
-            src={avatar.url}
-            width="100px"
-            alt="Bilde av forfatteren"
-          />
-        )}
+        <div className="author_image">
+          {avatar.url && (
+            <img
+              style={{ borderRadius: "50%", margin:'0 auto' }}
+              src={avatar.url}
+              width={avatar.width || '78px'}
+              alt="Bilde av forfatteren"
+            />
+          )}
+        </div>
       </Section>
 
       <Section size="2">
-        <h3 style={{ textAlign: "center" }}>{name}</h3>
+        <h3 style={{ textAlign: "left", paddingLeft: "1rem" }}>{name}</h3>
         {description && <p>{description}</p>}
       </Section>
     </Container>
@@ -27,22 +29,22 @@ const Author = ({ author }) => {
 const Container = styled.aside`
   margin-top: 2rem;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   flex-wrap: wrap;
 `
 const Section = styled.div`
   flex: ${props => props.size || 1};
   display: inline-block;
+  justify-content: center;
+  align-items: "center";
+
+  .author_image {
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+  }
 `
 
-/*.title {
-  text-align: center;
-}
-
-
-
-.image {
-  border-radius: 50%;
-}
-*/
 export default Author

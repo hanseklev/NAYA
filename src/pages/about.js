@@ -11,7 +11,6 @@ const AboutPage = props => {
   const {
     wpPage: { title, content, introsection, hero }
   } = useStaticQuery(query)
-  console.log(introsection, title, content);
   const heroImage = hero.heroimagedesktop && hero.heroimagedesktop.localFile
   // <Sidebar elements={links} />
 

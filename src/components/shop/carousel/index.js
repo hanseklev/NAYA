@@ -1,7 +1,7 @@
 import Image from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
-import { TextBox, Paragraph } from "../../_shared/styles"
+import { TextBox, Paragraph, StyledLink } from "../../_shared/styles"
 
 const ProductCarousel = ({ title, description, items }) => {
   return (
@@ -49,8 +49,8 @@ const ProductCarousel = ({ title, description, items }) => {
           minHeight: "200px",
         }}
       >
-        <h3>Noe for en hver smak..</h3>
-      Sjekk ut mer her
+        <h2>Noe for en hver smak..</h2>
+      <StyledLink weight="600" to="/shop" >Sjekk ut flere produkter her</StyledLink>
       </TextBox>
     </CarouselWrapper>
   )
@@ -64,7 +64,7 @@ const CarouselWrapper = styled.section`
   padding-bottom: 2rem;
   max-width: 1166px;
 
-  @media (min-width: 900px) {
+  @media (min-width: 600px) {
     padding: 120px 0;
     columns: auto 2;
     column-gap: 40px;

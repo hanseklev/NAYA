@@ -4,6 +4,7 @@ import parse from "html-react-parser"
 import React from "react"
 import styled from "styled-components"
 import { getBlogUrl } from "../../lib/helpers"
+import { StyledLink } from "../_shared/styles"
 
 const BlogPostPreview = props => {
   const thumbImg =
@@ -12,7 +13,7 @@ const BlogPostPreview = props => {
 
   return (
     <Article>
-      <Link style={{ textDecoration: "none" }} to={getBlogUrl(props.slug)}>
+      <Link style={{ textDecoration: "none", width:'100%' }} to={getBlogUrl(props.slug)}>
         <header style={{ width: "100%" }}>
           <ImageContainer>
             {thumbImg && (
@@ -30,9 +31,9 @@ const BlogPostPreview = props => {
       <div style={{ fontSize: "14px", width: "100%" }}>
         {parse(props.excerpt)}
       </div>
-      <Link to={getBlogUrl(props.slug)} style={bottomLinkStyle}>
+      <StyledLink weight="550" to={getBlogUrl(props.slug)} style={bottomLinkStyle}>
         Les mer
-      </Link>
+      </StyledLink>
     </Article>
   )
 }
@@ -73,7 +74,6 @@ const ImageContainer = styled.div`
 `
 
 const bottomLinkStyle = {
-  color: "var(--text-accent)",
   textTransform: "uppercase",
   textAlign: "left",
   width: " 100%",

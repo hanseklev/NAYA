@@ -69,7 +69,7 @@ const CartContainer = ({ closeCart }) => {
         <Button goBack label="Lukk" onClick={() => closeCart()} />
       </nav>
       <div className="cart-header">
-        <h1 style={{marginBottom:'0.5rem'}}>Handlekurven din</h1>
+        <h1 style={{marginBottom:'0.5rem'}}>Handlekurven</h1>
         {cartIsEmpty ?  <div> er tom </div> : null }
       </div>
       { cartItems && cartItems.length > 0 ? (

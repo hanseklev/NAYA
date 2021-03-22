@@ -119,9 +119,12 @@ const GoBackButton = styled.button`
   align-items: center;
   cursor: pointer;
   transition: all 0.4 ease;
+  padding-bottom: 1rem;
+  color: var(--color-text);
+  text-transform: uppercase;
 
   &:hover {
-    font-weight: 800;
+    color: black;
   }
 
   &:focus  {

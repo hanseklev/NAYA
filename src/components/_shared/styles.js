@@ -50,6 +50,10 @@ export const ContentContainer = styled.div`
     text-align: center;
   }
 
+  .figure img {
+    width: 100%;
+  }
+
   figure {
     padding: 0;
   }

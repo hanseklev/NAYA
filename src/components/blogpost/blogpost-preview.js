@@ -13,7 +13,10 @@ const BlogPostPreview = props => {
 
   return (
     <Article>
-      <Link style={{ textDecoration: "none", width:'100%' }} to={getBlogUrl(props.slug)}>
+      <Link
+        style={{ textDecoration: "none", width: "100%" }}
+        to={getBlogUrl(props.slug)}
+      >
         <header style={{ width: "100%" }}>
           <ImageContainer>
             {thumbImg && (
@@ -31,7 +34,11 @@ const BlogPostPreview = props => {
       <div style={{ fontSize: "14px", width: "100%" }}>
         {parse(props.excerpt)}
       </div>
-      <StyledLink weight="550" to={getBlogUrl(props.slug)} style={bottomLinkStyle}>
+      <StyledLink
+        weight="550"
+        to={getBlogUrl(props.slug)}
+        style={bottomLinkStyle}
+      >
         Les mer
       </StyledLink>
     </Article>
@@ -49,10 +56,8 @@ const Article = styled.article`
 
   .gatsby-image-wrapper {
     transition: all 250ms ease-in-out;
-  }
 
-  &:hover {
-    .gatsby-image-wrapper {
+    &:hover {
       transform: scale(1.1);
     }
   }

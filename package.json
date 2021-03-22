@@ -6,7 +6,6 @@
   "author": "Hans Erling Klevstad",
   "dependencies": {
     "@apollo/client": "^3.3.7",
-    "@stripe/react-stripe-js": "^1.2.0",
     "@stripe/stripe-js": "^1.11.0",
     "apollo-datasource-rest": "^0.9.7",
     "babel-plugin-styled-components": "^1.12.0",

@@ -9,18 +9,31 @@ import { ContentContainer } from "../components/_shared/styles"
 
 const AboutPage = props => {
   const {
-    wpPage: { title, content, aboutsection, hero }
+    wpPage: { title, content, aboutsection, hero, defaultsection },
   } = useStaticQuery(query)
   const heroImage = hero.heroimagedesktop && hero.heroimagedesktop.localFile
 
   return (
     <MainLayout>
       <SEO title={title} />
-        <Hero desktopImage={heroImage} hasText title={title} textAlign="left" fullHeight />
+      <Hero
+        desktopImage={heroImage}
+        hasText
+        title={title}
+        textAlign="left"
+        fullHeight
+      />
       <AboutSection
         title={aboutsection.abouttitle}
         description={aboutsection.aboutdescription}
         image={aboutsection.aboutimage.localFile}
+        color
+      />
+      <AboutSection
+        title={defaultsection.sectiontitle}
+        description={defaultsection.sectiondescription}
+        image={defaultsection.sectionimage.localFile}
+        flipped
       />
       <ContentContainer>{content && parse(content)}</ContentContainer>
     </MainLayout>
@@ -49,6 +62,19 @@ const query = graphql`
         abouttitle
         aboutdescription
         aboutimage {
+          localFile {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
+        }
+      }
+      defaultsection {
+        sectiontitle
+        sectiondescription
+        sectionimage {
           localFile {
             childImageSharp {
               fluid {

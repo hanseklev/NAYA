@@ -8,29 +8,33 @@ const AboutContainer = styled.section`
   display: flex;
   flex-direction: column-reverse;
 
-  .left_column {
+  .image_column {
     min-height: 100px;
     order: 1;
   }
 
-  .right_column{
-      order:2;
+  .text_column {
+    order: 2;
   }
 
   @media (min-width: 769px) {
-    flex-direction: row;
+    flex-direction: ${props => (props.flip ? "row-reverse" : "row")};
+    align-items: center;
+    justify-content: center;
+    margin-top: ${props => props.flip && "-250px"};
 
     min-height: 700px;
-    background-color: var(--bg-dark);
-    background: -webkit-linear-gradient(
-      left,
-      var(--bg-primary) 33%,
-      var(--bg-dark) 0%
-    );
+    ${props =>
+      props.background &&
+      "background-color: var(--bg-dark); background: -webkit-linear-gradient(left, var(--bg-primary) 33%, var(--bg-dark) 0%);"};
     padding-top: 3rem;
 
-    .left_column {
-      flex: 3;
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .image_column {
+      flex: 1;
       width: 50px;
     }
 
@@ -40,22 +44,29 @@ const AboutContainer = styled.section`
       margin-left: 30%;
     }
 
-    .right_column {
+    .text_column {
       margin-right: 2rem;
-      flex: 2;
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      align-items: center;
 
-      & h1,
-      h2 {
-        text-align: left;
+      p {
+        ${props => props.flip && "margin-left: 4rem; }"};
+      }
+
+      & h2,
+      h3 {
+        text-align: ${props => (props.flip ? "center" : "left")};
       }
     }
   }
 `
 
-const AboutSection = ({ title, image, description, haslink, ...props }) => {
+const AboutSection = ({ title, image, description, color, flipped }) => {
   return (
-    <AboutContainer>
-      <div className="left_column">
+    <AboutContainer background={color} flip={flipped}>
+      <div className="image_column">
         <div className="image">
           {image && (
             <Image
@@ -65,17 +76,9 @@ const AboutSection = ({ title, image, description, haslink, ...props }) => {
           )}
         </div>
       </div>
-      <div className="right_column">
+      <div className="text_column">
         <ContentContainer>
-          {title && (
-            <h1
-              style={{
-                fontSize: "2.5rem",
-              }}
-            >
-              {title}
-            </h1>
-          )}
+          {title && <h2>{title}</h2>}
           {description && parse(description)}
         </ContentContainer>
       </div>

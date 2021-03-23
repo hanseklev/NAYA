@@ -3,14 +3,14 @@ import styled from "styled-components"
 import BlogPostPreview from "./blogpost-preview"
 
 
-function BlogPostPreviewGrid({ edges, columns = 2 }) {
+function BlogPostPreviewGrid({ edges, columns = "2" }) {
   return (
-      <Grid columns>
+      <Grid column={columns}>
         {edges &&
           edges.map(edge => {
             return (
               <li style={{ justifySelf: "center", width:'100%' }} key={edge.node.id}>
-                <BlogPostPreview columns {...edge.node} />
+                <BlogPostPreview  {...edge.node} />
               </li>
             )
           })}
@@ -29,8 +29,8 @@ const Grid = styled.ul`
   margin: 0 auto;
   padding: 1.5rem 2rem;
 
-  @media (min-width: 450px) {
-    grid-template-columns: repeat(${props => props.columns}, 1fr);
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(${props => props.column}, 1fr);
   }
   @media (min-width: 870px) {
     grid-template-columns: repeat(3, 1fr);

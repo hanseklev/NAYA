@@ -9,7 +9,7 @@ const Footer = ({ isHidden }) => {
   return (
     <FooterContainer>
       <FooterSection>
-        <div style={{ marginLeft: "-5px", marginBottom:'1rem' }}>
+        <div style={{ marginLeft: "-5px", marginBottom: "1rem" }}>
           <Logo />
         </div>
 
@@ -67,6 +67,7 @@ const FooterSection = styled.div`
   flex-direction: column;
   align-items: flex-start;
   margin-bottom: 1rem;
+  line-height: 1.6;  
 
   .menu_link {
     display: block;
@@ -84,6 +85,5 @@ const FooterSection = styled.div`
     font-size: 1rem;
   }
 `
-
 
 export default Footer

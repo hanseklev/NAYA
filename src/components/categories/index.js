@@ -17,7 +17,7 @@ const Categories = ({ categories, active, title='Kategorier' }) => {
         .map(category => {
           const url = _.kebabCase(category.name)
           return (
-            <StyledLink to={`/categories/${url}`} key={category.name}>
+            <StyledLink to={`/categories/${url}`} key={category.name} style={{textTransform:'uppercase'}}>
               {category.name}
             </StyledLink>
           )

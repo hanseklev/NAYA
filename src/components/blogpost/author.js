@@ -9,17 +9,17 @@ const Author = ({ author }) => {
         <div className="author_image">
           {avatar.url && (
             <img
-              style={{ borderRadius: "50%", margin:'0 auto' }}
               src={avatar.url}
               width={avatar.width || '78px'}
               alt="Bilde av forfatteren"
+              style={{margin:'0 auto'}}
             />
           )}
         </div>
       </Section>
 
       <Section size="2">
-        <h3 style={{ textAlign: "left", paddingLeft: "1rem" }}>{name}</h3>
+        <h3 style={{ textAlign: "left"}}>{name}</h3>
         {description && <p>{description}</p>}
       </Section>
     </Container>

@@ -30,11 +30,12 @@ export const TextBox = styled.div`
 `
 export const ContentContainer = styled.div`
   width: 100%;
-  min-height: 100vh;
-  max-width: 1200px;
+${'' /*   min-height: 100vh;
+ */}  max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-  padding-top: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
   padding-left: 1.2rem;
   padding-right: 1.2rem;
   letter-spacing: 0.04rem;
@@ -59,10 +60,10 @@ export const ContentContainer = styled.div`
   }
 
 
-  p,
+  ${'' /* p,
   ul  {
     padding: 1rem 1rem;
-  }
+  } */}
 
   @media (min-width: 769px) {
     max-width: 730px;

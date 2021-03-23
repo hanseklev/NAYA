@@ -51,7 +51,7 @@ const Article = styled.article`
   align-items: center;
   justify-content: center;
   text-decoration: none;
-  margin: 1rem auto;
+  margin: 0rem auto;
   min-width: 250px;
 
   .gatsby-image-wrapper {

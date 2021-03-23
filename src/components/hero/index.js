@@ -2,10 +2,11 @@ import GatsbyImage from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
 
-const heroHeight = ["200px","240px", "300px"]
+const heroHeight = ["240px","240px", "300px"]
 
 const Hero = ({
   title,
+  textAlign, 
   hasText = false,
   desktopImage,
   mobileImage,
@@ -36,9 +37,9 @@ const Hero = ({
       </BackgroundImage>
       {hasText && (
         <ForegroundContainer fullHeight={fullHeight}>
-          <Text>
-            <Title>{title}</Title>
-          </Text>
+          <TextBox>
+            <Title align={textAlign}>{title}</Title>
+          </TextBox>
         </ForegroundContainer>
       )}
     </Container>
@@ -53,7 +54,7 @@ const Container = styled.header`
   padding: 0;
   overflow: hidden;
 
-  height: ${props => (props.fullHeight ? "100vh" : heroHeight[0])};
+  height: ${props => (props.fullHeight ? "570px" : heroHeight[0])};
 
   @media (min-width: 550px) {
     height: ${heroHeight[1]};
@@ -78,9 +79,11 @@ const ForegroundContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: center;
+  height: ${heroHeight[0]};
+
   ${props =>
     props.fullHeight &&
-    "height: 100vh; align-items: center; "}
+    "height: 570px; align-items: center; "}
 
   @media (min-width: 550px) {
     height: ${heroHeight[1]};
@@ -93,10 +96,10 @@ const ForegroundContainer = styled.div`
   }
 `
 
-const Text = styled.div`
+const TextBox = styled.div`
   display: block;
   color: rgb(255, 255, 255);
-  text-align: center;
+  text-align: ${props => props.align || 'center'};
   padding: 0px;
   z-index: 51;
   margin: 0 auto;
@@ -105,7 +108,6 @@ const Text = styled.div`
 
 const Title = styled.h1`
   color: var(--color-secondary);
-  text-align: center;
   font-weight: 400;
   font-style: normal;
   font-size: 3rem;
@@ -113,5 +115,7 @@ const Title = styled.h1`
 
   @media (min-width: 550px) {
     font-size: 3rem;
+    text-align: ${props => props.align };
+    padding-left: 5rem;
   }
 `

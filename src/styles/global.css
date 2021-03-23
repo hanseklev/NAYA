@@ -50,6 +50,7 @@ body {
 :root {
   --bg-primary: #fbfaf7;
   --bg-secondary: #e4ded1;
+  --bg-dark: #E5E0D3;
   --color-text: #655a46;
   --color-accent: #6d735d;
   --color-muted: rgb(120, 120, 120);

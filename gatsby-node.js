@@ -10,6 +10,7 @@ async function createBlogPages(graphql, actions) {
           node {
             id
             slug
+            link
           }
         }
       }

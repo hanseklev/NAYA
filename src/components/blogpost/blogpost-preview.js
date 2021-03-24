@@ -3,7 +3,6 @@ import GatsbyImage from "gatsby-image"
 import parse from "html-react-parser"
 import React from "react"
 import styled from "styled-components"
-import { getBlogUrl } from "../../lib/helpers"
 import { StyledLink } from "../_shared/styles"
 
 const BlogPostPreview = props => {
@@ -13,10 +12,7 @@ const BlogPostPreview = props => {
 
   return (
     <Article>
-      <Link
-        style={{ textDecoration: "none", width: "100%" }}
-        to={getBlogUrl(props.slug)}
-      >
+      <Link style={{ textDecoration: "none", width: "100%" }} to={props.link}>
         <header style={{ width: "100%" }}>
           <ImageContainer>
             {thumbImg && (
@@ -36,7 +32,7 @@ const BlogPostPreview = props => {
       </div>
       <StyledLink
         weight="550"
-        to={getBlogUrl(props.slug)}
+        to={props.link}
         style={bottomLinkStyle}
       >
         Les mer

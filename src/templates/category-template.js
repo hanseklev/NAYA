@@ -41,6 +41,7 @@ export const pageQuery = graphql`
           date
           excerpt
           slug
+          link
           author {
             node {
               name

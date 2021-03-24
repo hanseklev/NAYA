@@ -11,6 +11,7 @@ export const query = graphql`
       slug
       excerpt
       title
+      link
       date(formatString: "DD.MM.YY")
       content
       author {

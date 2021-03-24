@@ -35,6 +35,7 @@ export const JournalPageQuery = graphql`
           title
           excerpt
           slug
+          link
           date(formatString: "DD.MM.YY")
           featuredImage {
             node {

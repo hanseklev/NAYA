@@ -19,8 +19,6 @@ const MainLayout = ({ hideFooter, children }) => {
 const Layout = styled.main`
   padding: 0;
   margin: 0 auto;
-  position: relative;
-  min-height: 400px;
   margin-bottom: 100px;
   background: #fbfaf7;
   width:100%;
@@ -35,3 +33,11 @@ MainLayout.propTypes = {
 }
 
 export default MainLayout
+
+
+/*
+
+ position: relative;
+  min-height: 400px;
+
+  */

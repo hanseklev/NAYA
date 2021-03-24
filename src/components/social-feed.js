@@ -47,12 +47,12 @@ const SocialFeed = ({ globalLink, description }) => {
 
 const SocialContainer = styled.div`
   width: 100%;
-  padding: 0 1rem;
+  padding: 0 2rem;
   text-align: center;
 
   .item {
-    width: 40%;
-    margin-bottom: 0.5rem;
+    width: 100%;
+    margin-bottom: 1rem;
     transition: transform 0.3s ease;
 
     &:hover {
@@ -63,6 +63,8 @@ const SocialContainer = styled.div`
   @media (min-width: 350px) {
     display: flex;
     flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 768px;
 
     .item {
       flex: 1;

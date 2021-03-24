@@ -17,7 +17,7 @@ const RecentPosts = ({ dark }) => {
           <StyledLink to="/journal">HER</StyledLink> for å komme til arkivet{" "}
         </Paragraph>
       </Section>
-      <BlogPostPreviewGrid edges={postEdges} />
+      <BlogPostPreviewGrid edges={postEdges}  columns={1}/>
     </>
   )
 }

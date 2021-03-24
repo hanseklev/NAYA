@@ -1,15 +1,15 @@
-import Image from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
-import { TextBox, Paragraph, StyledLink } from "../../_shared/styles"
+import { Paragraph, StyledLink, TextBox } from "../../_shared/styles"
+import ProductPreview from "../product-preview"
 
 const ProductCarousel = ({ title, description, items }) => {
   return (
     <CarouselWrapper>
       {(description || title) && (
-        <TextBox style={{ backgroundColor: "inherit", marginBottom:'3rem' }}>
+        <TextBox style={{ backgroundColor: "inherit", marginBottom: "3rem" }}>
           {title && (
-            <h1
+            <h2
               style={{
                 fontSize: "2.5rem",
                 paddingTop: "1rem",
@@ -18,39 +18,36 @@ const ProductCarousel = ({ title, description, items }) => {
               }}
             >
               {title}
-            </h1>
+            </h2>
           )}
           {description && <Paragraph center>{description}</Paragraph>}
         </TextBox>
       )}
       {items.length > 0 &&
-        items.map(item => (
-          <a href="/shop" key={item.id} className="item">
-            <div className="item-title">
-              <h3 style={{ marginLeft: "auto", color: "var(--color-text)" , textAlign:'right'}}>
-                En bag
-              </h3>
-            </div>
-            {item.localFile && (
-              <Image
-                alt={item.altText}
-                fluid={item.localFile.childImageSharp.fluid}
-                width="80%"
-              />
-            )}
-          </a>
-        ))}
+        items.map((item, idx) => {
+          return (
+            <ProductPreview
+              key={`${idx}id`}
+              mainImg={item[0].localFile}
+              secondaryImg={item[1].localFile}
+              slug="shop"
+            />
+          )
+        })}
+
       <TextBox
         style={{
-          padding: "1rem",
+          padding: "1rem 0",
           margin: "auto",
-          textAlign: "center",
+          textAlign: "left",
           backgroundColor: "inherit",
           minHeight: "200px",
         }}
       >
-        <h2>Noe for en hver smak..</h2>
-      <StyledLink weight="600" to="/shop" >Sjekk ut flere produkter her</StyledLink>
+        <h3 style={{ textAlign: "left" }}>Noe for en hver smak..</h3>
+        <StyledLink weight="400" size="14px" to="/shop">
+          Sjekk ut flere produkter her
+        </StyledLink>
       </TextBox>
     </CarouselWrapper>
   )
@@ -110,3 +107,20 @@ const CarouselWrapper = styled.section`
     }
   }
 `
+
+/*
+
+  <a href="/shop" key={item.id} className="item" key={idx}>
+              <div className="item-title">
+                <h3
+                  style={{
+                    marginLeft: "auto",
+                    color: "var(--color-text)",
+                    textAlign: "right",
+                  }}
+                >
+                  En bag
+                </h3>
+              </div>
+
+              */

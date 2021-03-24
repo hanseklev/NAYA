@@ -27,7 +27,7 @@ export default function BlogPost(props) {
           <li>~</li>
           <li>{author.node.name}</li>
         </AuthorHeader>
-        {parse(content)}
+        {content && parse(content)}
         <hr />
         <Author author={author} />
       </ContentContainer>

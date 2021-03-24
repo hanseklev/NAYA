@@ -7,9 +7,8 @@ import { StyledLink } from "../_shared/styles"
 const Categories = ({ categories, active, title='Kategorier' }) => {
   return (
     <CategoryContainer>
-      <h2 style={{fontSize:'1rem'}}>{title}</h2>
       <StyledLink to={`/journal`} key="all">
-        Alle
+        ALLE
       </StyledLink>
       {categories
         .filter(c => !c.name.toLowerCase().includes("uncat"))
@@ -28,6 +27,7 @@ const Categories = ({ categories, active, title='Kategorier' }) => {
 
 const CategoryContainer = styled.nav`
   margin: 0 auto;
+  padding-top: 1.5rem;
   width: 100%;
   text-align: center;
 `

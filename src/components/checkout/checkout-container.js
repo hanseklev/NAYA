@@ -1,15 +1,14 @@
-import { useMutation, useQuery } from "@apollo/client"
+import { useMutation } from "@apollo/client"
 import React from "react"
 import { CHECKOUT_MUTATION } from "../../mutations/checkout"
-import { GET_CART } from "../../queries/get-cart"
 import CheckoutForm from "./checkout-form"
 
 const CheckoutContainer = () => {
   //const [, setCart] = useContext(ShopContext)
   const [checkout] = useMutation(CHECKOUT_MUTATION)
-  const { cart } = useQuery(GET_CART)
-
-  const CART_TOTAL = cart && cart.total
+  
+  //const { cart } = useQuery(GET_CART)
+  //const CART_TOTAL = cart && cart.total
 
   async function handlePayment(customerData) {
     console.log(customerData)

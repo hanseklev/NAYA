@@ -66,10 +66,10 @@ const CartContainer = ({ closeCart }) => {
   return (
     <Wrapper>
       <nav style={{ marginBottom: "0.1rem", height: "1rem" }}>
-        <Button goBack label="Lukk" onClick={() => closeCart()} />
+        <Button goBack onClick={() => closeCart()} />
       </nav>
       <div className="cart-header">
-        <h1 style={{marginBottom:'0.5rem'}}>Handlekurven</h1>
+        <h2 style={{marginBottom:'0.5rem'}}>Handlekurven</h2>
         {cartIsEmpty ?  <div> er tom </div> : null }
       </div>
       { cartItems && cartItems.length > 0 ? (
@@ -149,10 +149,6 @@ const Wrapper = styled.div`
 
 `
 
-const EmptyBasketNotifier = styled.div`
-  margin-bottom: 1rem;
-  text-align: center;
-`
 
 const CartList = styled.ul`
   display: flex;
@@ -165,3 +161,10 @@ const Section = styled.div`
   display: flex;
   padding: 12px 0;
 `
+
+
+
+/* const EmptyBasketNotifier = styled.div`
+  margin-bottom: 1rem;
+  text-align: center;
+` */

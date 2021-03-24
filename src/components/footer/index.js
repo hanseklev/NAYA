@@ -9,11 +9,7 @@ const Footer = ({ isHidden }) => {
   return (
     <FooterContainer>
       <FooterSection>
-        <div style={{ marginLeft: "-5px", marginBottom: "1rem" }}>
-          <Logo />
-        </div>
-
-        <div>
+        <div style={{ flex: 1 }}>
           <FooterTitle>Privacy</FooterTitle>
           <Link className="menu_link" to="/privacy-policy">
             Privacy Policy
@@ -22,7 +18,7 @@ const Footer = ({ isHidden }) => {
             General Terms
           </Link>
         </div>
-        <div>
+        <div style={{ flex: 3 }}>
           <FooterTitle>Information</FooterTitle>
           <Link className="menu_link" to="/about">
             About
@@ -31,8 +27,9 @@ const Footer = ({ isHidden }) => {
             Contact
           </Link>
         </div>
-        <div style={{ marginRight: "2rem" }}>
-          <p>Follow us on social media!</p>
+        <div style={{ marginLeft: "-5px" }} className="socials">
+          <Logo />
+          <div style={{ marginBottom: "5px" }}>FØLG OSS</div>
           <SocialIcons size="30" />
         </div>
       </FooterSection>
@@ -52,31 +49,41 @@ const FooterContainer = styled.footer`
   color: var(--color-text);
 
   @media (min-width: 768px) {
-    padding: 54px 24px 24px 36px;
+    padding: 24px 24px 24px 36px;
   }
 `
 
 const FooterTitle = styled.h3`
-  font-size: 18px;
+  font-size: 14px;
   text-align: left;
   margin: 0.5rem 0;
 `
 
 const FooterSection = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   align-items: flex-start;
-  margin-bottom: 1rem;
-  line-height: 1.6;  
+  line-height: 1.6;
 
+  .socials {
+    text-align: left;
+  }
   .menu_link {
     display: block;
+    padding: 4px 0;
+  }
+
+  div {
+    margin-bottom: 2px;
   }
 
   @media (min-width: 768px) {
     flex-direction: row;
-    justify-content: space-between;
     margin-bottom: 2rem;
+
+    .socials {
+      text-align: right;
+    }
   }
 
   a {

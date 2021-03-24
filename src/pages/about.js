@@ -21,7 +21,6 @@ const AboutPage = props => {
         hasText
         title={title}
         textAlign="left"
-        fullHeight
       />
       <AboutSection
         title={aboutsection.abouttitle}

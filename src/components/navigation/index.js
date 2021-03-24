@@ -11,9 +11,6 @@ export const NavigationDesktop = ({ hide, location }) => {
     setShow(!show)
   }
 
-  if (show) {
-  }
-
   return (
     <>
       {!show && (
@@ -22,11 +19,11 @@ export const NavigationDesktop = ({ hide, location }) => {
             <StyledLink className="desktop_link" to="/shop">
               Shop
             </StyledLink>
-            <StyledLink className="desktop_link" to="/about">
-              About
-            </StyledLink>
             <StyledLink className="desktop_link" to="/journal">
               Journal
+            </StyledLink>
+            <StyledLink className="desktop_link last" to="/about">
+              About
             </StyledLink>
           </div>
 
@@ -36,18 +33,28 @@ export const NavigationDesktop = ({ hide, location }) => {
       <MobileNavigation>
         <ModalContainer isOpen={show} slideLeft={true}>
           <Burger isOpen={true} onClick={toggleMenu} className="close_icon" />
-          <StyledLink to="/" onClick={toggleMenu} className="mobile_link">
-            home
-          </StyledLink>
-          <StyledLink to="/about" onClick={toggleMenu} className="mobile_link">
-            about
-          </StyledLink>
-          <StyledLink to="/shop" onClick={toggleMenu} className="mobile_link">
-            shop
-          </StyledLink>
-          <StyledLink to="/journal" onClick={toggleMenu} className="mobile_link">
-            Journal
-          </StyledLink>
+          <div className="mobile_link_wrap">
+            <StyledLink to="/" onClick={toggleMenu} className="mobile_link">
+              home
+            </StyledLink>
+            <StyledLink to="/shop" onClick={toggleMenu} className="mobile_link">
+              shop
+            </StyledLink>
+            <StyledLink
+              to="/journal"
+              onClick={toggleMenu}
+              className="mobile_link"
+            >
+              Journal
+            </StyledLink>
+            <StyledLink
+              to="/about"
+              onClick={toggleMenu}
+              className="mobile_link"
+            >
+              about
+            </StyledLink>
+          </div>
         </ModalContainer>
       </MobileNavigation>
     </>
@@ -63,9 +70,14 @@ const DesktopNavigation = styled.nav`
     margin-right: 1rem;
   }
 
+  .last {
+    margin-right: 0;
+  }
+
   .desktop_link_container {
     display: none;
     text-transform: uppercase;
+    margin-left: 1rem;
   }
 
   .icon {
@@ -83,7 +95,7 @@ const DesktopNavigation = styled.nav`
     }
 
     .icon {
-      display:none;
+      display: none;
     }
   }
 `
@@ -98,8 +110,14 @@ const MobileNavigation = styled.nav`
     z-index: 3;
   }
 
+  .mobile_link_wrap {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+  }
+
   .mobile_link {
-    font-size: 2rem;
+    font-size: 1rem;
     text-transform: uppercase;
     padding: 1rem 0;
     font-weight: bold;

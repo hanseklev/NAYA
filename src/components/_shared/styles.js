@@ -45,25 +45,6 @@ ${'' /*   min-height: 100vh;
 
   ${props => props.center && "text-align: center;"}
 
-  .wp-block-image, .wp-image {
-    padding: 1rem 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .figure img {
-    width: 100%;
-  }
-
-  figure {
-    padding: 0;
-  }
-
-
-  ${'' /* p,
-  ul  {
-    padding: 1rem 1rem;
-  } */}
 
   @media (min-width: 769px) {
     max-width: 730px;
@@ -83,7 +64,7 @@ export const Paragraph = styled.p`
 
 export const StyledLink = styled(props => <Link {...props} />)`
   color: var(--color-text);
-  font-size: 16px;
+  font-size: ${props => props.size || '16px'};
   font-weight: ${props => props.weight || 400};
   text-decoration: none;
   transition: 0.6s color cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -138,3 +119,25 @@ export const ProductContainer = styled.article`
     }
   }
 `
+
+
+/*
+
+.wp-block-image, .wp-image {
+    padding: 1rem 0;
+    width: 100%;
+    text-align: center;
+  }
+
+  .figure img {
+    width: 100%;
+  }
+
+  .ytp-cued-thumbnail-overlay{
+    width: 100%;
+  }
+
+  figure {
+    padding: 0;
+  }
+  */

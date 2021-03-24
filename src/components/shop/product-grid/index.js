@@ -5,20 +5,34 @@ import ProductPreview from "../product-preview"
 
 const ShopList = ({ products }) => {
   return (
-    <ShopListContainer>
+    <ShopListGrid>
       {products &&
         products.map(p => {
+          const mainImg =
+            p.node.featuredImage && p.node.featuredImage.node.localFile
+          const secondaryImg =
+            p.node.customProduct.secondaryimage &&
+            p.node.customProduct.secondaryimage.localFile
+
+          const slug = `/product/${p.id}`
           return (
             <motion.li positionTransition key={p.node.id}>
-              <ProductPreview {...p} />
+              <ProductPreview
+                isProduct
+                {...p}
+                mainImg={mainImg}
+                secondaryImg={secondaryImg}
+                slug={slug}
+              />
             </motion.li>
           )
         })}
-    </ShopListContainer>
+    </ShopListGrid>
   )
 }
 
-const ShopListContainer = styled.ul`
+const ShopListGrid = styled.ul`
+  max-width: 960px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   grid-gap: 46px;
@@ -28,6 +42,10 @@ const ShopListContainer = styled.ul`
 
   @media screen and (min-width: 450px) {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 0 4rem;
   }
 `
 

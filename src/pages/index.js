@@ -1,28 +1,34 @@
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
+import RecentPosts from "../components/blogpost/recent-posts"
 import Hero from "../components/hero"
 import MainLayout from "../components/layout"
 import IntroSection from "../components/section/intro"
 import SEO from "../components/seo"
 import ProductCarousel from "../components/shop/carousel"
-import RecentPosts from "../components/blogpost/recent-posts"
 
 const IndexPage = () => {
   return (
     <StaticQuery
       query={query}
       render={data => {
-        const { hero, introsection, productShowcase: showcase } = data.wpPage
+        const { hero, introsection, showcase } = data.wpPage
         return (
           <MainLayout>
             <SEO title="NAYA" />
-             <Hero
+            <Hero
               hasText={true}
               desktopImage={hero.heroimagedesktop.localFile}
               mobileImage={hero.heroimagemobile.localFile}
               title={hero.herotitle}
               fullHeight
             />
+            {/*  <Hero2
+              desktopImage={hero.heroimagedesktop.localFile}
+              mobileImage={hero.heroimagemobile.localFile}
+              hasText
+              title={hero.herotitle}
+            /> */}
             <IntroSection
               title={introsection.introtitle}
               description={introsection.introdescription}
@@ -30,9 +36,9 @@ const IndexPage = () => {
               haslink
             />
             <ProductCarousel
-              title={showcase.ptitle}
-              description={showcase.pdescription}
-              items={showcase.products}
+              title={showcase.showcasetitle}
+              description={showcase.showcasedescription}
+              items={[showcase.imageOne, showcase.imageTwo]}
             />
             <RecentPosts dark />
           </MainLayout>
@@ -82,22 +88,33 @@ const query = graphql`
           }
         }
       }
-      productShowcase {
-        pdescription
-        ptitle
-        products {
+      showcase: productPreviewImages {
+        imageOne {
           ... on WpMediaItem {
-            id
-            altText
             localFile {
               childImageSharp {
-                fluid(maxWidth: 400) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }
             }
           }
         }
+        imageTwo {
+          ... on WpMediaItem {
+            id
+            title
+            localFile {
+              childImageSharp {
+                fluid {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
+          }
+        }
+        showcasetitle
+        showcasedescription
       }
     }
   }

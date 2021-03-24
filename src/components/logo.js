@@ -6,6 +6,7 @@ const SvgLogo = () => (
     src={require("../images/naya_logo_positiv.svg")}
     width="78px"
     alt="NAYA homepage"
+    aria-label="NAYA logo"
   />
 )
 

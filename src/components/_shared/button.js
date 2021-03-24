@@ -57,7 +57,7 @@ export default function Button({
         {...props}
         style={{ display: "flex", alignItems: "center", cursor: "pointer" }}
       >
-        <svg viewBox="0 0 16 16" width="24px" fill={primaryColor}>
+        <svg viewBox="0 0 16 16" width="20px" fill={primaryColor}>
           <title> {"Basket"} </title>{" "}
           <path d="M16 16H0V5h3v1H1v9h14V6h-2V5h3v11z" />
           <path d="M12 9h-1V1H5v8H4V0h8v9z" />

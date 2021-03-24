@@ -1,5 +1,6 @@
 @import "../fonts/typgraphy.css";
 
+
 *,
 ::before,
 ::after {
@@ -69,7 +70,7 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: "Din1451";
+  font-family: "Din1451", "Helvetica", sans-serif;
   text-transform: uppercase;
   color: var(--color-text);
   text-align: center;

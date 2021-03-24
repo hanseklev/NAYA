@@ -37,7 +37,7 @@ const IntroSection = ({ title, image, description, haslink, ...props }) => {
     <IntroContainer>
       <TextBox>
         {title && (
-          <h1
+          <h2
             style={{
               fontSize: "2.5rem",
               padding: "1rem 0",
@@ -46,7 +46,7 @@ const IntroSection = ({ title, image, description, haslink, ...props }) => {
             }}
           >
             {title}
-          </h1>
+          </h2>
         )}
 
         <Paragraph primary>
@@ -54,9 +54,11 @@ const IntroSection = ({ title, image, description, haslink, ...props }) => {
           {haslink && (
             <StyledLink
               to="/about"
-              style={{ margin: "1rem 0", display: "block", fontWeight: "bold" }}
+              size="14px"
+              weight="bold"
+              style={{ margin: "1rem 0", display: "block"}}
             >
-              Finn ut mer her
+              MER
             </StyledLink>
           )}
         </Paragraph>

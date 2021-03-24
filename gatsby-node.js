@@ -44,12 +44,13 @@ async function createBlogPages(graphql, actions) {
   const { allWpPost, allWpProduct, allWpCategory, allWpTag } = result.data
 
   await allWpPost.edges.forEach(edge => {
+    console.log(edge.node.link)
     createPage({
-      path: `post/${edge.node.slug}`,
+      path: edge.node.link,
       component: path.resolve("./src/templates/blog-post-template.js"),
       context: {
         id: edge.node.id,
-        slug: edge.node.slug,
+        slug: edge.node.link,
       },
     })
   })

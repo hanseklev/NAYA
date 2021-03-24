@@ -2,7 +2,6 @@ import { graphql, useStaticQuery } from "gatsby"
 import parse from "html-react-parser"
 import React from "react"
 import MainLayout from "../components/layout"
-import SplitSection from "../components/section/split-section"
 import SEO from "../components/seo"
 import { ContentContainer } from "../components/_shared/styles"
 

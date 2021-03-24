@@ -13,6 +13,14 @@ const SocialIcons = () => {
   return (
     <nav>
       <a
+        href={igLink}
+        title="Instagram"
+        aria-label="Instagram link"
+        style={style}
+      >
+        <IgIcon />
+      </a>
+      <a
         href={fbLink}
         title="Facebook"
         aria-label="Facebook link"
@@ -20,16 +28,8 @@ const SocialIcons = () => {
       >
         <FbIcon />
       </a>
-      <a
-        href={linkedLink}
-        title="LinkedIn"
-        aria-label="LinkedIn link"
-        style={style}
-      >
+      <a href={linkedLink} title="LinkedIn" aria-label="LinkedIn link">
         <LinkedInIcon />
-      </a>
-      <a href={igLink} title="Instagram" aria-label="Instagram link">
-        <IgIcon />
       </a>
     </nav>
   )

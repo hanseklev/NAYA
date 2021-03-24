@@ -1,31 +1,35 @@
 import PropTypes from "prop-types"
-import React, { useContext, useState } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { ShopContext } from "../../context/shop-context"
+import { debounce } from "../../lib/helpers"
 import CartContainer from "../cart/cart-container"
 import Logo from "../logo"
 import { NavigationDesktop } from "../navigation"
 import Button from "../_shared/button"
 import ModalContainer from "../_shared/modal-container"
 
-const Header = ({ siteTitle, openBasket }) => {
+const Header = () => {
   const [isHidden, setIsHidden] = useState(false)
   const { openCart, setOpenCart, cart } = useContext(ShopContext)
-  //const [isCartOpen, setOpenCart] = useState(false)
-  const LinkNames = ['Home', 'About', 'Journal', 'About']
 
   const quantity = cart.totalProductsCount
 
-  if (typeof window !== "undefined") {
-    let prevScrollPosition = window.pageYOffset
-    window.onscroll = () => {
-      /* if (isCartOpen) {
-        return
-      } */
-      window.pageYOffset < prevScrollPosition
-        ? setIsHidden(false)
-        : setIsHidden(true)
-      prevScrollPosition = window.pageYOffset
+  useEffect(() => {
+    let mounted = true
+    if (mounted) debounce(setScrollDirection, 100)
+    return () => { mounted = false }
+  }, [])
+
+  function setScrollDirection() {
+    if (typeof window !== "undefined") {
+      let prevScrollPosition = window.pageYOffset
+      window.onscroll = () => {
+        window.pageYOffset < prevScrollPosition
+          ? setIsHidden(false)
+          : setIsHidden(true)
+        prevScrollPosition = window.pageYOffset
+      }
     }
   }
 
@@ -33,12 +37,12 @@ const Header = ({ siteTitle, openBasket }) => {
     <>
       <Container hideHeader={isHidden}>
         <Column>
-          <NavigationDesktop linkNames={LinkNames} />
+          <NavigationDesktop />
         </Column>
-        <Column>
+        <Column pr={2}>
           <Logo styles={{ border: "solid" }} />
         </Column>
-        <Column>
+        <Column pr={2}>
           <Button
             basket
             quantity={quantity}
@@ -58,8 +62,6 @@ const Container = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 1rem;
-  padding-right: 1rem;
   height: 60px;
   position: sticky;
   position: -webkit-sticky;
@@ -73,13 +75,20 @@ const Container = styled.header`
 const Column = styled.div`
   display: flex;
   flex: 1;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-right: ${props => props.pr || 0}
 
   &:first-child {
     justify-content: flex-start;
   }
 
+  &:nth-child(2) {
+    padding-left: ${props => props.pr || 0}rem;
+    justify-content: center;
+  }
+
   &:last-child {
+    padding-right: 2rem;
     justify-content: flex-end;
   }
 `

@@ -20,7 +20,7 @@ import styled from "styled-components"
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   height: 100vh;
   text-align: left;
   padding: 1rem 2rem;
@@ -38,8 +38,8 @@ const Container = styled.div`
 
   @media (min-width: 769px) {
     width: 45%;
-    right: 0;
     top: 0;
+    ${props => props.slideLeft ? 'left: 0;' : 'right: 0;'};
 
     transform: translate(
       ${props => (props.isOpen ? "125%" : props.slideLeft ? "-200%" : "250%")}

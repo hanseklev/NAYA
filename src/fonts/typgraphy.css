@@ -8,6 +8,7 @@
   src: url("./ProximaNova-Regular.woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -15,4 +16,5 @@
   src: url("./din1451.ttf");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }

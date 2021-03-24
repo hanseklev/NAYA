@@ -2,7 +2,7 @@ import GatsbyImage from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
 
-const heroHeight = ["240px","240px", "300px"]
+const heroHeight = ["180px","240px", "300px"]
 
 const Hero = ({
   title,
@@ -110,10 +110,16 @@ const Title = styled.h1`
   color: var(--color-secondary);
   font-weight: 400;
   font-style: normal;
-  font-size: 3rem;
+  font-size: 2rem;
   line-height: 110%;
 
-  @media (min-width: 550px) {
+  @media (min-width: 769px) {
+    font-size: 2.5rem;
+    text-align: ${props => props.align };
+    padding-left: 5rem;
+  }
+
+  @media (min-width: 769px) {
     font-size: 3rem;
     text-align: ${props => props.align };
     padding-left: 5rem;

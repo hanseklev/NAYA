@@ -6,8 +6,11 @@ import MainLayout from "../components/layout"
 import IntroSection from "../components/section/intro"
 import SEO from "../components/seo"
 import ProductCarousel from "../components/shop/carousel"
+import SocialFeed from "../components/social-feed"
 
 const IndexPage = () => {
+  const IG_LINK = 'https://www.instagram.com/nayaequalsnew/'
+  const IG_FEED_DESCRPT = 'Sjekk ut de tre siste innleggene '
   return (
     <StaticQuery
       query={query}
@@ -41,6 +44,7 @@ const IndexPage = () => {
               items={[showcase.imageOne, showcase.imageTwo]}
             />
             <RecentPosts dark />
+            <SocialFeed globalLink={IG_LINK} description={IG_FEED_DESCRPT}/>
           </MainLayout>
         )
       }}

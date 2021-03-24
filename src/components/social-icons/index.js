@@ -1,17 +1,29 @@
 import React from "react"
+import styled from "styled-components"
 import { primaryColor } from "../../styles/theme"
+
+const style = {
+  marginRight: "5px",
+}
+
+const SocialIconWrap = styled.div`
+  margin-top: 10px;
+  svg {
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+`
 
 const SocialIcons = () => {
   const fbLink = "http://facebook.com"
   const linkedLink = "http://linkedin.com"
   const igLink = "http://instagram.com"
 
-  const style = {
-    marginRight: "5px",
-  }
-
   return (
-    <nav>
+    <SocialIconWrap>
       <a
         href={igLink}
         title="Instagram"
@@ -31,7 +43,7 @@ const SocialIcons = () => {
       <a href={linkedLink} title="LinkedIn" aria-label="LinkedIn link">
         <LinkedInIcon />
       </a>
-    </nav>
+    </SocialIconWrap>
   )
 }
 

@@ -8,6 +8,17 @@ module.exports = {
   },
   plugins: [
     {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        username: `7317678593`,
+        /*   access_token: "IGQVJVMnVKVFpUbnNVZAkI4bno0dFV4WGU1bmhaZAklRX1l5MldTcEhpS3VPQUQzRDg5bGl0QXJhMUFmZAXdjMzdhSUxpZAW1QZAWlYYVBjNUpJdXdUZAVphTVRWcmVrYjJ1VnM1UVFiX1dR",
+        instagram_id: "17841407397804709",
+        paginate: 100,
+        maxPosts: 3,
+        hashtags: true, */
+      },
+    },
+    {
       resolve: "gatsby-source-wordpress",
       options: {
         verbose: true,
@@ -43,7 +54,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-gtag`,
       options: {
         trackingIds: [
-          "UA-179541154-1", // Google Analytics 
+          "UA-179541154-1", // Google Analytics
         ],
       },
     },

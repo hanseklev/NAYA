@@ -3,23 +3,29 @@ import styled from "styled-components"
 
 const Author = ({ author }) => {
   const { name, description, avatar } = author.node
+  const parseUrl = avatar.url.replace("fit=", "")
   return (
     <Container>
       <Section>
         <div className="author_image">
           {avatar.url && (
             <img
-              src={avatar.url}
-              width={avatar.width || '78px'}
+              src={parseUrl}
               alt="Bilde av forfatteren"
-              style={{margin:'0 auto'}}
+              style={{
+                margin: "0 auto",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
+              width="200px"
+              height="200px"
             />
           )}
         </div>
       </Section>
 
       <Section size="2">
-        <h3 style={{ textAlign: "left"}}>{name}</h3>
+        <h3 style={{ textAlign: "left" }}>{name}</h3>
         {description && <p>{description}</p>}
       </Section>
     </Container>
@@ -29,8 +35,13 @@ const Author = ({ author }) => {
 const Container = styled.aside`
   margin-top: 2rem;
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  @media (min-width: 450px) {
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
 `
 const Section = styled.div`
   flex: ${props => props.size || 1};
@@ -42,6 +53,7 @@ const Section = styled.div`
     display: flex;
     align-items: center;
     justify-items: center;
+    padding-right: 1.5rem;
     width: 100%;
     height: 100%;
   }

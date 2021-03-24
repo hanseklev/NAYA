@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Paragraph, StyledLink, TextBox } from "../../_shared/styles"
-import ProductPreview from "../product-preview"
+import ProductPreview from "../product-preview/index2"
 
 const ProductCarousel = ({ title, description, items }) => {
   return (
@@ -31,13 +31,13 @@ const ProductCarousel = ({ title, description, items }) => {
               mainImg={item[0].localFile}
               secondaryImg={item[1].localFile}
               slug="shop"
+              className="product"
             />
           )
         })}
 
       <TextBox
         style={{
-          padding: "1rem 0",
           margin: "auto",
           textAlign: "left",
           backgroundColor: "inherit",
@@ -63,8 +63,14 @@ const CarouselWrapper = styled.section`
 
   @media (min-width: 600px) {
     padding: 120px 0;
+    padding-left: 2rem;
     columns: auto 2;
     column-gap: 40px;
+  }
+
+  .product {
+    width: 100%;
+    padding: 0 1rem;
   }
 
   .item {

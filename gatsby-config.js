@@ -29,6 +29,9 @@ module.exports = {
         develop: {
           hardCacheMediaFiles: true,
         },
+        production: {
+          hardCacheMediaFiles: true,
+        },
       },
     },
     {

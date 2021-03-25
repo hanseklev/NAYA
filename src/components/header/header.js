@@ -17,7 +17,7 @@ const Header = () => {
 
   useEffect(() => {
     let mounted = true
-    if (mounted) debounce(setScrollDirection, 100)
+    if (mounted) debounce(setScrollDirection, 300)
     return () => { mounted = false }
   }, [])
 

@@ -14,7 +14,7 @@ const ShopList = ({ products }) => {
             p.node.customProduct.secondaryimage &&
             p.node.customProduct.secondaryimage.localFile
 
-          const slug = `/product/${p.id}`
+          const slug = `/product/${p.node.id}`
           return (
             <motion.li positionTransition key={p.node.id}>
               <ProductPreview

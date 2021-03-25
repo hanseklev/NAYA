@@ -25,7 +25,7 @@ const Author = ({ author }) => {
       </Section>
 
       <Section size="2">
-        <h3 style={{ textAlign: "left" }}>{name}</h3>
+        <h3>{name}</h3>
         {description && <p>{description}</p>}
       </Section>
     </Container>
@@ -37,10 +37,18 @@ const Container = styled.aside`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h3 {
+    text-align: center;
+  }
   @media (min-width: 450px) {
     justify-content: space-between;
     flex-wrap: wrap;
     flex-direction: row;
+
+    h3 {
+      text-align: left;
+    }
   }
 `
 const Section = styled.div`

@@ -1,10 +1,12 @@
+import "@wordpress/block-library/build-style/style.css"
 import parse from "html-react-parser"
 import React from "react"
 import styled from "styled-components"
 import Hero from "../hero"
-import Author from "./author"
 import Button from "../_shared/button"
 import { ContentContainer } from "../_shared/styles"
+import Author from "./author"
+
 
 export default function BlogPost(props) {
   const { title, date, content, author, featuredImage } = props

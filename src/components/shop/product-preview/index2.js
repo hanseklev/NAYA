@@ -12,21 +12,24 @@ const ProductPreview = ({
   ...props
 }) => {
   return (
-    <CarouselImageContainer>
-      <Link to={slug}>
+      <CarouselImageContainer>
+          <Link to={slug}>
+
         {mainImg && <MainImg className={"main_img"} img={mainImg} />}
         <div className="overlay_img">
-          {secondaryImg && <SecondaryImg img={secondaryImg} />}
+          {secondaryImg && (
+            <SecondaryImg img={secondaryImg} />
+          )}
         </div>
-      </Link>
+        </Link>
 
-      {isProduct && (
-        <ProductInfo>
-          <h3>{props.node.name}</h3>
-          <span>{parsePrice(props.node.price)} kr</span>
-        </ProductInfo>
-      )}
-    </CarouselImageContainer>
+        {isProduct && (
+          <ProductInfo>
+            <h3>{props.node.name}</h3>
+            <span>{parsePrice(props.node.price)} kr</span>
+          </ProductInfo>
+        )}
+      </CarouselImageContainer>
   )
 }
 
@@ -72,10 +75,10 @@ const ProductInfo = styled.section`
 
 const CarouselImageContainer = styled.article`
   position: relative;
-  width: 80%;
   margin-bottom: 4rem;
-  width: 300px;
-  min-height: 388px;
+  width: 100%;
+${'' /*   width: 300px;
+ min-height: 388px;*/}  
 
   .main_img {
     display: block;

@@ -23,28 +23,29 @@ const ProductCarousel = ({ title, description, items }) => {
           {description && <Paragraph center>{description}</Paragraph>}
         </TextBox>
       )}
-      {items.length > 0 &&
-        items.map((item, idx) => {
-          return (
-            <ProductPreview
-              key={`${idx}id`}
-              mainImg={item[0].localFile}
-              secondaryImg={item[1].localFile}
-              slug="shop"
-              className="product"
-            />
-          )
-        })}
+      <div className="product">
+        {items.length > 0 &&
+          items.map((item, idx) => {
+            return (
+              <ProductPreview
+                key={`${idx}id`}
+                mainImg={item[0].localFile}
+                secondaryImg={item[1].localFile}
+                slug="shop"
+              />
+            )
+          })}
+      </div>
 
       <TextBox
         style={{
           margin: "auto",
-          textAlign: "left",
+          textAlign: "center",
           backgroundColor: "inherit",
           minHeight: "200px",
         }}
       >
-        <h3 style={{ textAlign: "left" }}>Noe for en hver smak..</h3>
+        <h3>Noe for en hver smak..</h3>
         <StyledLink weight="400" size="14px" to="/shop">
           Sjekk ut flere produkter her
         </StyledLink>
@@ -61,16 +62,15 @@ const CarouselWrapper = styled.section`
   padding-bottom: 2rem;
   max-width: 1166px;
 
+  .product {
+    margin: 0 2rem;
+  }
+
   @media (min-width: 600px) {
     padding: 120px 0;
     padding-left: 2rem;
     columns: auto 2;
     column-gap: 40px;
-  }
-
-  .product {
-    width: 100%;
-    padding: 0 1rem;
   }
 
   .item {

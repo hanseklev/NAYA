@@ -77,8 +77,6 @@ const CarouselImageContainer = styled.article`
   position: relative;
   margin-bottom: 4rem;
   width: 100%;
-${'' /*   width: 300px;
- min-height: 388px;*/}  
 
   .main_img {
     display: block;

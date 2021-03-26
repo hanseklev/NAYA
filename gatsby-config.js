@@ -29,9 +29,6 @@ module.exports = {
         develop: {
           hardCacheMediaFiles: true,
         },
-        production: {
-          hardCacheMediaFiles: true,
-        },
       },
     },
     {
@@ -64,7 +61,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    `gatsby-plugin-sass`,
     `gatsby-plugin-styled-components`,
   ],
 }

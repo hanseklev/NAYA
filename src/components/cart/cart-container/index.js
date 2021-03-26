@@ -92,12 +92,12 @@ const CartContainer = ({ closeCart }) => {
       >
         <PriceSection
           label="Subtotal"
-          price={cart.totalProductsPrice && parsePrice(cart.totalProductsPrice)}
+          price={cart.totalProductsPrice && parsePrice(cart.subtotal)}
         />
         <PriceSection label="Frakt" price={SHIPPING} />
         <PriceSection
           label="Total"
-          price={cart.totalProductsPrice && parsePrice(cart.totalProductsPrice)}
+          price={cart.totalProductsPrice && parsePrice(cart.total)}
         />
       </div>      
         <Button

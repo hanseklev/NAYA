@@ -74,7 +74,7 @@ const FooterSection = styled.div`
   }
 
   div {
-    margin-bottom: 2px;
+    margin-bottom: 5px;
   }
 
   @media (min-width: 768px) {

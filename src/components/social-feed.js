@@ -25,17 +25,16 @@ const SocialFeed = ({ globalLink, description }) => {
   `)
   return (
     <SocialContainer>
-      <div style={{ width: "100%", marginBottom:'1rem' }}>
+      <div style={{ width: "100%", marginBottom: "1rem" }}>
         <h2>Instagram feed</h2>
-        <p style={{textAlign:'center'}}>{description}</p>
-
+        <p style={{ textAlign: "center" }}>{description}</p>
       </div>
       {feed.nodes.length > 0 &&
         feed.nodes.map(node => (
           <div key={node.id} className="item">
             <a href={globalLink} className="link">
               <GatsbyImage
-                style={{ width: "100%" }}
+                style={{ width: "220px", height: "220px", objectFit: "cover", border: 'solid 3px' , padding: '10px'}}
                 fluid={node.localFile.childImageSharp.fluid}
               />
             </a>
@@ -69,7 +68,6 @@ const SocialContainer = styled.div`
     .item {
       flex: 1;
       min-width: 50px;
-      display: inline-block;
       margin: 0 0.5rem;
     }
   }

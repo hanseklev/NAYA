@@ -48,11 +48,13 @@ export const ContentContainer = styled.div`
     width: 100%;
   }
 
-
   ${props => props.center && "text-align: center;"}
 
   @media (min-width: 769px) {
     max-width: 730px;
+  }
+
+  .paragraph-dark {
   }
 `
 
@@ -60,9 +62,9 @@ export const WordpressContent = styled.div`
   width: 100%;
   padding: 0 1.2rem;
   margin: 0 auto;
-  overflow-x:hidden;
+  overflow-x: hidden;
 
-  ${'' /* .columns-2 {
+  ${"" /* .columns-2 {
     display: inline-block;
     border: solid;
   } */}
@@ -76,27 +78,28 @@ export const Paragraph = styled.p`
   line-height: 1.6rem;
   letter-spacing: 0.04rem;
   margin: 0;
-  padding: 1rem;
+  padding: 0 1rem 1rem;
   text-align: ${props => (props.center ? "center" : "left")};
   color: var(--color-text);
-  ${"" /*  background-color: ${props =>
-    props.dark ? "var(--bg-secondary)" : "inherit"}; */}
+  word-wrap: break-word;
+
 `
 
 export const StyledLink = styled(props => <Link {...props} />)`
   color: var(--color-text);
   font-size: ${props => props.size || "16px"};
   font-weight: ${props => props.weight || 400};
-  text-decoration: none;
-  transition: 0.6s color cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  transition: 0.6s all cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
-  &:not(:last-child){
-  margin-right: 0.5rem;
-}
+  &:not(:last-child) {
+    margin-right: ${props => props.mr || "0.5rem;"};
   }
 
   &:hover {
-    color: black;
+    ${props =>
+      props.underline ? "text-decoration-color: var(--color-text)" : "color: black"};
   }
 `
 

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion"
 import React from "react"
 import styled from "styled-components"
-import ProductPreview from "../product-preview/index2"
+import ProductPreview from "../product-preview/index"
 
 const ShopList = ({ products }) => {
   return (
@@ -19,6 +19,7 @@ const ShopList = ({ products }) => {
             <motion.li positionTransition key={p.node.id}>
               <ProductPreview
                 isProduct
+                hasAnimate
                 {...p}
                 mainImg={mainImg}
                 secondaryImg={secondaryImg}

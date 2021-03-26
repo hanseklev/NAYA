@@ -67,7 +67,7 @@ const CarouselWrapper = styled.section`
   }
 
   @media (min-width: 600px) {
-    padding: 120px 0;
+    padding-bottom: 120px;
     padding-left: 2rem;
     columns: auto 2;
     column-gap: 40px;

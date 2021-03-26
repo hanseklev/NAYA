@@ -3,11 +3,10 @@ import React from "react"
 import styled from "styled-components"
 import { StyledLink } from "../_shared/styles"
 
-
-const Categories = ({ categories, active, title='Kategorier' }) => {
+const Categories = ({ categories, active, title = "Kategorier" }) => {
   return (
     <CategoryContainer>
-      <StyledLink to={`/journal`} key="all">
+      <StyledLink to={`/journal`} key="all" mr="1rem"  underline={true}>
         ALLE
       </StyledLink>
       {categories
@@ -16,7 +15,13 @@ const Categories = ({ categories, active, title='Kategorier' }) => {
         .map(category => {
           const url = _.kebabCase(category.name)
           return (
-            <StyledLink to={`/categories/${url}`} key={category.name} style={{textTransform:'uppercase'}}>
+            <StyledLink
+              to={`/categories/${url}`}
+              key={category.name}
+              style={{ textTransform: "uppercase" }}
+              underline
+              mr="1rem"
+            >
               {category.name}
             </StyledLink>
           )
@@ -31,6 +36,5 @@ const CategoryContainer = styled.nav`
   width: 100%;
   text-align: center;
 `
-
 
 export default Categories

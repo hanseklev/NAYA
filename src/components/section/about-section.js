@@ -21,16 +21,14 @@ const AboutContainer = styled.section`
     flex-direction: ${props => (props.flip ? "row-reverse" : "row")};
     align-items: center;
     justify-content: center;
-    margin-top: ${props => props.flip && "-250px"};
+    margin-top: ${props => props.flip && "-280px"};
+    min-height: ${props => (props.flip ? "730px" : "730px")};
 
-    min-height: 700px;
     ${props =>
       props.background &&
       "background-color: var(--bg-dark); background: -webkit-linear-gradient(left, var(--bg-primary) 33%, var(--bg-dark) 0%);"};
-    padding-top: 3rem;
-
     h2 {
-      font-size: 2.5rem;
+      font-size: 2.5rem !important;
     }
 
     .image_column {
@@ -39,9 +37,13 @@ const AboutContainer = styled.section`
     }
 
     .image {
-      width: 300px;
-      margin-top: 10%;
-      margin-left: 30%;
+      max-width: 300px;
+      margin-top: 15vh;
+      margin-left: ${props => (props.flip ? "5vh" : "33%")};
+
+      @media (min-width: 1100px) {
+${'' /*         margin-top: 10%;
+ */}      }
     }
 
     .text_column {
@@ -50,14 +52,17 @@ const AboutContainer = styled.section`
       flex: 1;
       justify-content: center;
       align-items: center;
+      ${props =>
+        props.flip && "margin-left: 15%; max-width: 350px; margin-top: 5rem;}"};
+      margin-left: ${props => (props.flip ? "0" : "3rem")};
 
       p {
-        ${props => props.flip && "margin-left: 4rem; }"};
+        width: 350px;
       }
 
       & h2,
       h3 {
-        text-align: ${props => (props.flip ? "center" : "left")};
+        text-align: ${props => (props.flip ? "left" : "left")};
       }
     }
   }
@@ -77,7 +82,10 @@ const AboutSection = ({ title, image, description, color, flipped }) => {
         </div>
       </div>
       <div className="text_column">
-        <ContentContainer>
+        <ContentContainer
+          style={flipped && { marginTop: "4rem" }}
+          className="team"
+        >
           {title && <h2>{title}</h2>}
           {description && parse(description)}
         </ContentContainer>

@@ -2,15 +2,17 @@ import GatsbyImage from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
 
-const heroHeight = ["180px","240px", "300px"]
+const heroHeight = ["180px", "240px", "300px"]
 
 const Hero = ({
   title,
-  textAlign, 
+  textAlign,
   hasText = false,
   desktopImage,
   mobileImage,
   fullHeight,
+  filter,
+  ml,
 }) => {
   if (!desktopImage) return null
   return (
@@ -25,12 +27,13 @@ const Hero = ({
                 media: `(min-width: 550px)`,
               },
             ]}
-            style={{ width: "100%"}}
+            style={{ width: "100%" }}
           />
         ) : (
           <GatsbyImage
             fluid={desktopImage.childImageSharp.fluid}
             objectFit="cover"
+            className={filter ? "filter" : null}
             style={{ height: "100%", width: "100%" }}
           />
         )}
@@ -38,7 +41,9 @@ const Hero = ({
       {hasText && (
         <ForegroundContainer fullHeight={fullHeight}>
           <TextBox>
-            <Title align={textAlign}>{title}</Title>
+            <Title align={textAlign} ml={ml}>
+              {title}
+            </Title>
           </TextBox>
         </ForegroundContainer>
       )}
@@ -72,6 +77,10 @@ const BackgroundImage = styled.div`
   width: 100%;
   top: 0;
   left: 0;
+
+  .filter {
+    filter: brightness(65%);
+  }
 `
 
 const ForegroundContainer = styled.div`
@@ -81,9 +90,7 @@ const ForegroundContainer = styled.div`
   justify-content: center;
   height: ${heroHeight[0]};
 
-  ${props =>
-    props.fullHeight &&
-    "height: 570px; align-items: center; "}
+  ${props => props.fullHeight && "height: 570px; align-items: center; "}
 
   @media (min-width: 550px) {
     height: ${heroHeight[1]};
@@ -99,7 +106,7 @@ const ForegroundContainer = styled.div`
 const TextBox = styled.div`
   display: block;
   color: rgb(255, 255, 255);
-  text-align: ${props => props.align || 'center'};
+  text-align: ${props => props.align || "center"};
   padding: 0px;
   z-index: 51;
   margin: 0 auto;
@@ -115,13 +122,13 @@ const Title = styled.h1`
 
   @media (min-width: 769px) {
     font-size: 2.5rem;
-    text-align: ${props => props.align };
-    padding-left: 5rem;
+    text-align: ${props => props.align};
+    padding-left: ${props => props.ml || 0};
   }
 
   @media (min-width: 769px) {
     font-size: 3rem;
-    text-align: ${props => props.align };
-    padding-left: 5rem;
+    text-align: ${props => props.align};
+    padding-left: ${props => props.ml || 0};
   }
 `

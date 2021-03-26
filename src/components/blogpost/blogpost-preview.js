@@ -27,14 +27,8 @@ const BlogPostPreview = props => {
         </header>
       </Link>
 
-      <div style={{ fontSize: "14px", width: "100%" }}>
-        {parse(props.excerpt)}
-      </div>
-      <StyledLink
-        weight="550"
-        to={props.link}
-        style={bottomLinkStyle}
-      >
+      <div className="excerpt">{parse(props.excerpt)}</div>
+      <StyledLink weight="550" to={props.link} className="bottom-link">
         Les mer
       </StyledLink>
     </Article>
@@ -44,11 +38,12 @@ const BlogPostPreview = props => {
 const Article = styled.article`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: space-between
   text-decoration: none;
   margin: 0rem auto;
   min-width: 250px;
+  height: 100%;
 
   .gatsby-image-wrapper {
     transition: all 250ms ease-in-out;
@@ -56,6 +51,21 @@ const Article = styled.article`
     &:hover {
       transform: scale(1.1);
     }
+  }
+
+  .excerpt {
+    width: 100%;
+
+    p {
+      margin-top: 0;
+    }
+  }
+
+  .bottom-link {
+${'' /*     margin-top: auto;
+ */}    texttransform: uppercase;
+    textalign: left;
+    width: 100%;
   }
 `
 
@@ -74,9 +84,5 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `
 
-const bottomLinkStyle = {
-  textTransform: "uppercase",
-  textAlign: "left",
-  width: " 100%",
-}
+const bottomLinkStyle = {}
 export default BlogPostPreview

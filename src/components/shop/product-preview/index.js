@@ -76,7 +76,6 @@ const ProductPreview = ({
       <CarouselImageContainer>
         {mainImg && <MainImg className={"main_img"} img={mainImg} />}
         <div className="overlay_img">
-          {" "}
           {secondaryImg && (
             <SecondaryImg animate={hasAnimate} img={secondaryImg} />
           )}

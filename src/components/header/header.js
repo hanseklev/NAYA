@@ -42,7 +42,7 @@ const Header = () => {
         <Column pr={2}>
           <Logo styles={{ border: "solid" }} />
         </Column>
-        <Column pr={2}>
+        <Column >
           <Button
             basket
             quantity={quantity}
@@ -74,7 +74,7 @@ const Container = styled.header`
 
 const Column = styled.div`
   display: flex;
-  flex: 1;
+  flex: 3;
   justify-content: flex-start;
   padding-right: ${props => props.pr || 0}
 
@@ -84,6 +84,7 @@ const Column = styled.div`
 
   &:nth-child(2) {
     padding-left: ${props => props.pr || 0}rem;
+    flex: 1;
     justify-content: center;
   }
 

@@ -4,9 +4,6 @@ import styled from "styled-components"
 import { TextBox, Paragraph, StyledLink } from "../_shared/styles"
 
 const IntroContainer = styled.section`
-  padding-top: 0;
-${'' /*   padding-bottom: 1rem;
- */}
   .image {
     display: block;
     margin: 0;
@@ -58,7 +55,7 @@ const IntroSection = ({ title, image, description, haslink, ...props }) => {
               weight="bold"
               style={{ margin: "1rem 0", display: "block"}}
             >
-              MER
+            LES MER
             </StyledLink>
           )}
         </Paragraph>

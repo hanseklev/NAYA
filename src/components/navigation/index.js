@@ -16,6 +16,9 @@ export const NavigationDesktop = ({ hide, location }) => {
       {!show && (
         <DesktopNavigation>
           <div className="desktop_link_container">
+          <StyledLink className="desktop_link" to="/">
+              Home
+            </StyledLink>
             <StyledLink className="desktop_link" to="/shop">
               Shop
             </StyledLink>

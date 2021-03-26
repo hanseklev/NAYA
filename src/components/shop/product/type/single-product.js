@@ -1,10 +1,11 @@
+import Image from "gatsby-image"
 import parse from "html-react-parser"
 import React from "react"
 import styled from "styled-components"
 import { parsePrice } from "../../../../lib/helpers"
 import AddToCartButton from "../../../cart/add-to-cart-button"
+import Button from "../../../_shared/button"
 import StockStatus from "../stock-status"
-import Image from 'gatsby-image'
 
 function Product({ product }) {
   const {
@@ -18,6 +19,9 @@ function Product({ product }) {
 
   return (
     <ProductContainer>
+      <div style={{marginLeft:'1.5rem'}}>
+        <Button goBack onClick={() => window.history.back()} />
+      </div>
       <figure style={{ flex: 1 }}>
         {featuredImage && (
           <Image

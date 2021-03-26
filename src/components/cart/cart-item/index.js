@@ -41,12 +41,12 @@ export const CartItem = ({ item, products, updateCart }) => {
           <img
             src={item.image.sourceUrl}
             alt={item.image.altText}
-            style={{ width: "100%" }}
+            style={{ width: "100%", height:'100%' }}
           />
         </ItemImage>
       </ItemSection>
       <ItemSection large>
-        <Title to={`/product/${item.slug}`}>{item.name}</Title>
+        <Title to={`/product/${item.id}`}>{item.name}</Title>
         <div> {item.price} kr</div>
 
         <div>
@@ -71,8 +71,10 @@ export const CartItem = ({ item, products, updateCart }) => {
 
 const ItemContainer = styled.li`
   display: flex;
+  background-color: var(--bg-primary);
   justify-content: space-between;
   width: 100%;
+  padding: 10px;
   box-shadow: 0 8px 24px rgba(231, 235, 237, 0.6);
 `
 
@@ -87,7 +89,8 @@ const ItemSection = styled.div`
 const ItemImage = styled.figure`
   margin: 0;
   padding: 0;
-  max-width: 100px;
+  max-width: 120px;
+  height: 100%;
 `
 
 const RemoveButton = styled.button`
@@ -95,10 +98,16 @@ const RemoveButton = styled.button`
   border: none;
   padding: 0;
   color: #655a46;
+  font-weight: 600;
   display: flex;
   align-content: center;
   justify-content: center;
   cursor: pointer;
+  transition: color 0.3s;
+
+  &:hover {
+    color: black;
+  }
 `
 const QuantityButton = styled.button`
   ${"" /* border: solid 0.5px var(--color-text);

@@ -74,7 +74,13 @@ h5 {
   text-transform: uppercase;
   color: var(--color-text);
   text-align: center;
-  letter-spacing: 0.8px;
+  letter-spacing: 3px;
+}
+
+h3, h4 {
+  letter-spacing: 2px;
+
+
 }
 
 h1, a {

@@ -20,7 +20,7 @@ export default function BlogPost(props) {
         label="Til journal"
         onClick={() => window.history.back()}
       />
-      {headerImage && <Hero desktopImage={headerImage} hasText title={title} />}
+      {headerImage && <Hero filter desktopImage={headerImage} hasText title={title} />}
       <ContentContainer>
         {!headerImage && <AltTitle>{title}</AltTitle>}
 

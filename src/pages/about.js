@@ -5,7 +5,7 @@ import Hero from "../components/hero"
 import MainLayout from "../components/layout/"
 import AboutSection from "../components/section/about-section"
 import SEO from "../components/seo"
-import { ContentContainer } from "../components/_shared/styles"
+import { ContentContainer, Paragraph } from "../components/_shared/styles"
 
 const AboutPage = props => {
   const {
@@ -21,6 +21,7 @@ const AboutPage = props => {
         hasText
         title={title}
         textAlign="left"
+        ml="5rem"
       />
       <AboutSection
         title={aboutsection.abouttitle}

@@ -17,6 +17,7 @@ export const formatCart = cart => {
     product.cartKey = rawProducts[i].key
     product.name = rawProduct?.node?.name
     product.slug = rawProduct?.node?.slug
+    product.id = rawProduct?.node?.id
     product.image = rawProduct?.node?.image
 
     product.price = rawProduct.node?.price
@@ -30,6 +31,8 @@ export const formatCart = cart => {
   }
 
   formattedCart.totalProductsCount = totalProductsCount
+  formattedCart.shippingTotal = cart.shippingTotal
+  formattedCart.subtotal = cart.subtotal
   formattedCart.totalProductsPrice = cart.total
 
   return formattedCart

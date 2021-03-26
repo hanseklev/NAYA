@@ -9,8 +9,8 @@ import ProductCarousel from "../components/shop/carousel"
 import SocialFeed from "../components/social-feed"
 
 const IndexPage = () => {
-  const IG_LINK = 'https://www.instagram.com/nayaequalsnew/'
-  const IG_FEED_DESCRPT = 'Sjekk ut de tre siste innleggene '
+  const IG_LINK = "https://www.instagram.com/nayaequalsnew/"
+  const IG_FEED_DESCRPT = "Sjekk ut de tre siste innleggene "
   return (
     <StaticQuery
       query={query}
@@ -26,12 +26,6 @@ const IndexPage = () => {
               title={hero.herotitle}
               fullHeight
             />
-            {/*  <Hero2
-              desktopImage={hero.heroimagedesktop.localFile}
-              mobileImage={hero.heroimagemobile.localFile}
-              hasText
-              title={hero.herotitle}
-            /> */}
             <IntroSection
               title={introsection.introtitle}
               description={introsection.introdescription}
@@ -44,7 +38,7 @@ const IndexPage = () => {
               items={[showcase.imageOne, showcase.imageTwo]}
             />
             <RecentPosts dark />
-            <SocialFeed globalLink={IG_LINK} description={IG_FEED_DESCRPT}/>
+            <SocialFeed globalLink={IG_LINK} description={IG_FEED_DESCRPT} />
           </MainLayout>
         )
       }}

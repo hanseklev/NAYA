@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import { Paragraph, StyledLink, TextBox } from "../../_shared/styles"
-import ProductPreview from "../product-preview/index2"
+import ProductPreview from "./carousel-product"
 
 const ProductCarousel = ({ title, description, items }) => {
   return (
@@ -67,6 +67,7 @@ const CarouselWrapper = styled.section`
   }
 
   @media (min-width: 600px) {
+    padding-top: 60px;
     padding-bottom: 120px;
     padding-left: 2rem;
     columns: auto 2;

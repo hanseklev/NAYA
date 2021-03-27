@@ -10,9 +10,11 @@ const BlogPostPreview = props => {
     props.featuredImage &&
     props.featuredImage.node.localFile.childImageSharp.fixed
 
+    const AriaLabel = `Gå til innlegg ${props.title}`
+
   return (
     <Article>
-      <Link style={{ textDecoration: "none", width: "100%" }} to={props.link}>
+      <Link style={{ textDecoration: "none", width: "100%" }} to={props.link} aria-label={AriaLabel}>
         <header style={{ width: "100%" }}>
           <ImageContainer>
             {thumbImg && (
@@ -69,7 +71,7 @@ ${'' /*     margin-top: auto;
   }
 `
 
-const Title = styled.h3`
+const Title = styled.h2`
   text-align: left;
   font-size: 1.25rem;
 
@@ -84,5 +86,4 @@ const ImageContainer = styled.div`
   overflow: hidden;
 `
 
-const bottomLinkStyle = {}
 export default BlogPostPreview

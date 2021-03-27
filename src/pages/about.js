@@ -5,7 +5,7 @@ import Hero from "../components/hero"
 import MainLayout from "../components/layout/"
 import AboutSection from "../components/section/about-section"
 import SEO from "../components/seo"
-import { ContentContainer, Paragraph } from "../components/_shared/styles"
+import { ContentContainer } from "../components/_shared/styles"
 
 const AboutPage = props => {
   const {

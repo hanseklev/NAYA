@@ -18,28 +18,30 @@ function Product({ product }) {
   } = product
 
   return (
-    <ProductContainer>
-      <div style={{marginLeft:'1.5rem'}}>
+    <>
+      <div style={{ marginLeft: "5rem", marginTop:'1rem' }}>
         <Button goBack onClick={() => window.history.back()} />
       </div>
-      <figure style={{ flex: 1 }}>
-        {featuredImage && (
-          <Image
-            fluid={featuredImage.node.localFile.childImageSharp.fluid}
-            style={{ width: "100%" }}
-            alt="produktbilde"
-          />
-        )}
-      </figure>
-      <div className="info">
-        <h1>{name}</h1>
-        <p>{parsePrice(price)} kr</p>
-        {description && parse(description)}
-        <StockStatus stockStatus={stockStatus} />
-        <AddToCartButton product={product} />
-        <section className="description">{parse(shortDescription)}</section>
-      </div>
-    </ProductContainer>
+      <ProductContainer>
+        <figure style={{ flex: 1 }}>
+          {featuredImage && (
+            <Image
+              fluid={featuredImage.node.localFile.childImageSharp.fluid}
+              style={{ width: "100%" }}
+              alt="produktbilde"
+            />
+          )}
+        </figure>
+        <div className="info">
+          <h1>{name}</h1>
+          <p>{parsePrice(price)} kr</p>
+          {description && parse(description)}
+          <StockStatus stockStatus={stockStatus} />
+          <AddToCartButton product={product} />
+          <section className="description">{parse(shortDescription)}</section>
+        </div>
+      </ProductContainer>
+    </>
   )
 }
 
@@ -71,6 +73,12 @@ const ProductContainer = styled.article`
   @media (min-width: 500px) {
     flex-direction: row;
 
+    h1 {
+      margin-bottom: 3rem;
+    }
+  }
+
+  @media (min-width: 920px) {
     .info {
       margin-left: 1rem;
     }

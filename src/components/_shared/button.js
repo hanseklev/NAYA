@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
-import { primaryColor } from "../../styles/theme"
 import { LeftArrow } from "../left-arrow"
+
+const primaryColor = "#655a46"
 
 export default function Button({
   primary,
@@ -17,7 +18,7 @@ export default function Button({
 
   if (goBack)
     return (
-      <GoBackButton {...props}>
+      <GoBackButton {...props} aria-label="Gå tilbake">
         <LeftArrow />
         <span>{label}</span>
       </GoBackButton>

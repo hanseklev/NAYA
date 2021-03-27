@@ -1,4 +1,4 @@
-import "@wordpress/block-library/build-style/style.css"
+import { navigate } from "gatsby-link"
 import parse from "html-react-parser"
 import React from "react"
 import styled from "styled-components"
@@ -6,7 +6,6 @@ import Hero from "../hero"
 import Button from "../_shared/button"
 import { ContentContainer } from "../_shared/styles"
 import Author from "./author"
-
 
 export default function BlogPost(props) {
   const { title, date, content, author, featuredImage } = props
@@ -18,16 +17,18 @@ export default function BlogPost(props) {
         style={{ paddingLeft: "2rem" }}
         goBack
         label="Til journal"
-        onClick={() => window.history.back()}
+        onClick={() => navigate("/journal")}
       />
-      {headerImage && <Hero filter desktopImage={headerImage} hasText title={title} />}
+      {headerImage && (
+        <Hero filter desktopImage={headerImage} hasText title={title} />
+      )}
       <ContentContainer>
         {!headerImage && <AltTitle>{title}</AltTitle>}
 
         <AuthorHeader>
           <li>Publisert {date}</li>
           <li>~</li>
-          <li>{author.node.name}</li>
+          <li style={{textAlign:'right'}}>{author.node.name}</li>
         </AuthorHeader>
         {content && parse(content)}
         <hr />
@@ -53,9 +54,13 @@ const AuthorHeader = styled.ul`
   display: flex;
   list-style: none;
   margin-top: 0rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   padding: 0;
   justify-content: space-between;
+
+  @media min-width(768px) {
+    margin-bottom: 3rem;
+  }
 `
 
 const AltTitle = styled.h1`

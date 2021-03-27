@@ -11,11 +11,11 @@ const Footer = ({ isHidden }) => {
       <FooterSection>
         <div style={{ flex: 1 }}>
           <FooterTitle>Privacy</FooterTitle>
-          <Link className="menu_link" to="/privacy-policy">
-            Privacy Policy
-          </Link>
           <Link className="menu_link" to="/general-terms">
             General Terms
+          </Link>
+          <Link className="menu_link" to="/privacy-policy">
+            Privacy Policy
           </Link>
         </div>
         <div style={{ flex: 3 }}>

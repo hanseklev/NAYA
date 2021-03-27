@@ -18,13 +18,26 @@ const CartContainer = ({ closeCart }) => {
   const SHIPPING = 49.0
   let cartIsEmpty = !(cartItems && cartItems.length > 0)
 
+/*   const { data, refetch } = useQuery(GET_CART, {
+    notifyOnNetworkStatusChange: true,
+    onCompleted: () => {
+      console.warn( 'completed GET_CART', data );
+
+      // Update cart in the localStorage.
+      const updatedCart = formatCart(data)
+      localStorage.setItem("naya_cart", JSON.stringify(updatedCart))
+
+      // Update cart data in React Context.
+      setCart(updatedCart)
+    },
+  }) */
+
   const [clearCart, { loading: cartClearLoading }] = useMutation(
     CLEAR_CART_MUTATION,
     {
       onCompleted: () => {
-        setCart([])
-        Cookie.remove("naya_cart")
-      },
+/*         refetch()
+ */      },
       onError: err => console.log(err),
     }
   )
@@ -36,8 +49,6 @@ const CartContainer = ({ closeCart }) => {
     },
     onError: err => console.log(err),
   })
-
-
 
   function handleClearCart(event) {
     event.stopPropagation()
@@ -65,61 +76,73 @@ const CartContainer = ({ closeCart }) => {
 
   return (
     <Wrapper>
-      <nav style={{ marginBottom: "0.1rem", height: "1rem" }}>
+      <div style={{ marginBottom: "0.1rem", height: "1rem" }}>
         <Button goBack onClick={() => closeCart()} />
-      </nav>
-      <div className="cart-header">
-        <h2 style={{marginBottom:'0.5rem'}}>Handlekurven</h2>
-        {cartIsEmpty ?  <div> er tom </div> : null }
       </div>
-      { cartItems && cartItems.length > 0 ? (
-      <>
-        <CartList>
-          {cartItems.map((item, i) => (
-            <CartItem
-              item={item}
-              products={cartItems}
-              key={i}
-              updateCart={updateCartItems}
+      <div className="cart-header">
+        <h2 style={{ marginBottom: "0.5rem" }}>Handlekurven</h2>
+        {cartIsEmpty ? <div> er tom </div> : null}
+      </div>
+      {cartItems && cartItems.length > 0 ? (
+        <>
+          <CartList>
+            {cartItems.map((item, i) => (
+              <CartItem
+                item={item}
+                products={cartItems}
+                key={i}
+                updateCart={updateCartItems}
+              />
+            ))}
+          </CartList>
+          <div
+            style={{
+              borderTop: "1px solid rgb(224, 224, 224)",
+            }}
+          >
+            <PriceSection
+              label="Subtotal"
+              price={cart.totalProductsPrice && parsePrice(cart.subtotal)}
             />
-          ))}
-     
-       </CartList> 
-       <div
-        style={{
-          borderTop: "1px solid rgb(224, 224, 224)",
-        }}
-      >
-        <PriceSection
-          label="Subtotal"
-          price={cart.totalProductsPrice && parsePrice(cart.subtotal)}
-        />
-        <PriceSection label="Frakt" price={SHIPPING} />
-        <PriceSection
-          label="Total"
-          price={cart.totalProductsPrice && parsePrice(cart.total)}
-        />
-      </div>      
-        <Button
-          primary dark
-          onClick={event => handleClearCart(event)}
-          label={cartClearLoading ? "Tømmer handlekurven.." : "Tøm handlekurv"}
-        />
-        <Button
-          primary dark
-          label="Til kassen"
-          onClick={() => goToCheckout()}
-        />
-      </>
-      ) : 
-      <>
-       <div style={{marginBottom:'1rem', textAlign:'center'}}>Det ser ut som handlekurven din er tom<br/>Det kan vi få orden på:)</div>
-       <Button primary dark label="Gå til shop"  onClick={()=> {
-        navigate("/shop") 
-        setOpenCart(false)
-        } }/>
-       </>
-      }   
+            <PriceSection label="Frakt" price={SHIPPING} />
+            <PriceSection
+              label="Total"
+              price={cart.totalProductsPrice && parsePrice(cart.total)}
+            />
+          </div>
+          <Button
+            primary
+            dark
+            onClick={event => handleClearCart(event)}
+            label={
+              cartClearLoading ? "Tømmer handlekurven.." : "Tøm handlekurv"
+            }
+          />
+          <Button
+            primary
+            dark
+            label="Til kassen"
+            onClick={() => goToCheckout()}
+          />
+        </>
+      ) : (
+        <>
+          <div style={{ marginBottom: "1rem", textAlign: "center" }}>
+            Det ser ut som handlekurven din er tom
+            <br />
+            Det kan vi få orden på:)
+          </div>
+          <Button
+            primary
+            dark
+            label="Gå til shop"
+            onClick={() => {
+              navigate("/shop")
+              setOpenCart(false)
+            }}
+          />
+        </>
+      )}
     </Wrapper>
   )
 }
@@ -146,9 +169,7 @@ const Wrapper = styled.div`
     margin-bottom: 100px;
     text-align: center;
   }
-
 `
-
 
 const CartList = styled.ul`
   display: flex;
@@ -161,8 +182,6 @@ const Section = styled.div`
   display: flex;
   padding: 12px 0;
 `
-
-
 
 /* const EmptyBasketNotifier = styled.div`
   margin-bottom: 1rem;

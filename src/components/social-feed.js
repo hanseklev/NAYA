@@ -47,6 +47,7 @@ const SocialFeed = ({ globalLink, description }) => {
 const SocialContainer = styled.div`
   width: 100%;
   padding: 0 2rem;
+  margin: 0 auto;
   text-align: center;
 
   .item {
@@ -59,7 +60,12 @@ const SocialContainer = styled.div`
     }
   }
 
-  @media (min-width: 350px) {
+  .gatsby-image-wrapper {
+      margin: 0 auto;
+      
+    }
+
+  @media (min-width: 768px) {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
@@ -70,6 +76,8 @@ const SocialContainer = styled.div`
       min-width: 50px;
       margin: 0 0.5rem;
     }
+
+   
   }
 `
 

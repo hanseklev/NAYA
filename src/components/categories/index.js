@@ -6,7 +6,7 @@ import { StyledLink } from "../_shared/styles"
 const Categories = ({ categories, active, title = "Kategorier" }) => {
   return (
     <CategoryContainer>
-      <StyledLink to={`/journal`} key="all" mr="1rem"  underline={true}>
+      <StyledLink to={`/journal`} key="all" mr="1rem"  underline="true">
         ALLE
       </StyledLink>
       {categories
@@ -19,7 +19,7 @@ const Categories = ({ categories, active, title = "Kategorier" }) => {
               to={`/categories/${url}`}
               key={category.name}
               style={{ textTransform: "uppercase" }}
-              underline
+              underline="true"
               mr="1rem"
             >
               {category.name}

@@ -19,7 +19,6 @@ const ShopList = ({ products }) => {
             <motion.li positionTransition key={p.node.id}>
               <ProductPreview
                 isProduct
-                hasAnimate
                 {...p}
                 mainImg={mainImg}
                 secondaryImg={secondaryImg}
@@ -40,6 +39,7 @@ const ShopListGrid = styled.ul`
   justify-items: center;
   list-style-type: none;
   margin: 0 auto;
+  padding: 0;
 
   @media screen and (min-width: 450px) {
     grid-template-columns: repeat(2, 1fr);

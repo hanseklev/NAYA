@@ -48,6 +48,10 @@ export const ContentContainer = styled.div`
     width: 100%;
   }
 
+  figcaption {
+    font-size: 13px;
+  }
+
   ${props => props.center && "text-align: center;"}
 
   @media (min-width: 769px) {
@@ -82,7 +86,6 @@ export const Paragraph = styled.p`
   text-align: ${props => (props.center ? "center" : "left")};
   color: var(--color-text);
   word-wrap: break-word;
-
 `
 
 export const StyledLink = styled(props => <Link {...props} />)`
@@ -99,7 +102,15 @@ export const StyledLink = styled(props => <Link {...props} />)`
 
   &:hover {
     ${props =>
-      props.underline ? "text-decoration-color: var(--color-text)" : "color: black"};
+      props.underline
+        ? "text-decoration-color: var(--color-text)"
+        : "color: black"};
+  }
+
+  @media (max-width: 320px) {
+    &:not(:last-child) {
+       ${props => props.mr && 'margin-right: 0.4rem'};
+    }
   }
 `
 

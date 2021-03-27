@@ -1,10 +1,11 @@
 import React from "react"
-import styled from "styled-components"
-import { primaryColor } from "../../styles/theme"
+import styled, { css } from "styled-components"
 
 const style = {
   marginRight: "5px",
 }
+
+const FillColor = css`var(--color-text)`
 
 const SocialIconWrap = styled.div`
   margin-top: 10px;
@@ -27,7 +28,7 @@ const SocialIcons = () => {
       <a
         href={igLink}
         title="Instagram"
-        aria-label="Instagram link"
+        aria-label="Instagram"
         style={style}
       >
         <IgIcon />
@@ -35,12 +36,12 @@ const SocialIcons = () => {
       <a
         href={fbLink}
         title="Facebook"
-        aria-label="Facebook link"
+        aria-label="Facebook"
         style={style}
       >
         <FbIcon />
       </a>
-      <a href={linkedLink} title="LinkedIn" aria-label="LinkedIn link">
+      <a href={linkedLink} title="LinkedIn" aria-label="LinkedIn">
         <LinkedInIcon />
       </a>
     </SocialIconWrap>
@@ -54,7 +55,7 @@ export const FbIcon = () => (
     width="36"
     height="36"
     viewBox="0 0 48 48"
-    fill={primaryColor}
+    fill={FillColor}
     xmlns="http://www.w3.org/2000/svg"
   >
     )
@@ -62,7 +63,7 @@ export const FbIcon = () => (
       fillRule="evenodd"
       clipRule="evenodd"
       d="M24 0C10.7452 0 0 10.7452 0 24C0 37.2548 10.7452 48 24 48C37.2548 48 48 37.2548 48 24C48 10.7452 37.2548 0 24 0ZM26.5016 25.0542V38.1115H21.0991V25.0547H18.4V20.5551H21.0991V17.8536C21.0991 14.1828 22.6231 12 26.9532 12H30.5581V16.5001H28.3048C26.6192 16.5001 26.5077 17.1289 26.5077 18.3025L26.5016 20.5546H30.5836L30.1059 25.0542H26.5016Z"
-      fill={primaryColor}
+      fill={FillColor}
     />
   </svg>
 )
@@ -78,7 +79,7 @@ export const LinkedInIcon = () => (
     <path
       clipRule="evenodd"
       d="m24 0c-13.2548 0-24 10.7452-24 24s10.7452 24 24 24 24-10.7452 24-24-10.7452-24-24-24zm-12.4784 19.8778h5.4389v16.3418h-5.4389zm5.7972-5.0551c-.0353-1.6023-1.1811-2.8227-3.0418-2.8227-1.8606 0-3.077 1.2204-3.077 2.8227 0 1.5691 1.1805 2.8246 3.0064 2.8246h.0348c1.8965 0 3.0776-1.2555 3.0776-2.8246zm12.9943 4.6714c3.5791 0 6.2623 2.3362 6.2623 7.3556l-.0002 9.3699h-5.4387v-8.7429c0-2.196-.7871-3.6945-2.756-3.6945-1.5026 0-2.3976 1.0102-2.7907 1.986-.1438.3496-.1791.8368-.1791 1.3252v9.1266h-5.4396s.0717-14.8083 0-16.3417h5.4396v2.3146c.7218-1.1127 2.0147-2.6988 4.9024-2.6988z"
-      fill={primaryColor}
+      fill={FillColor}
       fillRule="evenodd"
     />
   </svg>
@@ -92,7 +93,7 @@ export const IgIcon = () => (
     width="36"
     xmlns="http://www.w3.org/2000/svg"
   >
-    <g fill={primaryColor}>
+    <g fill={FillColor}>
       <path
         clipRule="evenodd"
         d="m24 0c-13.2548 0-24 10.7452-24 24s10.7452 24 24 24 24-10.7452 24-24-10.7452-24-24-24zm-5.2767 11.2773c1.3653-.0621 1.8016-.0773 5.2779-.0773h-.004c3.4774 0 3.912.0152 5.2774.0773 1.3627.0624 2.2933.2782 3.1094.5947.8426.3267 1.5546.764 2.2666 1.476.7121.7115 1.1494 1.4256 1.4774 2.2675.3147.8139.5307 1.744.5947 3.1067.0613 1.3654.0773 1.8016.0773 5.2779s-.016 3.9115-.0773 5.2769c-.064 1.3621-.28 2.2925-.5947 3.1067-.328.8416-.7653 1.5557-1.4774 2.2672-.7112.712-1.4242 1.1504-2.2658 1.4774-.8145.3165-1.7457.5322-3.1083.5946-1.3654.0622-1.8003.0774-5.2769.0774-3.476 0-3.912-.0152-5.2774-.0774-1.3624-.0624-2.2928-.2781-3.1072-.5946-.8414-.327-1.5555-.7654-2.2667-1.4774-.7118-.7115-1.1491-1.4256-1.4763-2.2675-.3163-.8139-.532-1.744-.5947-3.1067-.0618-1.3653-.0773-1.8003-.0773-5.2766s.016-3.9128.0771-5.2782c.0613-1.3621.2773-2.2925.5946-3.1067.328-.8416.7654-1.5557 1.4774-2.2672.7115-.7117 1.4256-1.1491 2.2675-1.476.8139-.3165 1.744-.5323 3.1067-.5947z"

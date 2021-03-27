@@ -25,20 +25,20 @@ const Author = ({ author }) => {
       </Section>
 
       <Section size="2">
-        <h3>{name}</h3>
+        <h2>{name}</h2>
         {description && <p>{description}</p>}
       </Section>
     </Container>
   )
 }
 
-const Container = styled.aside`
+const Container = styled.footer`
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
 
-  h3 {
+  h2 {
     text-align: center;
   }
   @media (min-width: 450px) {
@@ -46,7 +46,7 @@ const Container = styled.aside`
     flex-wrap: wrap;
     flex-direction: row;
 
-    h3 {
+    h2 {
       text-align: left;
     }
   }

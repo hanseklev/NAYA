@@ -20,7 +20,7 @@ const CategoryTemplate = props => {
       <SEO title={category} />
       <Hero desktopImage={featuredImage} hasText title={category} />
       <Categories title="Kategorier" categories={data.categories.nodes} active={category} />
-      <BlogPostPreviewGrid edges={postEdges} />
+      <BlogPostPreviewGrid edges={postEdges} category={category} />
     </MainLayout>
   )
 }

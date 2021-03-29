@@ -1,6 +1,6 @@
-import _ from "lodash"
 import React from "react"
 import styled from "styled-components"
+import { getCategoryUrl } from "../../lib/helpers"
 import { StyledLink } from "../_shared/styles"
 
 const Categories = ({ categories, active, title = "Kategorier" }) => {
@@ -13,10 +13,9 @@ const Categories = ({ categories, active, title = "Kategorier" }) => {
         .filter(c => !c.name.toLowerCase().includes("uncat"))
         .filter(c => !c.name.includes("Journal"))
         .map(category => {
-          const url = _.kebabCase(category.name)
           return (
             <StyledLink
-              to={`/categories/${url}`}
+              to={getCategoryUrl(category.name)}
               key={category.name}
               style={{ textTransform: "uppercase" }}
               underline="true"

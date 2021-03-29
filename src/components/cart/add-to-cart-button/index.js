@@ -28,11 +28,11 @@ const AddToCartButton = ({ product }) => {
     },
   })
 
-  //disabled styles
+  //{!isInStock || loading}
   return (
     <Button primary bold
       label={loading ? 'Legger til...':  'Legg i handlekurven'}
-      disabled={!isInStock || loading}
+      disabled={true}
       onClick={() => addToCart(product)}
     />
   )

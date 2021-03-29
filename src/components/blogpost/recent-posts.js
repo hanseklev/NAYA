@@ -12,9 +12,8 @@ const RecentPosts = ({ dark }) => {
     <>
       <Section dark={dark}>
         <h2 style={{ fontSize: "2.5rem"}}>Journal</h2>
-        <Paragraph style={{ textAlign: "center" }}>
-          Sjekk ut de nyeste innleggene våre eller trykk{" "}
-          <StyledLink to="/journal">HER</StyledLink> for å komme til arkivet{" "}
+        <Paragraph style={{ textAlign: "center", fontSize: '16px' }}>
+          Sjekk ut de nyeste innleggene våre her
         </Paragraph>
       </Section>
       <BlogPostPreviewGrid edges={postEdges}  columns={1}/>

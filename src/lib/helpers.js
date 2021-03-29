@@ -1,4 +1,6 @@
 import { isFuture } from "date-fns"
+import _ from "lodash"
+
 
 export function cn(...args) {
   return args.filter(Boolean).join(" ")
@@ -24,6 +26,11 @@ export function filterOutDocsPublishedInTheFuture({ publishedAt }) {
 
 export function getBlogUrl(slug) {
   return `/post/${slug}/`
+}
+
+export function getCategoryUrl(name){
+  const url = _.kebabCase(name)
+  return `/categories/${url}`
 }
 
 export function buildImageObj(source = { asset: {} }) {

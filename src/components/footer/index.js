@@ -54,7 +54,7 @@ const FooterContainer = styled.footer`
 `
 
 const FooterTitle = styled.h3`
-  font-size: 14px;
+  font-size: 1rem;
   text-align: left;
   margin: 0.5rem 0;
 `
@@ -90,6 +90,11 @@ const FooterSection = styled.div`
     text-decoration: none;
     color: inherit;
     font-size: 1rem;
+    transition: color 0.3s;
+
+    &:hover {
+      color: black;
+    }
   }
 `
 

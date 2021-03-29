@@ -10,6 +10,9 @@ const BlogPostPreview = props => {
     props.featuredImage &&
     props.featuredImage.node.localFile.childImageSharp.fixed
 
+    localStorage.removeItem("blogCategory")
+    typeof window !== 'undefined' && props.category && localStorage.setItem('blogCategory', props.category)
+
     const AriaLabel = `Gå til innlegg ${props.title}`
 
   return (

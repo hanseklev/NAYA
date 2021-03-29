@@ -7,11 +7,17 @@ const ProductCarousel = ({ title, description, items }) => {
   return (
     <CarouselWrapper>
       {(description || title) && (
-        <TextBox style={{ backgroundColor: "inherit", marginBottom: "3rem" }}>
+        <TextBox
+          style={{
+            backgroundColor: "inherit",
+            paddingBottom: "3rem",
+            margin: "1rem auto",
+          }}
+        >
           {title && (
             <h2
               style={{
-                fontSize: "2.5rem",
+                fontSize: "2rem",
                 paddingTop: "1rem",
                 marginBottom: "1rem",
                 lineHeight: "1.2",
@@ -20,7 +26,12 @@ const ProductCarousel = ({ title, description, items }) => {
               {title}
             </h2>
           )}
-          {description && <Paragraph center>{description}</Paragraph>}
+          {description && (
+            <Paragraph center>
+              Vi jobber med å få på plass ny betalingsløsning. <br />I
+              mellomtiden kan du nyte en kaffe i sola :)
+            </Paragraph>
+          )}
         </TextBox>
       )}
       <div className="product">
@@ -45,9 +56,17 @@ const ProductCarousel = ({ title, description, items }) => {
           minHeight: "200px",
         }}
       >
-        <h3>Noe for en hver smak..</h3>
-        <StyledLink weight="400" size="14px" to="/shop">
-          Sjekk ut flere produkter her
+        <StyledLink
+          weight="400"
+          size="1rem"
+          style={{
+            textTransform: "uppercase",
+            lineHeight: "150px",
+            verticalAlign: "middle",
+          }}
+          to="/shop"
+        >
+          Sjekk ut produktene her
         </StyledLink>
       </TextBox>
     </CarouselWrapper>

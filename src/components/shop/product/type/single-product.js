@@ -4,7 +4,7 @@ import React from "react"
 import styled from "styled-components"
 import { parsePrice } from "../../../../lib/helpers"
 import AddToCartButton from "../../../cart/add-to-cart-button"
-import Button from "../../../_shared/button"
+import { ProductBreadCrumb } from "../../../_shared/breadcrumb"
 import StockStatus from "../stock-status"
 
 function Product({ product }) {
@@ -18,10 +18,12 @@ function Product({ product }) {
   } = product
 
   return (
-    <>
-      <div style={{ marginLeft: "5rem", marginTop:'1rem' }}>
-        <Button goBack onClick={() => window.history.back()} />
-      </div>
+    <Container>
+      <ProductBreadCrumb
+        category={{ link: "/shop", name: "Shop" }}
+        product={product}
+      />
+
       <ProductContainer>
         <figure style={{ flex: 1 }}>
           {featuredImage && (
@@ -41,15 +43,17 @@ function Product({ product }) {
           <section className="description">{parse(shortDescription)}</section>
         </div>
       </ProductContainer>
-    </>
+    </Container>
   )
 }
 
-const ProductContainer = styled.article`
+const Container = styled.div`
   max-width: 980px;
   margin: 0 auto;
-  margin-top: 2rem;
-  padding: 1rem;
+  padding: 2rem;
+`
+
+const ProductContainer = styled.article`
   display: flex;
   flex-direction: column;
 

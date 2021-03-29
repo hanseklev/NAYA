@@ -36,6 +36,12 @@ export const query = graphql`
           }
         }
       }
+      categories {
+        nodes {
+          name
+          slug
+        }
+      }
     }
   }
 `

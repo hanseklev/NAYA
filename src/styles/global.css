@@ -104,6 +104,7 @@ ul {
 p {
   line-height: 1.5rem;
   letter-spacing: 0.04rem;
+  color: var(--color-text);
 }
 
 hr {

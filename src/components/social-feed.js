@@ -25,18 +25,14 @@ const SocialFeed = ({ globalLink, description }) => {
   `)
   return (
     <SocialContainer>
-      <div style={{ width: "100%", marginBottom: "1rem" }}>
+      <div style={{ width: "100%", marginBottom: "2.5rem" }}>
         <h2>Instagram feed</h2>
-        <p style={{ textAlign: "center" }}>{description}</p>
       </div>
       {feed.nodes.length > 0 &&
         feed.nodes.map(node => (
           <div key={node.id} className="item">
             <a href={globalLink} className="link">
-              <GatsbyImage
-                style={{ width: "220px", height: "220px", objectFit: "cover", border: 'solid 3px' , padding: '10px'}}
-                fluid={node.localFile.childImageSharp.fluid}
-              />
+              <GatsbyImage fluid={node.localFile.childImageSharp.fluid} />
             </a>
           </div>
         ))}
@@ -46,9 +42,8 @@ const SocialFeed = ({ globalLink, description }) => {
 
 const SocialContainer = styled.div`
   width: 100%;
-  padding: 0 2rem;
+  padding: 0 1rem;
   margin: 0 auto;
-  text-align: center;
 
   .item {
     width: 100%;
@@ -61,15 +56,17 @@ const SocialContainer = styled.div`
   }
 
   .gatsby-image-wrapper {
-      margin: 0 auto;
-      
-    }
+    object-fit: cover;
+    width: 250px;
+    height: 250px;
+    margin: 0 auto;
+  }
 
-  @media (min-width: 768px) {
+  @media (min-width: 450px) {
     display: flex;
     flex-wrap: wrap;
     margin: 0 auto;
-    max-width: 768px;
+    max-width: 920px;
 
     .item {
       flex: 1;
@@ -77,7 +74,17 @@ const SocialContainer = styled.div`
       margin: 0 0.5rem;
     }
 
-   
+    .gatsby-image-wrapper {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .gatsby-image-wrapper {
+      width: 250px;
+      height: 250px;
+    }
   }
 `
 

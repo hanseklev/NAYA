@@ -2539,7 +2539,7 @@ pre.wp-block-verse {
   color: #313131;
 }
 :root .has-black-color {
-  color: #000;
+  color: var(--color-text);
 }
 :root .has-vivid-cyan-blue-to-vivid-purple-gradient-background {
   background: linear-gradient(135deg, #0693e3 0%, #9b51e0 100%);

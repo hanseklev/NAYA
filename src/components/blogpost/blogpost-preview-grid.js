@@ -3,14 +3,14 @@ import styled from "styled-components"
 import BlogPostPreview from "./blogpost-preview"
 
 
-function BlogPostPreviewGrid({ edges, columns = "2" }) {
+function BlogPostPreviewGrid({ edges, columns = "2", category }) {
   return (
       <Grid column={columns}>
         {edges &&
           edges.map(edge => {
             return (
               <li style={{ justifySelf: "center", width:'100%' }} key={edge.node.id}>
-                <BlogPostPreview  {...edge.node} />
+                <BlogPostPreview  {...edge.node} category={category}/>
               </li>
             )
           })}

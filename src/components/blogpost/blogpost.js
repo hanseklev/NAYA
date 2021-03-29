@@ -1,24 +1,25 @@
-import { navigate } from "gatsby-link"
 import parse from "html-react-parser"
-import React from "react"
+import React, { useEffect } from "react"
 import styled from "styled-components"
 import Hero from "../hero"
-import Button from "../_shared/button"
+import { JournalBreadcrumb } from "../_shared/breadcrumb"
 import { ContentContainer } from "../_shared/styles"
 import Author from "./author"
 
 export default function BlogPost(props) {
   const { title, date, content, author, featuredImage } = props
   const headerImage = featuredImage && featuredImage.node.localFile
+  let category = props.categories.nodes[1].name
+
+  if (typeof window !== undefined) {
+    category = localStorage.getItem("blogCategory")
+      ? localStorage.getItem("blogCategory")
+      : category
+  }
 
   return (
     <Article>
-      <Button
-        style={{ paddingLeft: "2rem" }}
-        goBack
-        label="Til journal"
-        onClick={() => navigate("/journal")}
-      />
+      <JournalBreadcrumb post={{ name: title }} category={category} />
       {headerImage && (
         <Hero filter desktopImage={headerImage} hasText title={title} />
       )}
@@ -28,7 +29,7 @@ export default function BlogPost(props) {
         <AuthorHeader>
           <li>Publisert {date}</li>
           <li>~</li>
-          <li style={{textAlign:'right'}}>{author.node.name}</li>
+          <li style={{ textAlign: "right" }}>{author.node.name}</li>
         </AuthorHeader>
         {content && parse(content)}
         <hr />

@@ -3,7 +3,7 @@ import React from "react"
 import styled from "styled-components"
 import { getCategoryUrl } from "../../lib/helpers"
 
-export const JournalBreadcrumb = ({ category, post }) => {
+export const JournalBreadcrumb = ({ category = '', post }) => {
   const categoryUrl = getCategoryUrl(category)
   return (
     <BreadcrumbNav aria-label="breadcrumb">

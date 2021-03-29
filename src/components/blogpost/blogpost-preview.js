@@ -10,14 +10,21 @@ const BlogPostPreview = props => {
     props.featuredImage &&
     props.featuredImage.node.localFile.childImageSharp.fixed
 
-    localStorage.removeItem("blogCategory")
-    typeof window !== 'undefined' && props.category && localStorage.setItem('blogCategory', props.category)
+  if (typeof window !== "undefined") {
+    localStorage.removeItem("blogCategory") &&
+      props.category &&
+      localStorage.setItem("blogCategory", props.category)
+  }
 
-    const AriaLabel = `Gå til innlegg ${props.title}`
+  const AriaLabel = `Gå til innlegg ${props.title}`
 
   return (
     <Article>
-      <Link style={{ textDecoration: "none", width: "100%" }} to={props.link} aria-label={AriaLabel}>
+      <Link
+        style={{ textDecoration: "none", width: "100%" }}
+        to={props.link}
+        aria-label={AriaLabel}
+      >
         <header style={{ width: "100%" }}>
           <ImageContainer>
             {thumbImg && (
@@ -67,8 +74,11 @@ const Article = styled.article`
   }
 
   .bottom-link {
-${'' /*     margin-top: auto;
- */}    texttransform: uppercase;
+${
+  ""
+  /*     margin-top: auto;
+   */
+}    texttransform: uppercase;
     textalign: left;
     width: 100%;
   }

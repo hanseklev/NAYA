@@ -9,7 +9,7 @@ import Author from "./author"
 export default function BlogPost(props) {
   const { title, date, content, author, featuredImage } = props
   const headerImage = featuredImage && featuredImage.node.localFile
-  let category = props.categories.nodes[1].name
+  let category = props.categories.nodes && props.categories.nodes[1] && props.categories.nodes[1].name
 
   if (typeof window !== undefined) {
     category = localStorage.getItem("blogCategory")

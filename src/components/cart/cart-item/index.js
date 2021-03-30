@@ -8,6 +8,8 @@ export const CartItem = ({ item, products, updateCart }) => {
   const [itemCount, setItemCount] = useState(item.quantity)
   const clientMutationId = v4()
 
+  console.log(item);
+
   function handleQtyChange(event, type, removeItem = false) {
     let newCount
     event.stopPropagation()
@@ -39,8 +41,8 @@ export const CartItem = ({ item, products, updateCart }) => {
       <ItemSection>
         <ItemImage>
           <img
-            src={item.image.sourceUrl}
-            alt={item.image.altText}
+            src={item.image?.sourceUrl || 'shorturl.at/aeqxN'}
+            alt={item.name}
             style={{ width: "100%", height:'100%' }}
           />
         </ItemImage>

@@ -14,7 +14,7 @@ export const NavigationDesktop = ({ hide, location }) => {
   return (
     <>
       {!show && (
-        <DesktopNavigation>
+        <DesktopNavigation tabIndex={show ? -1 : 0}>
           <div className="desktop_link_container">
           <StyledLink className="desktop_link" to="/">
               Home
@@ -33,7 +33,7 @@ export const NavigationDesktop = ({ hide, location }) => {
           <Burger isOpen={false} onClick={toggleMenu} className="icon" />
         </DesktopNavigation>
       )}
-      <MobileNavigation>
+      <MobileNavigation tabIndex={show ? 0 : -1}>
         <ModalContainer isOpen={show} slideLeft={true}>
           <Burger isOpen={true} onClick={toggleMenu} className="close_icon" />
           <div className="mobile_link_wrap">

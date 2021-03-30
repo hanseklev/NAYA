@@ -24,7 +24,7 @@ export default function Button({
           viewBox="0 0 21 14"
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
-          style={{ marginLeft: "-20px" }}
+          style={{ marginLeft: "-20px", position: 'relative' }}
         >
           <g
             id="StarterKit"
@@ -60,7 +60,7 @@ export default function Button({
 
   if (vipps)
     return (
-      <button type={type} {...props}>
+      <button type={type} {...props} style={{margin: '0 auto'}}>
         <svg
           fill="none"
           height="44"

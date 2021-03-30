@@ -15,7 +15,7 @@ const IntroContainer = styled.section`
   @media (min-width: 769px) {
     display: grid;
     grid-template-columns: 1fr repeat(6, minmax(80px, 140px)) 1fr;
-    grid-template-rows: 80px 1fr auto 120px 120px;
+    grid-template-rows: 80px 1fr auto 120px 20px;
     grid-gap: 40px;
     padding-bottom: 0px;
 

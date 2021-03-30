@@ -7,16 +7,17 @@ import {
 
 import fetch from "isomorphic-fetch"
 
-const uri = 'https://admin.naya.no/graphql'
-//http://naya.me/graphql
+const uri = "https://admin.naya.no/graphql"
 
 const cmsLink = new HttpLink({
   uri: uri,
+  credentials: "include",
   fetch: fetch,
 })
 
 const middleware = new ApolloLink((operation, forward) => {
-  const session = typeof window !== "undefined" ? localStorage.getItem("woo-session") :  null
+  const session =
+    typeof window !== "undefined" ? localStorage.getItem("woo-session") : null
 
   if (session) {
     operation.setContext(({ headers = {} }) => ({
@@ -32,7 +33,7 @@ const middleware = new ApolloLink((operation, forward) => {
 const afterware = new ApolloLink((operation, forward) => {
   return forward(operation).map(response => {
     const context = operation.getContext()
-    const session = context.response.headers.get('woocommerce-session')
+    const session = context.response.headers.get("woocommerce-session")
 
     if (session && typeof window !== "undefined") {
       // Remove session data if session destroyed.
@@ -41,7 +42,6 @@ const afterware = new ApolloLink((operation, forward) => {
 
         // Update session new data if changed.
       } else if (localStorage.getItem("woo-session") !== session) {
-
         localStorage.setItem("woo-session", session)
       }
     }
@@ -53,5 +53,5 @@ const afterware = new ApolloLink((operation, forward) => {
 export const client = new ApolloClient({
   link: middleware.concat(afterware.concat(cmsLink)),
   cache: new InMemoryCache(),
-  connectToDevTools: true
+  connectToDevTools: true,
 })

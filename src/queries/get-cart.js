@@ -5,11 +5,31 @@ export const GET_CART = gql`
     cart {
       contents {
         nodes {
+          key
+          quantity
+          total
+          subtotal
+        }
+      }
+    }
+  }
+`
+
+export const GET_CART2 = gql`
+  query CartQuery {
+    cart {
+      contents {
+        nodes {
+          key
+          quantity
+          total
+          subtotal
           product {
             node {
               name
+              databaseId
+              id
               ... on SimpleProduct {
-                id
                 name
                 price(format: RAW)
                 featuredImage {
@@ -20,9 +40,6 @@ export const GET_CART = gql`
               }
             }
           }
-          total
-          subtotal
-          quantity
         }
       }
     }

@@ -88,21 +88,23 @@ const CheckoutForm = ({ onSubmit, order }) => {
         )
       case "payment":
         return (
-          <div>
-            <h1>Betaling</h1>
+          <div
+            style={{ margin: "0 auto", width: "300px", textAlign: "center" }}
+          >
+            <h1 style={{ marginBottom: "5rem" }}>Betaling</h1>
             <Button
               type="submit"
               vipps={true}
               onClick={() => handlePayment()}
             />
             <p>
-              Ved å fortsette godtar du våre
+              Ved å fortsette godtar du våre   
               <Link to="/general-terms" target="_blank">
-                kjøpsvilkår
+                  kjøpsvilkår
               </Link>
-              og bekrefter at du har lest vår
+                og bekrefter at du har lest vår
               <Link to="/privacy-policy" target="_blank">
-                privacy policy
+                  privacy policy
               </Link>
             </p>
           </div>

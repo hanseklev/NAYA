@@ -1,9 +1,16 @@
 import { v4 } from "uuid"
 
-export const formatCart = cart => {
+export const formatCart = data  => {
+  let formattedCart = {}
+
+  if (undefined === data || !data?.cart?.contents?.nodes?.length) {
+    return formattedCart
+  }
+
+  const cart = data.cart
+
   const rawProducts = cart.contents.nodes
 
-  let formattedCart = {}
   formattedCart.products = []
 
   let totalProductsCount = 0
@@ -18,7 +25,7 @@ export const formatCart = cart => {
     product.name = rawProduct?.node?.name
     product.slug = rawProduct?.node?.slug
     product.id = rawProduct?.node?.id
-    product.image = rawProduct?.node?.image
+    product.image = rawProduct?.node?.featuredImage
 
     product.price = rawProduct.node?.price
     product.quantity = rawProducts[i].quantity
@@ -58,7 +65,7 @@ export const getUpdatedCartItems = (items, newQty, key) => {
   return updatedItems
 }
 
-export const formatCheckoutData = (order) => {
+export const formatCheckoutData = order => {
   //setcountry
   const checkoutData = {
     clientMutationId: v4(),
@@ -67,20 +74,20 @@ export const formatCheckoutData = (order) => {
       lastName: order.lastName,
       address1: order.address,
       city: order.city,
-      country: 'NO',
+      country: "NO",
       postcode: order.postcode,
       email: order.email,
-      phone: order.phone
+      phone: order.phone,
     },
     shipping: {
       firstName: order.firstName,
       lastName: order.lastName,
       address1: order.address,
       city: order.city,
-      country: 'NO',
+      country: "NO",
       postcode: order.postcode,
       email: order.email,
-      phone: order.phone
+      phone: order.phone,
     },
     shipToDifferentAddress: false,
     paymentMethod: order.paymentMethod,

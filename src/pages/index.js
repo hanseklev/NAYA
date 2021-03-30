@@ -15,7 +15,7 @@ const IndexPage = () => {
     <StaticQuery
       query={query}
       render={data => {
-        const { hero, introsection, showcase } = data.wpPage
+        const { hero, topsection, showcase } = data.wpPage
         return (
           <MainLayout>
             <SEO title="NAYA" />
@@ -27,9 +27,9 @@ const IndexPage = () => {
               fullHeight
             />
             <IntroSection
-              title={introsection.introtitle}
-              description={introsection.introdescription}
-              image={introsection.introimage.localFile}
+              title={topsection.topsectiontitle}
+              description={topsection.topsectiondescription}
+              image={topsection.topsectionimage.localFile}
               haslink
             />
             <ProductCarousel
@@ -73,10 +73,10 @@ const query = graphql`
           }
         }
       }
-      introsection {
-        introtitle
-        introdescription
-        introimage {
+      topsection {
+        topsectiontitle
+        topsectiondescription
+        topsectionimage {
           localFile {
             childImageSharp {
               fluid {

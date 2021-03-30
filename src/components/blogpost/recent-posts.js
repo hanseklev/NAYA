@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { Paragraph, Section, StyledLink } from "../_shared/styles"
+import { Paragraph, Section } from "../_shared/styles"
 import BlogPostPreviewGrid from "./blogpost-preview-grid"
 
 const RecentPosts = ({ dark }) => {

@@ -1,4 +1,4 @@
-import { useMutation } from "@apollo/client"
+import { useMutation, useQuery } from "@apollo/client"
 import { navigate } from "gatsby"
 import Cookie from "js-cookie"
 import React, { useContext } from "react"
@@ -9,6 +9,7 @@ import { parsePrice } from "../../../lib/helpers"
 import { formatCart } from "../../../lib/utils"
 import CLEAR_CART_MUTATION from "../../../mutations/clear-cart"
 import { UPDATE_CART_QTY_MUTATION } from "../../../mutations/update-cart"
+import { GET_CART } from "../../../queries/get-cart"
 import Button from "../../_shared/button"
 import { CartItem } from "../cart-item"
 
@@ -18,7 +19,7 @@ const CartContainer = ({ closeCart }) => {
   const SHIPPING = 49.0
   let cartIsEmpty = !(cartItems && cartItems.length > 0)
 
-/*   const { data, refetch } = useQuery(GET_CART, {
+/* const { data, refetch } = useQuery(GET_CART, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       console.warn( 'completed GET_CART', data );
@@ -36,8 +37,8 @@ const CartContainer = ({ closeCart }) => {
     CLEAR_CART_MUTATION,
     {
       onCompleted: () => {
-/*         refetch()
- */      },
+        //refetch();
+      },
       onError: err => console.log(err),
     }
   )

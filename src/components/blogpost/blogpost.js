@@ -1,5 +1,5 @@
 import parse from "html-react-parser"
-import React, { useEffect } from "react"
+import React from "react"
 import styled from "styled-components"
 import Hero from "../hero"
 import { JournalBreadcrumb } from "../_shared/breadcrumb"

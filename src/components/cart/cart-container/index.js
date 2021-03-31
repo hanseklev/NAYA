@@ -9,7 +9,7 @@ import { parsePrice } from "../../../lib/helpers"
 import { formatCart } from "../../../lib/utils"
 import CLEAR_CART_MUTATION from "../../../mutations/clear-cart"
 import { UPDATE_CART_QTY_MUTATION } from "../../../mutations/update-cart"
-import { GET_CART } from "../../../queries/get-cart"
+import { GET_CART2 } from "../../../queries/get-cart"
 import Button from "../../_shared/button"
 import { CartItem } from "../cart-item"
 
@@ -19,10 +19,10 @@ const CartContainer = ({ closeCart }) => {
   const SHIPPING = 49.0
   let cartIsEmpty = !(cartItems && cartItems.length > 0)
 
-/* const { data, refetch } = useQuery(GET_CART, {
+  const { data, refetch } = useQuery(GET_CART2, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
-      console.warn( 'completed GET_CART', data );
+      console.log("completed GET_CART", data)
 
       // Update cart in the localStorage.
       const updatedCart = formatCart(data)
@@ -31,13 +31,14 @@ const CartContainer = ({ closeCart }) => {
       // Update cart data in React Context.
       setCart(updatedCart)
     },
-  }) */
+  })
 
   const [clearCart, { loading: cartClearLoading }] = useMutation(
     CLEAR_CART_MUTATION,
     {
       onCompleted: () => {
-        //refetch();
+        setCart([])
+        refetch();
       },
       onError: err => console.log(err),
     }
@@ -63,7 +64,6 @@ const CartContainer = ({ closeCart }) => {
         },
       },
     })
-    setCart([])
   }
 
   function goToCheckout() {

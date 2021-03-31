@@ -6,7 +6,7 @@ import { ShopProvider } from "./src/context/shop-context"
 require("./src/styles/global.css")
 
 export const wrapRootElement = ({ element }) => (
-  <ApolloProvider client={client}>
-    <ShopProvider>{element}</ShopProvider>
-  </ApolloProvider>
+  <ShopProvider>
+    <ApolloProvider client={client}>{element}</ApolloProvider>
+  </ShopProvider>
 )

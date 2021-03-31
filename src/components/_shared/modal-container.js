@@ -23,7 +23,7 @@ const Container = styled.div`
   justify-content: flex-start;
   height: 100vh;
   text-align: left;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   position: fixed;
   top: 0;
   left: 0;

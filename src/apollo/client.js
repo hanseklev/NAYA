@@ -11,13 +11,12 @@ const uri = "https://admin.naya.no/graphql"
 
 const cmsLink = new HttpLink({
   uri: uri,
-  credentials: "include",
-  fetch: fetch,
+/*   credentials: "include",
+ */  fetch: fetch,
 })
 
 const middleware = new ApolloLink((operation, forward) => {
-  const session =
-    typeof window !== "undefined" ? localStorage.getItem("woo-session") : null
+  const session = typeof window !== "undefined" ? localStorage.getItem("woo-session") : null
 
   if (session) {
     operation.setContext(({ headers = {} }) => ({

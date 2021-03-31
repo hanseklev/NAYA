@@ -3,6 +3,7 @@ import React from "react"
 import BlogPost from "../components/blogpost/blogpost"
 import MainLayout from "../components/layout"
 import SEO from "../components/seo"
+import { removeHTMLTags } from "../lib/helpers"
 
 export const query = graphql`
   query BlogPostQuery($id: String!) {
@@ -49,7 +50,7 @@ export const query = graphql`
 const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
-  const formattedExerpt = post.excerpt.replace(/<[^>]*>?/gm, "")
+  const formattedExerpt = removeHTMLTags(post.excerpt)
   const SEOImageURL = post.featuredImage && post.featuredImage.node.sourceUrl
 
   return (

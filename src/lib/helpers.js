@@ -1,13 +1,12 @@
 import { isFuture } from "date-fns"
 import _ from "lodash"
 
-
 export function cn(...args) {
   return args.filter(Boolean).join(" ")
 }
 
 export function parsePrice(price) {
-  if (typeof price === "undefined" ) return 0
+  if (typeof price === "undefined") return 0
   return Number(price.replace(/[^0-9.-]+/g, ""))
 }
 
@@ -28,7 +27,7 @@ export function getBlogUrl(slug) {
   return `/post/${slug}/`
 }
 
-export function getCategoryUrl(name){
+export function getCategoryUrl(name) {
   const url = _.kebabCase(name)
   return `/categories/${url}`
 }
@@ -59,8 +58,33 @@ export function toPlainText(blocks) {
 }
 
 export function debounce(method, delay) {
-  clearTimeout(method._tId);
-  method._tId= setTimeout(function(){
-      method();
-  }, delay);
+  clearTimeout(method._tId)
+  method._tId = setTimeout(function () {
+    method()
+  }, delay)
+}
+
+export function removeHTMLTags(string) {
+  return string.replace(/<[^>]*>?/gm, "")
+}
+
+//FROM date-fns library
+export default function toDate(arg) {
+  const argStr = Object.prototype.toString.call(arg)
+
+  // Clone the date
+  if (typeof arg === "object" && argStr === "[object Date]") {
+    // Prevent the date to lose the milliseconds when passed to new Date() in IE10
+    return new Date(arg.getTime())
+  } else if (typeof arg === "number" || argStr === "[object Number]") {
+    return new Date(arg)
+  } else {
+    if (
+      (typeof arg === "string" || argStr === "[object String]") &&
+      typeof arg !== "undefined"
+    ) {
+      console.warn(new Error().stack)
+    }
+    return new Date(NaN)
+  }
 }

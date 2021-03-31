@@ -23,6 +23,7 @@ const CheckoutForm = ({ onSubmit, order }) => {
     steps,
   })
   const [error, setError] = useState(null)
+  const [showWaitMessage, setShowMessage] = useState(false)
   const { formFields, createChangeHandler } = useFormFields({
     email: "",
     firstName: "",
@@ -34,10 +35,14 @@ const CheckoutForm = ({ onSubmit, order }) => {
     paymentMethod: "vipps",
   })
 
-  function handlePayment() {
+  
+
+  function handlePaymentButtonClick() {
     if (step.id === "payment") {
+      setShowMessage(true)
       const formatData = formatCheckoutData(formFields)
       onSubmit(formatData)
+      navigation.next()
     }
   }
 
@@ -95,33 +100,23 @@ const CheckoutForm = ({ onSubmit, order }) => {
             <Button
               type="submit"
               vipps={true}
-              onClick={() => handlePayment()}
+              onClick={() => handlePaymentButtonClick()}
             />
+            {showWaitMessage && (
+              <p>Vent litt mens vi får kontakt med vipps...</p>
+            )}
             <p>
-              Ved å fortsette godtar du våre   
+              Ved å fortsette godtar du våre
               <Link to="/general-terms" target="_blank">
-                  kjøpsvilkår
+                kjøpsvilkår
               </Link>
-                og bekrefter at du har lest vår
+              og bekrefter at du har lest vår
               <Link to="/privacy-policy" target="_blank">
-                  privacy policy
+                privacy policy
               </Link>
             </p>
           </div>
         )
-      case "redirect":
-        console.log(order)
-        /*  function hei() {
-          if (!order.isCompleted)
-            return (
-              <div>
-                <p>Fake innlasting...</p>
-                <Loader />
-              </div>
-            ) 
-          //else return setStepById("confirmation")
-        }*/
-        break
 
       case "confirmation":
         return (

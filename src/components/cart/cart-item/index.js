@@ -1,12 +1,14 @@
-import { Link } from "gatsby"
-import React, { useState } from "react"
+import { navigate } from "gatsby"
+import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { v4 } from "uuid"
+import { ShopContext } from "../../../context/shop-context"
 import { getUpdatedCartItems } from "../../../lib/utils"
 
 export const CartItem = ({ item, products, updateCart }) => {
   const [itemCount, setItemCount] = useState(item.quantity)
   const clientMutationId = v4()
+  const {setOpenCart} = useContext(ShopContext)
 
   console.log(item);
 
@@ -36,19 +38,25 @@ export const CartItem = ({ item, products, updateCart }) => {
     })
   }
 
+  function handleGoToProduct(){
+    navigate(`/product/${item.id}`)
+    setOpenCart(false)
+
+  }
+
   return (
     <ItemContainer>
       <ItemSection>
         <ItemImage>
           <img
-            src={item.image?.sourceUrl || 'shorturl.at/aeqxN'}
+            src={item.image?.node?.sourceUrl || 'shorturl.at/aeqxN'}
             alt={item.name}
             style={{ width: "100%", height:'100%' }}
           />
         </ItemImage>
       </ItemSection>
       <ItemSection large>
-        <Title to={`/product/${item.id}`}>{item.name}</Title>
+        <TitleLink onClick={() => handleGoToProduct()}>{item.name}</TitleLink>
         <div> {item.price} kr</div>
 
         <div>
@@ -91,7 +99,7 @@ const ItemSection = styled.div`
 const ItemImage = styled.figure`
   margin: 0;
   padding: 0;
-  max-width: 120px;
+  max-width: 80px;
   height: 100%;
 `
 
@@ -118,7 +126,11 @@ const QuantityButton = styled.button`
   font-size: 16px;
 `
 
-const Title = styled(props => <Link {...props} />)`
+const TitleLink = styled.button`
+  margin: 0;
+  padding: 0;
+  text-align:left;
+  cursor: pointer;
   text-decoration: none;
   color: #655a46;
   font-weight: bold;

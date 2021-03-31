@@ -42,7 +42,7 @@ const Header = () => {
         <Column pr={2}>
           <Logo styles={{ border: "solid" }} />
         </Column>
-        <Column >
+        <Column>
           <Button
             basket
             quantity={quantity}
@@ -89,7 +89,7 @@ const Column = styled.div`
   }
 
   &:last-child {
-    padding-right: 2rem;
+    padding-right: 1rem;
     justify-content: flex-end;
   }
 `

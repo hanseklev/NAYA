@@ -5,7 +5,7 @@ import React, { useContext } from "react"
 import styled from "styled-components"
 import { v4 } from "uuid"
 import { ShopContext } from "../../../context/shop-context"
-import { parsePrice } from "../../../lib/helpers"
+import { parsePrice, removeHTMLTags } from "../../../lib/helpers"
 import { formatCart } from "../../../lib/utils"
 import CLEAR_CART_MUTATION from "../../../mutations/clear-cart"
 import { UPDATE_CART_QTY_MUTATION } from "../../../mutations/update-cart"
@@ -37,7 +37,8 @@ const CartContainer = ({ closeCart }) => {
     CLEAR_CART_MUTATION,
     {
       onCompleted: () => {
-        setCart([])
+        //setCart([])
+        setTimeout(() => {alert('timeout')}, 1000)
         refetch();
       },
       onError: err => console.log(err),
@@ -49,7 +50,10 @@ const CartContainer = ({ closeCart }) => {
       setCart(formatCart(cart))
       Cookie.set("naya_cart", JSON.stringify(formatCart(cart)))
     },
-    onError: err => console.log(err),
+    onError: err => {
+      const formattedError = removeHTMLTags(err.graphQLErrors[0]?.message)
+      alert(formattedError)
+    },
   })
 
   function handleClearCart(event) {

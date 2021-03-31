@@ -5,18 +5,27 @@ import {
   InMemoryCache,
 } from "@apollo/client"
 
-import fetch from "isomorphic-fetch"
+import fetch from "node-fetch"
+import ApolloLinkTimeout from 'apollo-link-timeout';
+
 
 const uri = "https://admin.naya.no/graphql"
 
+const timeoutLink = new ApolloLinkTimeout(10000);
 const cmsLink = new HttpLink({
   uri: uri,
-/*   credentials: "include",
- */  fetch: fetch,
+  fetch: fetch,
+  credentials: 'include'
+ /*  headers: {
+    "Access-Control-Allow-Origin": "*",
+  }, */
 })
 
+const httpLink = cmsLink // timeoutLink.concat(cmsLink)
+
 const middleware = new ApolloLink((operation, forward) => {
-  const session = typeof window !== "undefined" ? localStorage.getItem("woo-session") : null
+  const session =
+    typeof window !== "undefined" ? localStorage.getItem("woo-session") : null
 
   if (session) {
     operation.setContext(({ headers = {} }) => ({
@@ -37,11 +46,11 @@ const afterware = new ApolloLink((operation, forward) => {
     if (session && typeof window !== "undefined") {
       // Remove session data if session destroyed.
       if ("false" === session) {
-        localStorage.removeItem("woo-session")
+        localStorage.removeItem("woocommerce-session")
 
         // Update session new data if changed.
-      } else if (localStorage.getItem("woo-session") !== session) {
-        localStorage.setItem("woo-session", session)
+      } else if (localStorage.getItem("woocommerce-session") !== session) {
+        localStorage.setItem("woocommerce-session", session)
       }
     }
 
@@ -50,7 +59,6 @@ const afterware = new ApolloLink((operation, forward) => {
 })
 
 export const client = new ApolloClient({
-  link: middleware.concat(afterware.concat(cmsLink)),
+  link: middleware.concat(afterware.concat(httpLink)),
   cache: new InMemoryCache(),
-  connectToDevTools: true,
 })

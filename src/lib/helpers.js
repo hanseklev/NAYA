@@ -1,4 +1,3 @@
-import { isFuture } from "date-fns"
 import _ from "lodash"
 
 export function cn(...args) {
@@ -65,11 +64,13 @@ export function debounce(method, delay) {
 }
 
 export function removeHTMLTags(string) {
+  if (typeof string === "undefined") 
+    return ""
   return string.replace(/<[^>]*>?/gm, "")
 }
 
 //FROM date-fns library
-export default function toDate(arg) {
+function toDate(arg) {
   const argStr = Object.prototype.toString.call(arg)
 
   // Clone the date
@@ -87,4 +88,8 @@ export default function toDate(arg) {
     }
     return new Date(NaN)
   }
+}
+
+function isFuture(date) {
+  return toDate(date).getTime() > Date.now()
 }

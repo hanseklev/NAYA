@@ -17,14 +17,13 @@ const AddToCartButton = ({ product }) => {
     onCompleted: () => {
       console.log(data)
       const formattedCart = formatCart(data)
-      console.log('formatted', formattedCart);
+      console.log("formatted", formattedCart)
       Cookie.set("naya_cart", JSON.stringify(formattedCart))
       setCart(formattedCart)
     },
   })
 
   const [, setCartError] = useState(false)
-
 
   const isInStock = product.stockStatus === "IN_STOCK"
 
@@ -37,19 +36,23 @@ const AddToCartButton = ({ product }) => {
     variables: { input: cartInput },
     onCompleted: () => {
       alert("lagt til i handlevogn")
-      console.log(data);
+      console.log(data)
       if (error) {
         console.error()
         setCartError(true)
       }
+      setTimeout(() => {alert('timeout')}, 1000)
+
       refetch()
       setOpenCart(true)
     },
     onError: error => {
       if (error) {
-        console.log('på eroor');
+        console.log("på eroor")
         const formattedError = removeHTMLTags(error.graphQLErrors[0]?.message)
-        alert(formattedError);
+          if (formattedError === '')
+            return alert('Noe gikk galt..Prøv å oppdater siden og prøv igjen')
+        alert(formattedError)
         console.error(error.graphQLErrors[0])
       }
     },

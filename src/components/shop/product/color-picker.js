@@ -1,6 +1,5 @@
 import React, { useState } from "react"
 const ColorPicker = ({ colors, updateCurrentVariation }) => {
-  //console.log(colors)
 
   const { options } = colors.nodes[0]
   const [color, setColor] = useState()

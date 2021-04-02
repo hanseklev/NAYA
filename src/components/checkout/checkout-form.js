@@ -1,12 +1,13 @@
-import { Link, navigate } from "gatsby"
-import React, { useContext, useState } from "react"
+import { navigate } from "gatsby"
+import React, { useContext, useEffect, useState } from "react"
 import styled from "styled-components"
 import { ShopContext } from "../../context/shop-context"
-import { formatCheckoutData } from "../../lib/utils"
+import { createCheckoutData } from "../../lib/cart-utils"
+import { validateStep } from "../../lib/validate-form"
 import Button from "../_shared/button"
 import { useFormFields, useStep } from "../_shared/hooks"
-import { validateStep } from "../_shared/validate-form"
-import { PersonDetails, ShippingDetails } from "./form-steps"
+import { ConfirmationStep, PersonDetails, ShippingDetails } from "./form-steps"
+import PaymentOptions, { WaitingStep } from "./payment"
 
 const steps = [
   { id: "personal", submit: "Shipping >>", hasBackButton: true },
@@ -16,14 +17,13 @@ const steps = [
   { id: "confirmation" },
 ]
 
-const CheckoutForm = ({ onSubmit, order }) => {
+const CheckoutForm = ({ submitPayment, order, loading }) => {
   const { setOpenCart } = useContext(ShopContext)
-  const { step, navigation } = useStep({
+  const { step, navigation, setStepById } = useStep({
     initialStep: 0,
     steps,
   })
   const [error, setError] = useState(null)
-  const [showWaitMessage, setShowMessage] = useState(false)
   const { formFields, createChangeHandler } = useFormFields({
     email: "",
     firstName: "",
@@ -32,22 +32,31 @@ const CheckoutForm = ({ onSubmit, order }) => {
     address: "",
     city: "",
     postcode: "",
-    paymentMethod: "vipps",
+    paymentMethod: "",
   })
 
-  
+  useEffect(() => {
+    if (
+      typeof window !== "undefined" &&
+      window.location.hash === "#confirmation"
+    ) {
+      setStepById("confirmation")
+    }
+  }, [setStepById])
 
-  function handlePaymentButtonClick() {
+  function handlePayment(e, paymentMethod) {
+    e.preventDefault()
     if (step.id === "payment") {
-      setShowMessage(true)
-      const formatData = formatCheckoutData(formFields)
-      onSubmit(formatData)
-      navigation.next()
+      formFields.paymentMethod = paymentMethod
+
+      const formatData = createCheckoutData(formFields)
+      submitPayment(formatData)
+      //navigation.next()
     }
   }
 
   function handleSubmit(e) {
-    e && e.preventDefault()
+    e.preventDefault()
     if (step.id === "payment") return
     setError("")
     const { errorType, errorMessage, isValid } = validateStep(
@@ -92,38 +101,15 @@ const CheckoutForm = ({ onSubmit, order }) => {
           />
         )
       case "payment":
+        return <PaymentOptions handlePayment={handlePayment} loading={loading} />
+
+      case "redirect":
         return (
-          <div
-            style={{ margin: "0 auto", width: "300px", textAlign: "center" }}
-          >
-            <h1 style={{ marginBottom: "5rem" }}>Betaling</h1>
-            <Button
-              type="submit"
-              vipps={true}
-              onClick={() => handlePaymentButtonClick()}
-            />
-            {showWaitMessage && (
-              <p>Vent litt mens vi får kontakt med vipps...</p>
-            )}
-            <p>
-              Ved å fortsette godtar du våre
-              <Link to="/general-terms" target="_blank">
-                kjøpsvilkår
-              </Link>
-              og bekrefter at du har lest vår
-              <Link to="/privacy-policy" target="_blank">
-                privacy policy
-              </Link>
-            </p>
-          </div>
+          <WaitingStep/>
         )
 
       case "confirmation":
-        return (
-          <div>
-            <p>Ordre {order.orderId} er plassert!!</p>
-          </div>
-        )
+        return <ConfirmationStep order={order} />
       default:
         return null
     }

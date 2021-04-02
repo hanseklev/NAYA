@@ -1,6 +1,6 @@
 import Image from "gatsby-image"
 import parse from "html-react-parser"
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 import { parsePrice } from "../../../../lib/helpers"
 import AddToCartButton from "../../../cart/add-to-cart-button"
@@ -16,6 +16,8 @@ function Product({ product }) {
     stockStatus,
     shortDescription,
   } = product
+
+  const [cartError, setCartError] = useState(null)
 
   return (
     <Container>
@@ -39,7 +41,8 @@ function Product({ product }) {
           <p>{parsePrice(price)} kr</p>
           {description && parse(description)}
           <StockStatus stockStatus={stockStatus} />
-          <AddToCartButton product={product} />
+          <AddToCartButton product={product} cartErrors={setCartError} />
+          {cartError && <p>{cartError}</p>}
           <section className="description">{parse(shortDescription)}</section>
         </div>
       </ProductContainer>

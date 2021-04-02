@@ -1,55 +1,82 @@
 import { gql } from "@apollo/client"
 
-export const GET_CART = gql`
-  query CartQuery {
+export const GET_CART_QUERY = gql`
+  query GET_CART {
     cart {
       contents {
         nodes {
           key
-          quantity
-          total
-          subtotal
-        }
-      }
-    }
-  }
-`
-
-export const GET_CART2 = gql`
-  query CartQuery {
-    cart {
-      contents {
-        nodes {
-          key
-          quantity
-          total
-          subtotal
           product {
             node {
-              name
-              databaseId
               id
-              ... on SimpleProduct {
-                name
-                price(format: RAW)
-                featuredImage {
-                  node {
-                    sourceUrl
-                  }
+              databaseId
+              name
+              description
+              type
+              onSale
+              slug
+              averageRating
+              reviewCount
+              image {
+                id
+                sourceUrl
+                srcSet
+                altText
+                title
+              }
+              galleryImages {
+                nodes {
+                  id
+                  sourceUrl
+                  srcSet
+                  altText
+                  title
                 }
               }
             }
           }
+          variation {
+            node {
+              id
+              databaseId
+              name
+              description
+              type
+              onSale
+              price
+              regularPrice
+              salePrice
+              image {
+                id
+                sourceUrl
+                srcSet
+                altText
+                title
+              }
+            }
+            attributes {
+              id
+              name
+              value
+            }
+          }
+          quantity
+          total
+          subtotal
+          subtotalTax
         }
       }
-    }
-  }
-`
-
-export const GET_CART_TOTAL = gql`
-  query CartTotalQuery {
-    cart {
+      subtotal
+      subtotalTax
+      shippingTax
+      shippingTotal
+      chosenShippingMethods
       total
+      totalTax
+      feeTax
+      feeTotal
+      discountTax
+      discountTotal
     }
   }
 `

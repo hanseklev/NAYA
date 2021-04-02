@@ -3,14 +3,11 @@ import React, { useContext, useState } from "react"
 import styled from "styled-components"
 import { v4 } from "uuid"
 import { ShopContext } from "../../../context/shop-context"
-import { getUpdatedCartItems } from "../../../lib/utils"
+import { getUpdatedItems } from "../../../lib/cart-utils"
 
-export const CartItem = ({ item, products, updateCart }) => {
-  const [itemCount, setItemCount] = useState(item.quantity)
-  const clientMutationId = v4()
-  const {setOpenCart} = useContext(ShopContext)
-
-  console.log(item);
+export const CartItem = ({ item, products, updateCart, addQtyToCart }) => {
+  const [itemCount, setItemCount] = useState(item.qty)
+  const { setOpenCart } = useContext(ShopContext)
 
   function handleQtyChange(event, type, removeItem = false) {
     let newCount
@@ -21,27 +18,30 @@ export const CartItem = ({ item, products, updateCart }) => {
     newCount = removeItem
       ? 0
       : type === "INCREMENT"
-      ? itemCount + 1
+      ? addQtyToCart({
+          variables: {
+            input: { clientMutationId: v4(), productId: item.productId },
+          },
+        }) //itemCount + 1
       : itemCount - 1
 
     setItemCount(newCount)
 
-    const updatedItems = getUpdatedCartItems(products, newCount, item.cartKey)
+    const updatedItems = getUpdatedItems(products, newCount, item.cartKey)
 
     updateCart({
       variables: {
         input: {
-          clientMutationId: clientMutationId,
+          clientMutationId: v4(),
           items: updatedItems,
         },
       },
     })
   }
 
-  function handleGoToProduct(){
+  function handleGoToProduct() {
     navigate(`/product/${item.id}`)
     setOpenCart(false)
-
   }
 
   return (
@@ -49,9 +49,10 @@ export const CartItem = ({ item, products, updateCart }) => {
       <ItemSection>
         <ItemImage>
           <img
-            src={item.image?.node?.sourceUrl || 'shorturl.at/aeqxN'}
+            srcSet={item.image?.srcSet}
+            sizes="(max-width: 1900px)"
             alt={item.name}
-            style={{ width: "100%", height:'100%' }}
+            style={{ width: "80px", height: "110px" }}
           />
         </ItemImage>
       </ItemSection>
@@ -70,7 +71,7 @@ export const CartItem = ({ item, products, updateCart }) => {
         <QuantityButton onClick={event => handleQtyChange(event, "INCREMENT")}>
           +
         </QuantityButton>
-        <span style={{ margin: "0 auto" }}>{item.quantity}</span>
+        <span style={{ margin: "0 auto" }}>{item.qty}</span>
         <QuantityButton onClick={event => handleQtyChange(event, "DECREMENT")}>
           -
         </QuantityButton>
@@ -122,16 +123,23 @@ const RemoveButton = styled.button`
 const QuantityButton = styled.button`
   ${"" /* border: solid 0.5px var(--color-text);
   border-radius: 50%;
+
  */} background-color: inherit;
   font-size: 16px;
+  cursor: pointer;
 `
 
 const TitleLink = styled.button`
   margin: 0;
-  padding: 0;
-  text-align:left;
+  padding: 0 0 5px;
+  text-align: left;
   cursor: pointer;
   text-decoration: none;
   color: #655a46;
   font-weight: bold;
+  transition: color 0.3s;
+
+  &:hover {
+    color: black;
+  }
 `

@@ -60,7 +60,7 @@ export default function Button({
 
   if (vipps)
     return (
-      <button type={type} {...props} style={{margin: '0 auto'}}>
+      <button type={type} {...props} style={{margin: '0 auto', cursor:'pointer'}}>
         <svg
           fill="none"
           height="44"

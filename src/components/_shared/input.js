@@ -41,10 +41,10 @@ export default ({
 }
 
 const Label = styled.label`
-  display: ${props => (props.double ? 'inline-block' :'block')};
+  display: ${props => (props.double ? "inline-block" : "block")};
   width: ${props => (props.double ? "50%" : "100%")};
   position: relative;
-	border: 2px solid #f0f0f0;
+  border: 2px solid #f0f0f0;
   border-radius: 1px;
   font-size: 1.35rem;
   line-height: 1.3;
@@ -72,9 +72,6 @@ const Input = styled.input`
   &:focus {
     outline-color: var(--color-text);
   }
-
-
- 
 `
 
 const LabelText = styled.span`
@@ -82,7 +79,7 @@ const LabelText = styled.span`
   transform: translate(-0.02rem, 0.82rem) scale(1.5625);
 
   font-size: 14px;
-  font-family: var(--font-text);
+  color: var(--color-primary-dark);
   font-weight: 300;
   position: absolute;
   top: 0.6rem;
@@ -90,8 +87,7 @@ const LabelText = styled.span`
   display: block;
   margin: 0;
   transform-origin: left center;
-  color: var(--color-muted);
-  transition: transform 0.4s; // cubic-bezier(0.86, 0, 0.4, 1)
+  transition: transform 0.4s;
   will-change: transform;
   transform: translate(-0.02rem, 0.82rem) scale(1.5625);
 

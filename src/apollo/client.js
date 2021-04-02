@@ -1,31 +1,24 @@
 import {
   ApolloClient,
-  HttpLink,
   ApolloLink,
+  HttpLink,
   InMemoryCache,
 } from "@apollo/client"
-
 import fetch from "node-fetch"
-import ApolloLinkTimeout from 'apollo-link-timeout';
-
 
 const uri = "https://admin.naya.no/graphql"
 
-const timeoutLink = new ApolloLinkTimeout(10000);
-const cmsLink = new HttpLink({
+const httpLink = new HttpLink({
   uri: uri,
   fetch: fetch,
-  credentials: 'include'
- /*  headers: {
-    "Access-Control-Allow-Origin": "*",
-  }, */
+  credentials: "include",
 })
-
-const httpLink = cmsLink // timeoutLink.concat(cmsLink)
 
 const middleware = new ApolloLink((operation, forward) => {
   const session =
-    typeof window !== "undefined" ? localStorage.getItem("woo-session") : null
+    typeof window !== "undefined"
+      ? localStorage.getItem("woocommerce-session")
+      : null
 
   if (session) {
     operation.setContext(({ headers = {} }) => ({

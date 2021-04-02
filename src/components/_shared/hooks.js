@@ -4,17 +4,28 @@ export const useStep = ({ initialStep = 0, steps }) => {
   const [index, setStepIndex] = useState(initialStep)
   const step = steps[index]
 
-  if (typeof window !== "undefined") {
-    window.location.hash = step.id
+  function setHash(id) {
+    if (typeof window !== "undefined") window.location.hash = id
+  }
+
+  function getHash() {
+    if (typeof window !== "undefined") return window.location.hash
   }
 
   function handleNextStep(e) {
     e && e.preventDefault()
-    if (index < steps.length - 1) setStepIndex(index + 1)
+    if (index < steps.length - 1) {
+      setStepIndex(index + 1)
+      setHash(step.id)
+    }
   }
+
   function handlePrevStep(e) {
     e && e.preventDefault()
-    if (index > 0) setStepIndex(index - 1)
+    if (index > 0) {
+      setStepIndex(index - 1)
+      setHash(step.id)
+    }
   }
 
   function setStepById(id) {
@@ -35,6 +46,7 @@ export const useStep = ({ initialStep = 0, steps }) => {
     index,
     isFinalStep,
     setStepById,
+    getHash,
   }
 }
 

@@ -21,7 +21,7 @@ export const UPDATE_CART_QTY_MUTATION = gql`
                 ... on SimpleProduct {
                   id
                   name
-                  price(format: RAW)
+                  price
                 }
               }
             }

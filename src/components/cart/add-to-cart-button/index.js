@@ -1,67 +1,49 @@
 import { useMutation, useQuery } from "@apollo/client"
-import Cookie from "js-cookie"
-import React, { useContext, useState } from "react"
+import React, { useContext } from "react"
 import { v4 } from "uuid"
 import { ShopContext } from "../../../context/shop-context"
-import { removeHTMLTags } from "../../../lib/helpers"
-import { formatCart } from "../../../lib/utils"
+import { getCartError, getFormattedCart } from "../../../lib/cart-utils"
 import { ADD_TO_CART_MUTATION } from "../../../mutations/add-to-cart"
-import { GET_CART2 } from "../../../queries/get-cart"
+import { GET_CART_QUERY } from "../../../queries/get-cart"
 import Button from "../../_shared/button"
 
-const AddToCartButton = ({ product }) => {
+const AddToCartButton = ({ product, cartErrors }) => {
   const { setCart, setOpenCart } = useContext(ShopContext)
 
-  const { data, refetch } = useQuery(GET_CART2, {
-    notifyOnNetworkStatusChange: true,
-    onCompleted: () => {
-      console.log(data)
-      const formattedCart = formatCart(data)
-      console.log("formatted", formattedCart)
-      Cookie.set("naya_cart", JSON.stringify(formattedCart))
-      setCart(formattedCart)
-    },
-  })
-
-  const [, setCartError] = useState(false)
-
   const isInStock = product.stockStatus === "IN_STOCK"
-
   const cartInput = {
     clientMutationId: v4(),
     productId: product.databaseId,
   }
 
+  const { data, refetch } = useQuery(GET_CART_QUERY, {
+    notifyOnNetworkStatusChange: true,
+    onCompleted: () => {
+      const formattedCart = getFormattedCart(data)
+      localStorage.setItem("naya-cart", JSON.stringify(formattedCart))
+      setCart(formattedCart)
+    },
+  })
+
   const [addToCart, { loading, error }] = useMutation(ADD_TO_CART_MUTATION, {
     variables: { input: cartInput },
     onCompleted: () => {
-      alert("lagt til i handlevogn")
-      console.log(data)
       if (error) {
-        console.error()
-        setCartError(true)
+        cartErrors(getCartError(error))
       }
-      setTimeout(() => {alert('timeout')}, 1000)
-
       refetch()
       setOpenCart(true)
     },
     onError: error => {
-      if (error) {
-        console.log("på eroor")
-        const formattedError = removeHTMLTags(error.graphQLErrors[0]?.message)
-          if (formattedError === '')
-            return alert('Noe gikk galt..Prøv å oppdater siden og prøv igjen')
-        alert(formattedError)
-        console.error(error.graphQLErrors[0])
-      }
+      cartErrors(getCartError(error))
     },
   })
 
   function handleAddToCart() {
-    addToCart(product)
+    cartErrors(null)
+    addToCart()
   }
-  //
+
   return (
     <Button
       primary

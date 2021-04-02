@@ -13,7 +13,7 @@ const Header = () => {
   const [isHidden, setIsHidden] = useState(false)
   const { openCart, setOpenCart, cart } = useContext(ShopContext)
 
-  const quantity = cart.totalProductsCount
+  const quantity = cart?.totalProductsCount
 
   useEffect(() => {
     let mounted = true

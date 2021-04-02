@@ -13,10 +13,11 @@ const rotate = keyframes`
 `
 
 const Wrap = styled.div`
-  border: 16px solid var(--color-text); /* Light grey */
-  border-top: 16px solid #3498db; /* Blue */
+  border: 16px solid var(--color-text);
+  border-top: 16px solid var(--color-primary-light);
   border-radius: 50%;
   width: 120px;
   height: 120px;
   animation: ${rotate} 2s linear infinite;
+  margin: 0 auto;
 `

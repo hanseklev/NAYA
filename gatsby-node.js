@@ -45,7 +45,6 @@ async function createBlogPages(graphql, actions) {
   const { allWpPost, allWpProduct, allWpCategory, allWpTag } = result.data
 
   await allWpPost.edges.forEach(edge => {
-    console.log(edge.node.link)
     createPage({
       path: edge.node.link,
       component: path.resolve("./src/templates/blog-post-template.js"),
@@ -57,10 +56,6 @@ async function createBlogPages(graphql, actions) {
   })
 
   await allWpProduct.edges.forEach(node => {
-    //let category = node.productCategories.nodes[0].name.toLowerCase()
-    //let productPath = `product/${node.node.slug}`
-    console.log('slug', node.node.slug);
-
     createPage({
       path: `product/${node.node.id}`,
       component: path.resolve("./src/templates/product-template.js"),

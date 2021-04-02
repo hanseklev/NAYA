@@ -1,14 +1,18 @@
-import Cookie from "js-cookie"
-import React, { createContext, useState } from "react"
+import React, { createContext, useEffect, useState } from "react"
 
-const cartData = Cookie.get("naya_cart") ? Cookie.getJSON("naya_cart") : []
-
-export const ShopContext = createContext({})
+export const ShopContext = createContext(null)
 
 export const ShopProvider = ({ children }) => {
-  const [cart, setCart] = useState(cartData)
+  const [cart, setCart] = useState(null)
   const [openCart, setOpenCart] = useState(false)
 
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      let cartData = localStorage.getItem("naya-cart")
+      cartData = cartData !== null ? JSON.parse(cartData) : null
+      setCart(cartData)
+    }
+  }, [])
 
   return (
     <ShopContext.Provider value={{ cart, setCart, openCart, setOpenCart }}>

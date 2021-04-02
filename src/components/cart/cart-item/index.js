@@ -50,7 +50,7 @@ export const CartItem = ({ item, products, updateCart, addQtyToCart }) => {
         <ItemImage>
           <img
             srcSet={item.image?.srcSet}
-            sizes="(max-width: 1900px)"
+            sizes="(max-width: 1900px) "
             alt={item.name}
             style={{ width: "80px", height: "110px" }}
           />

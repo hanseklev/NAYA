@@ -16,10 +16,6 @@ const ShopPage = () => {
       <SEO title={title} />
       <div style={{ marginBottom: "80px" }}>
         <h1>{title}</h1>
-        <Paragraph center>
-          Vi jobber med å få på plass ny betalingsløsning.<br/> I mellomtiden kan du nyte
-          en kaffe i sola :)
-        </Paragraph>
       </div>
       <ShopList products={products} />
     </MainLayout>

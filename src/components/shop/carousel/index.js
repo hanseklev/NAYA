@@ -28,8 +28,7 @@ const ProductCarousel = ({ title, description, items }) => {
           )}
           {description && (
             <Paragraph center>
-              Vi jobber med å få på plass ny betalingsløsning. <br />I
-              mellomtiden kan du nyte en kaffe i sola :)
+            
             </Paragraph>
           )}
         </TextBox>

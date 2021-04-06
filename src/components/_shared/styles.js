@@ -109,7 +109,7 @@ export const StyledLink = styled(props => <Link {...props} />)`
 
   @media (max-width: 320px) {
     &:not(:last-child) {
-       ${props => props.mr && 'margin-right: 0.4rem'};
+      ${props => props.mr && "margin-right: 0.4rem"};
     }
   }
 `

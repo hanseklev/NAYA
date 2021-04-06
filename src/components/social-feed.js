@@ -31,7 +31,7 @@ const SocialFeed = ({ globalLink, description }) => {
       {feed.nodes.length > 0 &&
         feed.nodes.map(node => (
           <div key={node.id} className="item">
-            <a href={globalLink} className="link">
+            <a href={globalLink} className="link" aria-label="NAYA instagram">
               <GatsbyImage fluid={node.localFile.childImageSharp.fluid} />
             </a>
           </div>

@@ -3,7 +3,6 @@ import React from "react"
 import MainLayout from "../components/layout"
 import SEO from "../components/seo"
 import ShopList from "../components/shop/product-grid"
-import { Paragraph } from "../components/_shared/styles"
 
 const ShopPage = () => {
   const data = useStaticQuery(query)

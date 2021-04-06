@@ -38,6 +38,7 @@ export const ProductBreadCrumb = ({ category, product }) => {
 }
 
 const BreadcrumbNav = styled.nav`
+padding: 0 0.5rem;
   ol {
     list-style: none;
     padding-left: 0;

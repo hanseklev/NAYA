@@ -58,7 +58,7 @@ const query = graphql`
           localFile {
             childImageSharp {
               fluid(maxWidth: 600) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -67,7 +67,7 @@ const query = graphql`
           localFile {
             childImageSharp {
               fluid(maxWidth: 2400) {
-                ...GatsbyImageSharpFluid
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -79,8 +79,8 @@ const query = graphql`
         topsectionimage {
           localFile {
             childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
+              fluid(maxWidth: 920) {
+                ...GatsbyImageSharpFluid_withWebp_tracedSVG
               }
             }
           }
@@ -91,8 +91,8 @@ const query = graphql`
           ... on WpMediaItem {
             localFile {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+                fluid(maxWidth: 600) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }
@@ -104,8 +104,8 @@ const query = graphql`
             title
             localFile {
               childImageSharp {
-                fluid {
-                  ...GatsbyImageSharpFluid
+                fluid(maxWidth: 600) {
+                  ...GatsbyImageSharpFluid_withWebp_tracedSVG
                 }
               }
             }

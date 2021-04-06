@@ -3,7 +3,10 @@ import styled from "styled-components"
 
 const Author = ({ author }) => {
   const { name, description, avatar } = author.node
-  const parseUrl = avatar.url.replace("fit=", "")
+  console.log('avatar_url', avatar.url);
+  const parseUrl = avatar.url.replace("-100x100", "-500x500")
+  console.log('parsed', parseUrl);
+
   return (
     <Container>
       <Section>

@@ -17,6 +17,7 @@ const AboutContainer = styled.section`
     order: 2;
   }
 
+
   @media (min-width: 769px) {
     flex-direction: ${props => (props.flip ? "row-reverse" : "row")};
     align-items: center;
@@ -40,10 +41,6 @@ const AboutContainer = styled.section`
       max-width: 300px;
       margin-top: 15vh;
       margin-left: ${props => (props.flip ? "5vh" : "33%")};
-
-      @media (min-width: 1100px) {
-${'' /*         margin-top: 10%;
- */}      }
     }
 
     .text_column {
@@ -53,7 +50,7 @@ ${'' /*         margin-top: 10%;
       justify-content: center;
       align-items: center;
       ${props =>
-        props.flip && "margin-left: 15%; max-width: 350px; margin-top: 5rem;}"};
+        props.flip && "margin-left: 15%; max-width: 350px; margin-top: 10rem;}"};
       margin-left: ${props => (props.flip ? "0" : "3rem")};
 
       p {
@@ -82,10 +79,7 @@ const AboutSection = ({ title, image, description, color, flipped }) => {
         </div>
       </div>
       <div className="text_column">
-        <ContentContainer
-          style={flipped && { marginTop: "4rem" }}
-          className="team"
-        >
+        <ContentContainer className="text">
           {title && <h2>{title}</h2>}
           {description && parse(description)}
         </ContentContainer>

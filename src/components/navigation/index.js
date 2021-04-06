@@ -2,9 +2,9 @@ import React, { useState } from "react"
 import styled from "styled-components"
 import ModalContainer from "../_shared/modal-container"
 import { StyledLink } from "../_shared/styles"
-import Burger from "./burgericons"
+import Burger from "../_shared/icons"
 
-export const NavigationDesktop = ({ hide, location }) => {
+export const NavigationDesktop = () => {
   const [show, setShow] = useState(false)
 
   const toggleMenu = () => {
@@ -14,9 +14,9 @@ export const NavigationDesktop = ({ hide, location }) => {
   return (
     <>
       {!show && (
-        <DesktopNavigation tabIndex={show ? -1 : 0}>
+        <DesktopNavigation>
           <div className="desktop_link_container">
-          <StyledLink className="desktop_link" to="/">
+            <StyledLink className="desktop_link" to="/">
               Home
             </StyledLink>
             <StyledLink className="desktop_link" to="/shop">
@@ -33,20 +33,36 @@ export const NavigationDesktop = ({ hide, location }) => {
           <Burger isOpen={false} onClick={toggleMenu} className="icon" />
         </DesktopNavigation>
       )}
-      <MobileNavigation tabIndex={show ? 0 : -1}>
+      <MobileNavigation>
         <ModalContainer isOpen={show} slideLeft={true}>
-          <Burger isOpen={true} onClick={toggleMenu} className="close_icon" />
+          <Burger
+            isOpen={true}
+            onClick={toggleMenu}
+            className="close_icon"
+            tabIndex={show ? 0 : -1}
+          />
           <div className="mobile_link_wrap">
-            <StyledLink to="/" onClick={toggleMenu} className="mobile_link">
+            <StyledLink
+              to="/"
+              onClick={toggleMenu}
+              className="mobile_link"
+              tabIndex={show ? 0 : -1}
+            >
               home
             </StyledLink>
-            <StyledLink to="/shop" onClick={toggleMenu} className="mobile_link">
+            <StyledLink
+              to="/shop"
+              onClick={toggleMenu}
+              className="mobile_link"
+              tabIndex={show ? 0 : -1}
+            >
               shop
             </StyledLink>
             <StyledLink
               to="/journal"
               onClick={toggleMenu}
               className="mobile_link"
+              tabIndex={show ? 0 : -1}
             >
               Journal
             </StyledLink>
@@ -54,6 +70,7 @@ export const NavigationDesktop = ({ hide, location }) => {
               to="/about"
               onClick={toggleMenu}
               className="mobile_link"
+              tabIndex={show ? 0 : -1}
             >
               about
             </StyledLink>
@@ -104,6 +121,9 @@ const DesktopNavigation = styled.nav`
 `
 
 const MobileNavigation = styled.nav`
+  @media min-width(769px) {
+    display: none;
+  }
   .close_icon {
     position: absolute;
     left: 0;

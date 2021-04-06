@@ -48,7 +48,7 @@ const SecondaryImg = ({ img, animate }) => {
   )
 }
 
-const MainImg = ({ img, animate }) => {
+const MainImg = ({ img }) => {
   return (
     <div>
       <Image

@@ -51,7 +51,7 @@ const Article = styled.article`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between
+  justify-content: space-between;
   text-decoration: none;
   margin: 0rem auto;
   min-width: 250px;
@@ -74,11 +74,7 @@ const Article = styled.article`
   }
 
   .bottom-link {
-${
-  ""
-  /*     margin-top: auto;
-   */
-}    texttransform: uppercase;
+    texttransform: uppercase;
     textalign: left;
     width: 100%;
   }

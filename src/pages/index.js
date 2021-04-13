@@ -38,7 +38,7 @@ const IndexPage = () => {
               items={[showcase.imageOne, showcase.imageTwo]}
             />
             <RecentPosts dark />
-            <SocialFeed globalLink={IG_LINK} description={IG_FEED_DESCRPT} />
+           {/*  <SocialFeed globalLink={IG_LINK} description={IG_FEED_DESCRPT} /> */}
           </MainLayout>
         )
       }}

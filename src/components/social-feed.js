@@ -88,4 +88,4 @@ const SocialContainer = styled.div`
   }
 `
 
-export default SocialFeed
+//export default SocialFeed

@@ -6,7 +6,6 @@ import MainLayout from "../components/layout"
 import IntroSection from "../components/section/intro"
 import SEO from "../components/seo"
 import ProductCarousel from "../components/shop/carousel"
-import SocialFeed from "../components/social-feed"
 
 const IndexPage = () => {
   const IG_LINK = "https://www.instagram.com/nayaequalsnew/"

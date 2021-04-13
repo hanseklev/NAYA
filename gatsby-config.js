@@ -8,12 +8,6 @@ module.exports = {
   },
   plugins: [
     {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: `7317678593`,
-      },
-    },
- /*    {
       resolve: "gatsby-source-wordpress",
       options: {
         verbose: true,
@@ -25,7 +19,7 @@ module.exports = {
           hardCacheMediaFiles: true,
         },
       },
-    }, */
+    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -59,3 +53,11 @@ module.exports = {
     `gatsby-plugin-styled-components`,
   ],
 }
+
+/* 
+{
+  resolve: `gatsby-source-instagram`,
+  options: {
+    username: `7317678593`,
+  },
+}, */

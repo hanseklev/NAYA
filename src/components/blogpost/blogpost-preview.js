@@ -51,7 +51,6 @@ const Article = styled.article`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   text-decoration: none;
   margin: 0rem auto;
   min-width: 250px;

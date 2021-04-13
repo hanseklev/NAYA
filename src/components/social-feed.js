@@ -1,10 +1,8 @@
-import { useStaticQuery, graphql } from "gatsby"
-import GatsbyImage from "gatsby-image"
 import React from "react"
 import styled from "styled-components"
 
 const SocialFeed = ({ globalLink, description }) => {
-  const { feed } = useStaticQuery(graphql`
+  /* const { feed } = useStaticQuery(graphql`
     query {
       feed: allInstaNode(sort: { fields: timestamp, order: DESC }, limit: 3) {
         nodes {
@@ -22,20 +20,20 @@ const SocialFeed = ({ globalLink, description }) => {
         }
       }
     }
-  `)
+  `) */
   return (
     <SocialContainer>
       <div style={{ width: "100%", marginBottom: "2.5rem" }}>
         <h2>Instagram feed</h2>
       </div>
-      {feed.nodes.length > 0 &&
+    {/*   {feed.nodes.length > 0 &&
         feed.nodes.map(node => (
           <div key={node.id} className="item">
             <a href={globalLink} className="link" aria-label="NAYA instagram">
               <GatsbyImage fluid={node.localFile.childImageSharp.fluid} />
             </a>
           </div>
-        ))}
+        ))} */}
     </SocialContainer>
   )
 }

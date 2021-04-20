@@ -12,6 +12,9 @@ module.exports = {
       options: {
         verbose: true,
         url: process.env.WP_URL,
+        schema: {
+          requestConcurrency: 5,
+        },
         html: {
           useGatsbyImage: true,
         },

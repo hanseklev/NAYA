@@ -29,19 +29,9 @@ export const TextBox = styled.div`
   }
 `
 export const ContentContainer = styled.div`
-  width: 100%;
-  ${""} max-width: 1200px;
-  /*   min-height: 100vh;
-   */
   margin-left: auto;
   margin-right: auto;
-  padding-top: 1rem;
-  padding-bottom: 2rem;
-  padding-left: 1.2rem;
-  padding-right: 1.2rem;
-  letter-spacing: 0.04rem;
-  line-height: 1.8;
-  text-align: left;
+  padding: 1rem 1rem 2rem;
   color: var(--color-text);
 
   & > figure > ul {
@@ -55,27 +45,8 @@ export const ContentContainer = styled.div`
   ${props => props.center && "text-align: center;"}
 
   @media (min-width: 769px) {
-    max-width: 730px;
-  }
-
-  .paragraph-dark {
-  }
-`
-
-export const WordpressContent = styled.div`
-  width: 100%;
-  padding: 0 1.2rem;
-  margin: 0 auto;
-  overflow-x: hidden;
-
-  ${"" /* .columns-2 {
-    display: inline-block;
-    border: solid;
-  } */}
-
-  .tiled-gallery__col {
-    display: inline-block;
-  }
+    max-width: 600px;
+  }  
 `
 
 export const Paragraph = styled.p`
@@ -154,24 +125,3 @@ export const ProductContainer = styled.article`
     }
   }
 `
-
-/*
-
-.wp-block-image, .wp-image {
-    padding: 1rem 0;
-    width: 100%;
-    text-align: center;
-  }
-
-  .figure img {
-    width: 100%;
-  }
-
-  .ytp-cued-thumbnail-overlay{
-    width: 100%;
-  }
-
-  figure {
-    padding: 0;
-  }
-  */

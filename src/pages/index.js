@@ -8,8 +8,8 @@ import SEO from "../components/seo"
 import ProductCarousel from "../components/shop/carousel"
 
 const IndexPage = () => {
-  const IG_LINK = "https://www.instagram.com/nayaequalsnew/"
-  const IG_FEED_DESCRPT = "Sjekk ut de tre siste innleggene "
+/*   const IG_LINK = "https://www.instagram.com/nayaequalsnew/"
+  const IG_FEED_DESCRPT = "Sjekk ut de tre siste innleggene " */
   return (
     <StaticQuery
       query={query}

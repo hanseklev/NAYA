@@ -40,7 +40,7 @@ const AboutContainer = styled.section`
     .image {
       max-width: 300px;
       margin-top: 15vh;
-      margin-left: ${props => (props.flip ? "5vh" : "33%")};
+      margin-left: ${props => (props.flip ? "33%" : "40%")};
     }
 
     .text_column {

@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React from "react"
-import { Paragraph, Section, StyledLink } from "../_shared/styles"
+import { Paragraph, Section } from "../_shared/styles"
 import BlogPostPreviewGrid from "./blogpost-preview-grid"
 
 const RecentPosts = ({ dark }) => {
@@ -12,7 +12,7 @@ const RecentPosts = ({ dark }) => {
     <>
       <Section dark={dark}>
         <h2 style={{ fontSize: "2.5rem" }}>Journal</h2>
-        <Paragraph style={{ textAlign: "center", fontSize: "16px", textTransform:'uppercase', maxWidth:'550px', margin:'0 auto' }}>
+        <Paragraph style={{ textAlign: "center", fontSize: "16px", textTransform:'uppercase', maxWidth:'500px', margin:'0 auto' }}>
         Her finner du noen innlegg om temaer som betyr mye for oss, og noe inspirerende for hverdagen
         </Paragraph>
       </Section>

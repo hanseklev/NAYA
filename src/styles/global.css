@@ -89,11 +89,13 @@ h1, a {
 
 
 p,
-li,
-span {
+li {
   font-family: "Proxima Nova";
   font-weight: lighter;
-  font-size: 14px;
+  font-size: 1rem;
+  letter-spacing: 0.04rem;
+  line-height: calc(1.5em + .2vw);
+
 }
 
 ul {
@@ -102,8 +104,8 @@ ul {
 }
 
 p {
-  line-height: 1.5rem;
-  letter-spacing: 0.04rem;
+  /* line-height: 1.5rem; */
+  word-break: break-word;
   color: var(--color-text);
 }
 

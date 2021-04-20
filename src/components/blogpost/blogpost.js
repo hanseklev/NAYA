@@ -55,7 +55,7 @@ const AuthorHeader = styled.ul`
   display: flex;
   list-style: none;
   margin-top: 0rem;
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   padding: 0;
   justify-content: space-between;
 

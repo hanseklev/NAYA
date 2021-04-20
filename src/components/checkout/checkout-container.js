@@ -9,7 +9,7 @@ import CheckoutForm from "./checkout-form"
 const CheckoutContainer = () => {
   const { setCart } = useContext(ShopContext)
 
-  const { data, refetch } = useQuery(GET_CART_QUERY, {
+  const { data } = useQuery(GET_CART_QUERY, {
     notifyOnNetworkStatusChange: true,
     onCompleted: () => {
       const formattedCart = getFormattedCart(data)

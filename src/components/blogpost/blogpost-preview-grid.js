@@ -27,9 +27,10 @@ const Grid = styled.ul`
   list-style-type: none;
   max-width: 980px;
   margin: 0 auto;
-  padding: 1.5rem 2rem;
+  padding: 1.5rem 0.5rem;
 
   @media (min-width: 600px) {
+    padding: 1.5rem 2rem;
     grid-template-columns: repeat(${props => props.column}, 1fr);
   }
   @media (min-width: 870px) {

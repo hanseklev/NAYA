@@ -13,7 +13,14 @@ module.exports = {
         verbose: true,
         url: process.env.WP_URL,
         schema: {
-          requestConcurrency: 5,
+          requestConcurrency: 10,
+        },
+        type: {
+          MediaItem: {
+            localFile: {
+              requestConcurrency: 50,
+            },
+          },
         },
         html: {
           useGatsbyImage: true,

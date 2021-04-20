@@ -7,8 +7,8 @@ import { ContentContainer } from "../_shared/styles"
 import Author from "./author"
 
 export default function BlogPost(props) {
-  const { title, date, content, author, featuredImage } = props
-  const headerImage = featuredImage && featuredImage.node.localFile
+  const { title, date, content, author, featuredImage, excerpt } = props
+  const headerImage = featuredImage?.node?.localFile
   let category = props.categories.nodes && props.categories.nodes[1] && props.categories.nodes[1].name
 
   if (typeof window !== 'undefined') {
@@ -31,6 +31,7 @@ export default function BlogPost(props) {
           <li>~</li>
           <li style={{ textAlign: "right" }}>{author.node.name}</li>
         </AuthorHeader>
+        {excerpt && parse(excerpt)}
         {content && parse(content)}
         <hr />
         <Author author={author} />
@@ -54,7 +55,7 @@ const Article = styled.article`
 const AuthorHeader = styled.ul`
   display: flex;
   list-style: none;
-  margin-top: 0rem;
+  margin-top: 1rem;
   margin-bottom: 3rem;
   padding: 0;
   justify-content: space-between;

@@ -7,8 +7,7 @@ import { StyledLink } from "../_shared/styles"
 
 const BlogPostPreview = props => {
   const thumbImg =
-    props.featuredImage &&
-    props.featuredImage.node.localFile.childImageSharp.fixed
+    props.featuredImage?.node?.localFile?.childImageSharp.fixed 
 
   if (typeof window !== "undefined") {
     localStorage.removeItem("blogCategory") &&

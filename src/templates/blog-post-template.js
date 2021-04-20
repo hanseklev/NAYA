@@ -51,7 +51,7 @@ const BlogPostTemplate = props => {
   const { data, errors } = props
   const post = data && data.post
   const formattedExerpt = removeHTMLTags(post.excerpt)
-  const SEOImageURL = post.featuredImage && post.featuredImage.node.sourceUrl
+  const SEOImageURL = post.featuredImage?.node?.sourceUrl
 
   return (
     <MainLayout>

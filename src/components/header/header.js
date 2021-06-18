@@ -5,7 +5,7 @@ import { ShopContext } from "../../context/shop-context"
 import { debounce } from "../../lib/helpers"
 import CartContainer from "../cart/cart-container"
 import Logo from "../logo"
-import { NavigationDesktop } from "../navigation"
+import { Navigation } from "../navigation"
 import Button from "../_shared/button"
 import ModalContainer from "../_shared/modal-container"
 
@@ -37,7 +37,7 @@ const Header = () => {
     <>
       <Container hideHeader={isHidden}>
         <Column>
-          <NavigationDesktop />
+          <Navigation />
         </Column>
         <Column pr={2}>
           <Logo styles={{ border: "solid" }} />

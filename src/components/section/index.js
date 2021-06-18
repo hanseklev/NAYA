@@ -1,41 +1,45 @@
-import GatsbyImage from "gatsby-image"
-import React from "react"
+import GatsbyImage from "gatsby-image";
+import React from "react";
 
-import styled from "styled-components"
+import styled from "styled-components";
 
 const Section = ({ title, image, text, children }) => (
-  <Container>
+  <Container bgColor="var(--bg-secondary)">
+    <Title>{title}</Title>
     {children}
-      <Title>{title}</Title>
-    <Paragraph>{text}</Paragraph>
-    <ImageContainer>
-      {image && (
+    {image && (
+      <ImageContainer>
         <GatsbyImage
           style={{ width: "100%" }}
           fixed={image.childImageSharp.fixed}
         />
-      )}
-    </ImageContainer>
+      </ImageContainer>
+    )}
   </Container>
-)
+);
 
 const Container = styled.section`
   display: flex;
-  background-color: ${props => props.bgColor || 'var(--bg-primary)'};
+  flex-direction: column;
+  background-color: ${(props) => props.bgColor || "var(--bg-primary)"};
   justify-content: center;
   align-items: center;
-  margin: 2rem 0 auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  margin: 2rem auto;
+  padding: 2rem;
   width: 100%;
-`
+  text-align: center;
+
+  @media (min-width: 768px) {
+    width: 80%;
+  }
+`;
 
 const Title = styled.h2`
-  text-align: left;
-  font-size: 16px;
+  text-align: center;
+  font-size: 1.75rem;
   color: #655a46;
   margin-bottom: 0.4rem;
-`
+`;
 
 const Paragraph = styled.p`
   font-family: "Proxima Nova";
@@ -44,8 +48,7 @@ const Paragraph = styled.p`
   max-width: 650px;
   line-height: 1.6rem;
   text-align: justify;
-`
+`;
 
-const ImageContainer = styled.div`
-`
-export default Section
+const ImageContainer = styled.div``;
+export default Section;

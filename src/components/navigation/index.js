@@ -4,7 +4,7 @@ import ModalContainer from "../_shared/modal-container"
 import { StyledLink } from "../_shared/styles"
 import Burger from "../_shared/icons"
 
-export const NavigationDesktop = () => {
+export const Navigation = () => {
   const [show, setShow] = useState(false)
 
   const toggleMenu = () => {
@@ -17,16 +17,19 @@ export const NavigationDesktop = () => {
         <DesktopNavigation>
           <div className="desktop_link_container">
             <StyledLink className="desktop_link" to="/">
-              Home
+            Hjem
             </StyledLink>
             <StyledLink className="desktop_link" to="/shop">
-              Shop
+            Støtt
             </StyledLink>
-            <StyledLink className="desktop_link" to="/journal">
+            <StyledLink className="desktop_link " to="/about">
+              Om NAYA
+            </StyledLink>
+            <StyledLink className="desktop_link" to="/contact">
+              Kontakt
+            </StyledLink>
+            <StyledLink className="desktop_link last" to="/journal">
               Journal
-            </StyledLink>
-            <StyledLink className="desktop_link last" to="/about">
-              About
             </StyledLink>
           </div>
 
@@ -48,7 +51,7 @@ export const NavigationDesktop = () => {
               className="mobile_link"
               tabIndex={show ? 0 : -1}
             >
-              home
+              Hjem
             </StyledLink>
             <StyledLink
               to="/shop"
@@ -56,7 +59,23 @@ export const NavigationDesktop = () => {
               className="mobile_link"
               tabIndex={show ? 0 : -1}
             >
-              shop
+              Støtt
+            </StyledLink>
+            <StyledLink
+              to="/about"
+              onClick={toggleMenu}
+              className="mobile_link"
+              tabIndex={show ? 0 : -1}
+            >
+            Om NAYA
+            </StyledLink>
+            <StyledLink
+              to="/contact"
+              onClick={toggleMenu}
+              className="mobile_link"
+              tabIndex={show ? 0 : -1}
+            >
+              Kontakt
             </StyledLink>
             <StyledLink
               to="/journal"
@@ -66,14 +85,7 @@ export const NavigationDesktop = () => {
             >
               Journal
             </StyledLink>
-            <StyledLink
-              to="/about"
-              onClick={toggleMenu}
-              className="mobile_link"
-              tabIndex={show ? 0 : -1}
-            >
-              about
-            </StyledLink>
+         
           </div>
         </ModalContainer>
       </MobileNavigation>
@@ -109,7 +121,7 @@ const DesktopNavigation = styled.nav`
     text-shadow: 0px 0px 0px transparent;
   }
 
-  @media (min-width: 769px) {
+  @media (min-width: 970px) {
     .desktop_link_container {
       display: block;
     }
@@ -121,7 +133,7 @@ const DesktopNavigation = styled.nav`
 `
 
 const MobileNavigation = styled.nav`
-  @media min-width(769px) {
+  @media min-width(970px) {
     display: none;
   }
   .close_icon {

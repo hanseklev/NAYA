@@ -19,12 +19,12 @@ const Footer = ({ isHidden }) => {
           </Link>
         </div>
         <div style={{ flex: 3 }}>
-          <FooterTitle>Information</FooterTitle>
+          <FooterTitle>Informasjon</FooterTitle>
           <Link className="menu_link" to="/about">
-            About
+            Om NAYA
           </Link>
           <Link className="menu_link" to="/contact">
-            Contact
+            Kontakt
           </Link>
         </div>
         <div style={{ marginLeft: "-5px" }} className="socials">
@@ -33,15 +33,9 @@ const Footer = ({ isHidden }) => {
           <SocialIcons size="30" />
         </div>
       </FooterSection>
-
-      {/*   <FooterBottom>
-        NAYA AS • ORG.NR: 924 634 928 <br />
-      </FooterBottom> */}
     </FooterContainer>
   )
 }
-//       <a href="mailto:HELLO@NAYA.NO">HELLO@NAYA.NO</a>
-//    ALL RIGHTS RESERVED <br />© 2021
 const FooterContainer = styled.footer`
   background-color: rgb(228, 222, 209);
   z-index: 100;

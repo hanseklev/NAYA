@@ -17,7 +17,7 @@ const ProductCarousel = ({ title, description, items }) => {
           {title && (
             <h2
               style={{
-                fontSize: "2rem",
+                fontSize: "1.5rem",
                 paddingTop: "1rem",
                 marginBottom: "1rem",
                 lineHeight: "1.2",
@@ -65,7 +65,7 @@ const ProductCarousel = ({ title, description, items }) => {
           }}
           to="/shop"
         >
-          Sjekk ut produktene her
+          Finn ut mer
         </StyledLink>
       </TextBox>
     </CarouselWrapper>
@@ -78,13 +78,15 @@ const CarouselWrapper = styled.section`
   background-color: var(--bg-primary);
   margin: 0 auto;
   padding-bottom: 2rem;
-  max-width: 1166px;
+  max-width: 400px;
 
   .product {
     margin: 0 2rem;
   }
 
   @media (min-width: 600px) {
+    max-width: 960px;
+
     padding-top: 60px;
     padding-bottom: 120px;
     padding-left: 2rem;
@@ -132,20 +134,3 @@ const CarouselWrapper = styled.section`
     }
   }
 `
-
-/*
-
-  <a href="/shop" key={item.id} className="item" key={idx}>
-              <div className="item-title">
-                <h3
-                  style={{
-                    marginLeft: "auto",
-                    color: "var(--color-text)",
-                    textAlign: "right",
-                  }}
-                >
-                  En bag
-                </h3>
-              </div>
-
-              */

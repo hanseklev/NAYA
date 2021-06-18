@@ -42,7 +42,7 @@ const Container = styled.div`
     ${props => props.slideLeft ? 'left: 0;' : 'right: 0;'};
 
     transform: translate(
-      ${props => (props.isOpen ? "125%" : props.slideLeft ? "-200%" : "250%")}
+      ${props => (props.isOpen ? (props.slideLeft ? "0%" : "125%" ) : props.slideLeft ? "-200%" : "250%")}
     );
   }
 `

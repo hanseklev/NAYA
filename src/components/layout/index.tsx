@@ -1,8 +1,5 @@
-import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
-import Footer from "../footer";
-import Header from "../header/header";
 import "../../styles/wp-styles.css";
 
 type Props = {
@@ -12,29 +9,27 @@ type Props = {
 
 const MainLayout = ({ hideFooter, children }: Props) => {
   return (
-    <>
-      <Header />
+    <React.Fragment>
       <Layout>{children}</Layout>
-      <Footer isHidden={hideFooter} />
-    </>
+    </React.Fragment>
   );
 };
 
 const Layout = styled.main`
+  position: relative;
   padding: 0;
   margin: 0 auto;
-  margin-bottom: 100px;
   background: #fbfaf7;
   width: 100%;
+  text-align: center;
+  min-height: 600px;
 
   @media (min-width: 769px) {
     max-width: 1980px;
   }
 `;
 
-MainLayout.propTypes = {
-  children: PropTypes.node.isRequired,
-};
+
 
 export default MainLayout;
 

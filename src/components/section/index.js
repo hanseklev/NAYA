@@ -41,14 +41,5 @@ const Title = styled.h2`
   margin-bottom: 0.4rem;
 `;
 
-const Paragraph = styled.p`
-  font-family: "Proxima Nova";
-  font-weight: lighter;
-  font-size: 14px;
-  max-width: 650px;
-  line-height: 1.6rem;
-  text-align: justify;
-`;
-
 const ImageContainer = styled.div``;
 export default Section;

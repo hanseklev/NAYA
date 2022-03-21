@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 import styled from "styled-components";
 import { debounce } from "../../lib/helpers";
@@ -63,7 +62,7 @@ const Column = styled.div<{ pr?: number }>`
   display: flex;
   flex: 3;
   justify-content: center;
-  padding-right: ${(props) => props.pr || 0}
+  padding-right: ${(props) => props.pr || 0};
 
   &:first-child {
     justify-content: flex-start;
@@ -74,21 +73,11 @@ const Column = styled.div<{ pr?: number }>`
     flex: 1;
     justify-content: center;
   }
-
-  
 `;
 
 /* &:last-child {
     padding-right: 1rem;
     justify-content: flex-end;
   } */
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-};
-
-Header.defaultProps = {
-  siteTitle: ``,
-};
 
 export default Header;

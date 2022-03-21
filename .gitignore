@@ -70,6 +70,8 @@ yarn-error.log
 
 *.lock
 
+deprecated/
+
 
 #Wordpress
 .cache

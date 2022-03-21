@@ -4,7 +4,7 @@ import styled from "styled-components"
 import SocialIcons from "../social-icons"
 import Logo from "../logo"
 
-const Footer = ({ isHidden }) => {
+const Footer = ({ isHidden = false }) => {
   if (isHidden) return null
   return (
     <FooterContainer>

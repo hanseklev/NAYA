@@ -1,17 +1,16 @@
-import { Link } from "gatsby"
-import React from "react"
+import { Link } from "gatsby";
+import React from "react";
+import LogoSvg from "../images/naya_logo_positiv.svg";
 
-const SvgLogo = () => (
-  <img
-    src={require("../images/naya_logo_positiv.svg")}
-    width="78px"
-    alt="NAYA homepage"
-    aria-label="NAYA logo"
-  />
-)
-
-export default () => (
+const Logo = ({width="78px"}) => (
   <Link to="/">
-    <SvgLogo />
+    <img
+      src={LogoSvg}
+      width={width}
+      alt="NAYA logo"
+      aria-label="NAYA"
+    />
   </Link>
-)
+);
+
+export default Logo;

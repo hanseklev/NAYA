@@ -1,7 +1,7 @@
-import Image from "gatsby-image"
-import React from "react"
-import styled from "styled-components"
-import { TextBox, Paragraph, StyledLink } from "../_shared/styles"
+import { GatsbyImage } from "gatsby-plugin-image";
+import React from "react";
+import styled from "styled-components";
+import { TextBox, Paragraph, StyledLink } from "../_shared/styles";
 
 const IntroContainer = styled.section`
   .image {
@@ -27,7 +27,7 @@ const IntroContainer = styled.section`
       z-index: 1;
     }
   }
-`
+`;
 
 const IntroSection = ({ title, image, description, haslink, ...props }) => {
   return (
@@ -53,16 +53,16 @@ const IntroSection = ({ title, image, description, haslink, ...props }) => {
               to="/about"
               size="14px"
               weight="bold"
-              style={{ margin: "1rem 0", display: "block"}}
+              style={{ margin: "1rem 0", display: "block" }}
             >
-            LES MER
+              LES MER
             </StyledLink>
           )}
         </Paragraph>
       </TextBox>
       {image && <Image fluid={image.childImageSharp.fluid} className="image" />}
     </IntroContainer>
-  )
-}
+  );
+};
 
-export default IntroSection
+export default IntroSection;

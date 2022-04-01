@@ -9,9 +9,10 @@ const IndexPage = () => {
     <MainLayout>
       <SEO title="NAYA" />
       <CenteredContainer>
-        <Logo width={"256px"} />
-        <h2>Stay tuned</h2>
-        <p style={{ textAlign: "center" }}>Big things are going down</p>
+        <div>
+          <Logo width={"256px"} />
+          <p style={{textTransform: 'uppercase', fontSize: '1.75rem'}}>Stay tuned</p>
+        </div>
       </CenteredContainer>
     </MainLayout>
   );

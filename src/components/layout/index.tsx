@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import "../../styles/wp-styles.css";
+import '../../styles/global.css'
 
 type Props = {
   hideFooter?: boolean;
@@ -22,7 +22,7 @@ const Layout = styled.main`
   background: #fbfaf7;
   width: 100%;
   text-align: center;
-  min-height: 600px;
+  min-height: 500px;
 
   @media (min-width: 769px) {
     max-width: 1980px;

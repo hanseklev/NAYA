@@ -79,8 +79,6 @@ h5 {
 
 h3, h4 {
   letter-spacing: 2px;
-
-
 }
 
 h1, a {
@@ -90,7 +88,7 @@ h1, a {
 
 p,
 li {
-  font-family: "Proxima Nova";
+  font-family: "Proxima Nova", Arial, Helvetica, sans-serif;
   font-weight: lighter;
   font-size: 1rem;
   letter-spacing: 0.04rem;

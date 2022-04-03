@@ -1,11 +1,10 @@
 {
   "name": "naya",
   "private": true,
-  "description": "Make fair trade the only trade",
+  "description": "",
   "version": "0.1.0",
   "author": "Hans Erling Klevstad",
   "dependencies": {
-    "@apollo/client": "^3.3.13",
     "babel-plugin-styled-components": "^2.0.0",
     "gatsby": "^4.9.2",
     "gatsby-plugin-google-gtag": "^4.2.0",
